@@ -16,13 +16,7 @@ public class Node<T> {
         return next;
     }
 
-    public boolean isEmpty(){
-        Node next = this.getNext();
-        if(next == null){
-            return true;
-        }
-        else {
-            return false;
-        }
+    public void setNext(Node<T> next) {
+        this.next = next;
     }
 }
