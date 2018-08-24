@@ -14,12 +14,14 @@ public class Main extends Application{
     public void start(Stage primaryStage) {
         window = primaryStage;
         window.setTitle("Dots");
-        window.setScene(sMenu.run());
+        setScene(sMenu.run());
+
         window.show();
     }
 
     public static void setScene(Scene scene) {
         window.setScene(scene);
+        window.getScene().getStylesheets().add("Dark.css");
     }
 
     public static void close(){
