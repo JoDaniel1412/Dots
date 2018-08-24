@@ -15,7 +15,6 @@ public class Main extends Application{
         window = primaryStage;
         window.setTitle("Dots");
         setScene(sMenu.run());
-
         window.show();
     }
 

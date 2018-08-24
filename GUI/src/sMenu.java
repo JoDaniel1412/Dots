@@ -10,14 +10,15 @@ import javafx.scene.layout.VBox;
 public class sMenu {
 
     // Variables
-    static private int width = 500;
-    static private int height = 500;
+    static private int width = 700;
+    static private int height = 800;
 
     // Methods
-    public static Scene run() {
+    static Scene run() {
 
         // Tittle
         Label lTittle = new Label("Dots");
+        lTittle.setId("bold-label");
 
         // Buttons
         Button bPlay = new Button("Play");
@@ -32,7 +33,7 @@ public class sMenu {
         VBox vbLayout = new VBox();
         vbLayout.getChildren().addAll(bPlay, bSettings, bExit);
         vbLayout.setAlignment(Pos.CENTER);
-        vbLayout.setSpacing(8);
+        vbLayout.setSpacing(12);
 
         HBox hbLayout = new HBox();
         hbLayout.getChildren().addAll(lTittle);
