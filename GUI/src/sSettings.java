@@ -6,7 +6,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class sPlay {
+public class sSettings {
 
     // Settings
     static private int width = 500;
@@ -15,21 +15,17 @@ public class sPlay {
     public static Scene run() {
 
         // Tittle
-        Label lTittle = new Label("Play");
+        Label lTittle = new Label("Settings");
 
         // Buttons
-        Button bHost = new Button("Host Game");
-        Button bJoin = new Button("Join Game");
         Button bReturn = new Button("Return");
 
         bReturn.setOnAction(e -> Main.setScene(sMenu.run()));
 
-
         // Layouts
         VBox vbLayout = new VBox();
-        vbLayout.getChildren().addAll(bHost, bJoin, bReturn);
+        vbLayout.getChildren().addAll(bReturn);
         vbLayout.setAlignment(Pos.CENTER);
-        vbLayout.setSpacing(8);
 
         HBox hbLayout = new HBox();
         hbLayout.getChildren().addAll(lTittle);
@@ -48,7 +44,7 @@ public class sPlay {
     }
 
     public static void setWidth(int width) {
-        sPlay.width = width;
+        sSettings.width = width;
     }
 
     public static int getHeight() {
@@ -56,6 +52,7 @@ public class sPlay {
     }
 
     public static void setHeight(int height) {
-        sPlay.height = height;
+        sSettings.height = height;
     }
+
 }

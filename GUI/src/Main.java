@@ -21,4 +21,8 @@ public class Main extends Application{
     public static void setScene(Scene scene) {
         window.setScene(scene);
     }
+
+    public static void close(){
+        window.close();
+    }
 }
