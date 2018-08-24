@@ -23,6 +23,7 @@ public class sPlay {
         Button bReturn = new Button("Return");
 
         bReturn.setOnAction(e -> Main.setScene(sMenu.run()));
+        bHost.setOnAction(e -> Main.setScene(sHost.run()));
 
 
         // Layouts
