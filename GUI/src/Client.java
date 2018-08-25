@@ -47,7 +47,7 @@ public class Client {
              }
              try {
                  dOut.writeUTF(input);
-
+                 dOut.flush();
                  while(dIn.available() == 0){
                      try{
                          Thread.sleep(1);
@@ -55,7 +55,8 @@ public class Client {
                          e.printStackTrace();
                      }
                  }
-                 String rerply = dIn.readUTF();
+                 String reply = dIn.readUTF();
+                 System.out.println(reply);
              }catch (IOException e){
                  e.printStackTrace();
                  break;
