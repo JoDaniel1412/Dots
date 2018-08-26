@@ -1,4 +1,5 @@
-import java.io.DataInput;
+package server;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -12,13 +13,13 @@ public class ServerConecction extends Thread {
     DataOutputStream dOut;
     boolean shouldRun = true;
 
-    public ServerConecction(Socket socket, Server server){
-        super("ServerConnectionThread");
+    public ServerConecction(Socket socket, Server server) {
+        super("ServerConecctionThread");
         this.socket = socket;
         this.server = server;
     }
 
-    public void sendStringToClient(String text){
+    public void sendStringToClient(String text) {
         try {
             dOut.writeUTF(text);
             dOut.flush();
@@ -28,22 +29,22 @@ public class ServerConecction extends Thread {
     }
 
 
-    public void sendStringToAllClients(String text){
-        for(int index = 0; index < server.connections.size(); index++){
+    public void sendStringToAllClients(String text) {
+        for (int index = 0; index < server.connections.size(); index++) {
             ServerConecction sc = server.connections.get(index);
-            sc.sendStringToAllClients(text);
+            sc.sendStringToClient(text);
         }
 
     }
 
 
-    public void run(){
-        try{
+    public void run() {
+        try {
             dIn = new DataInputStream((socket.getInputStream()));
             dOut = new DataOutputStream(socket.getOutputStream());
 
-            while (shouldRun){
-                while (dIn.available() == 0){
+            while (shouldRun) {
+                while (dIn.available() == 0) {
                     try {
                         Thread.sleep(1);
                     } catch (InterruptedException e) {
@@ -57,7 +58,7 @@ public class ServerConecction extends Thread {
             dOut.close();
             socket.close();
 
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
