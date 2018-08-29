@@ -5,16 +5,16 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class ServerConecction extends Thread {
+public class ServerConnection extends Thread {
 
-    Socket socket;
-    Server server;
-    DataInputStream dIn;
-    DataOutputStream dOut;
-    boolean shouldRun = true;
+    private Socket socket;
+    private Server server;
+    private DataInputStream dIn;
+    private DataOutputStream dOut;
+    private boolean shouldRun = true;
 
-    public ServerConecction(Socket socket, Server server) {
-        super("ServerConecctionThread");
+    public ServerConnection(Socket socket, Server server) {
+        super("ServerConnectionThread");
         this.socket = socket;
         this.server = server;
     }
@@ -31,7 +31,7 @@ public class ServerConecction extends Thread {
 
     public void sendStringToAllClients(String text) {
         for (int index = 0; index < server.connections.size(); index++) {
-            ServerConecction sc = server.connections.get(index);
+            ServerConnection sc = server.connections.get(index);
             sc.sendStringToClient(text);
         }
 

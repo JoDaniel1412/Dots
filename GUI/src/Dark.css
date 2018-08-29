@@ -19,7 +19,12 @@
     -fx-text-fill: #AB4642;
 }
 
-#bold-label{
+#bold-label-150{
+     -fx-font-weight: bold;
+     -fx-font-size: 150;
+}
+
+#bold-label-50{
     -fx-font-weight: bold;
-    -fx-font-size: 150;
+    -fx-font-size: 50;
 }

@@ -12,12 +12,14 @@ import javafx.scene.layout.VBox;
 public class sJoin {
 
     // Settings
-    static private int width = 500;
-    static private int height = 500;
+    static private int width = 700;
+    static private int height = 800;
 
     public static Scene run(){
+
         //Tittle
-        Label lTittle = new Label("Host Mode");
+        Label lTittle = new Label("Join a game");
+        lTittle.setId("bold-label-50");
 
         //Grid
         GridPane grid = new GridPane();
@@ -55,7 +57,7 @@ public class sJoin {
         //Add everything to grid
         grid.getChildren().addAll(hostLabel, hostInput, portLabel, portInput, ipButton);
 
-        Scene scene = new Scene(grid, 200, 200);
+        Scene scene = new Scene(grid, width, height);
 
         // Layouts
         VBox vbLayout = new VBox();

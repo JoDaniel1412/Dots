@@ -13,9 +13,11 @@ public class Client {
 
 
     ClientConnection cc;
+
     public static void main(String [] args){
         new Client();
     }
+
     public Client(){
         try{
             Socket s = new Socket("localHost", 3333);
@@ -23,8 +25,6 @@ public class Client {
             cc.start();
 
             listerForInput();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

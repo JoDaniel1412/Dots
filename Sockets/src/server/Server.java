@@ -1,7 +1,5 @@
 package server;
 
-import server.ServerConecction;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,7 +9,7 @@ public class Server {
 
     //Variables
     ServerSocket ss;
-    ArrayList<ServerConecction> connections = new ArrayList<ServerConecction>();
+    ArrayList<ServerConnection> connections = new ArrayList<ServerConnection>();
     boolean shouldRun = true;
 
     public static void main(String[] args) {
@@ -24,7 +22,7 @@ public class Server {
             ss = new ServerSocket(3333);
             while (shouldRun) {
                 Socket s = ss.accept();
-                ServerConecction sc = new ServerConecction(s, this);
+                ServerConnection sc = new ServerConnection(s, this);
                 sc.start();
                 connections.add(sc);
             }

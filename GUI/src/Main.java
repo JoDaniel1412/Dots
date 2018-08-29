@@ -18,11 +18,13 @@ public class Main extends Application{
         window.show();
     }
 
+    // Method used for switch scenes
     public static void setScene(Scene scene) {
         window.setScene(scene);
         window.getScene().getStylesheets().add("Dark.css");
     }
 
+    // Method that ends the game
     public static void close(){
         window.close();
     }

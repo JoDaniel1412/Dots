@@ -18,7 +18,7 @@ public class sMenu {
 
         // Tittle
         Label lTittle = new Label("Dots");
-        lTittle.setId("bold-label");
+        lTittle.setId("bold-label-150");
 
         // Buttons
         Button bPlay = new Button("Play");

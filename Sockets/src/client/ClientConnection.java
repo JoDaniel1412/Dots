@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class ClientConnection extends Thread {
+
     Socket s;
     DataInputStream dIn;
     DataOutputStream dOut;
@@ -24,7 +25,6 @@ public class ClientConnection extends Thread {
             e.printStackTrace();
             close();
         }
-
     }
 
     public void run() {

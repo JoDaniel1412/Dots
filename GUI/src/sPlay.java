@@ -9,13 +9,14 @@ import javafx.scene.layout.VBox;
 public class sPlay {
 
     // Settings
-    static private int width = 500;
-    static private int height = 500;
+    static private int width = 700;
+    static private int height = 800;
 
     public static Scene run() {
 
         // Tittle
         Label lTittle = new Label("Play");
+        lTittle.setId("bold-label-50");
 
         // Buttons
         Button bHost = new Button("Host Game");
