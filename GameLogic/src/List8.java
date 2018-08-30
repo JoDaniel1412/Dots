@@ -1,4 +1,4 @@
-public class List {
+public class List8 {
 
     Node start = null;
     int len = 0;
