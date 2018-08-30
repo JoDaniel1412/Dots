@@ -1,6 +1,6 @@
 public class Node<T>{
 
-    private T value;
+    private T value = null;
     // Pointers
     Node next = null;
     Node right = null;

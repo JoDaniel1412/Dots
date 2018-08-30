@@ -9,7 +9,7 @@ public class SimpleList<T> {
 
     public void addAtEnd(T value){
         if(this.isEmpty()){
-            this.first = new Node<T>(value);
+            this.first = new Node<>(value);
             this.large += 1;
         }
         else{
@@ -17,7 +17,7 @@ public class SimpleList<T> {
             while (temporal.getNext() != null){
                 temporal =  temporal.getNext();
             }
-            temporal.setNext(new Node<T>(value));
+            temporal.setNext(new Node<>(value));
             this.large += 1;
         }
     }

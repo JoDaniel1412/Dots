@@ -23,7 +23,7 @@ public class Board {
      * @param columns amount of columns in the BoardGame
      * @return returns a Board instance
      */
-    public static synchronized Board getBoard(int rows, int columns){
+    public static synchronized Board init(int rows, int columns){
         if (instance == null) instance = new Board(rows,columns);
         return instance;
     }
@@ -39,16 +39,19 @@ public class Board {
         this.head = make_columns();
     }
 
-    public Node getBoardHead(){return head;}
+    public Node getBoardHead(){
+        return head;
+    }
 
     private SimpleList make_rows(){
         SimpleList rows_list = new SimpleList<Node>();
-        int i = 0;
-        while (i < rows) {
+        int i = 1;
+
+        while (i <= rows) {
             Node tmp = new Node();
             rows_list.addAtEnd(tmp);
-            int j = 0;
-            while (j < columns) {
+            int j = 2;
+            while (j <= columns) {
                 tmp.right = new Node();
                 tmp.right.left = tmp;
                 tmp = tmp.right;
@@ -61,12 +64,12 @@ public class Board {
 
     private Node make_columns(){
         Node tmp = make_rows().getFirst();
-        Node first_node = tmp;
+        Node first_node = (Node) tmp.getValue();
 
         // Mode between rows
         while (tmp.next != null){
-            Node first_row = tmp;
-            Node second_row = tmp.next;
+            Node first_row = (Node) tmp.getValue();
+            Node second_row = (Node) tmp.next.getValue();
 
             // Match the columns
             while (first_row != null){
