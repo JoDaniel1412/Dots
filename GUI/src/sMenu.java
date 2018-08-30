@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import DOTS.*;
 
 
 public class sMenu {
@@ -24,6 +25,10 @@ public class sMenu {
         Button bPlay = new Button("Play");
         Button bSettings = new Button("Settings");
         Button bExit = new Button("Exit");
+
+
+
+
 
         bPlay.setOnAction(e -> Main.setScene(sPlay.run()));
         bSettings.setOnAction(e -> Main.setScene(sSettings.run()));

@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class sPlay {
 
@@ -17,6 +18,7 @@ public class sPlay {
         // Tittle
         Label lTittle = new Label("Play");
         lTittle.setId("bold-label-50");
+
 
         // Buttons
         Button bHost = new Button("Host Game");
