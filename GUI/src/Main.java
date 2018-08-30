@@ -20,13 +20,13 @@ public class Main extends Application{
     }
 
     // Method used for switch scenes
-    public static void setScene(Scene scene) {
+    static void setScene(Scene scene) {
         window.setScene(scene);
-        window.getScene().getStylesheets().add("Dark.css");
+        window.getScene().getStylesheets().add("resources/Dark.css");
     }
 
     // Method that ends the game
-    public static void close(){
+    static void close(){
         window.close();
     }
 }

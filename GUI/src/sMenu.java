@@ -5,14 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import DOTS.*;
 
 
-public class sMenu {
-
-    // Variables
-    static private int width = 700;
-    static private int height = 800;
+abstract class sMenu extends ScenesFormat{
 
     // Methods
     static Scene run() {
@@ -25,10 +20,6 @@ public class sMenu {
         Button bPlay = new Button("Play");
         Button bSettings = new Button("Settings");
         Button bExit = new Button("Exit");
-
-
-
-
 
         bPlay.setOnAction(e -> Main.setScene(sPlay.run()));
         bSettings.setOnAction(e -> Main.setScene(sSettings.run()));
@@ -50,22 +41,4 @@ public class sMenu {
 
         return new Scene(bpLayout, width, height);
     }
-
-    // Getters and Setters
-    public static int getWidth() {
-        return width;
-    }
-
-    public static void setWidth(int width) {
-        sMenu.width = width;
-    }
-
-    public static int getHeight() {
-        return height;
-    }
-
-    public static void setHeight(int height) {
-        sMenu.height = height;
-    }
-
 }

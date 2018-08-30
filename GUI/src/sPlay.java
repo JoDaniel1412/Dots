@@ -7,11 +7,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class sPlay {
-
-    // Settings
-    static private int width = 700;
-    static private int height = 800;
+public abstract class sPlay extends ScenesFormat{
 
     public static Scene run() {
 
@@ -44,22 +40,5 @@ public class sPlay {
         bpLayout.setTop(hbLayout);
 
         return new Scene(bpLayout, width, height);
-    }
-
-    // Getters and Setters
-    public static int getWidth() {
-        return width;
-    }
-
-    public static void setWidth(int width) {
-        sPlay.width = width;
-    }
-
-    public static int getHeight() {
-        return height;
-    }
-
-    public static void setHeight(int height) {
-        sPlay.height = height;
     }
 }

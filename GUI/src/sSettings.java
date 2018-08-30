@@ -6,16 +6,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class sSettings {
+abstract class sSettings extends ScenesFormat{
 
-    // Settings
-    static private int width = 500;
-    static private int height = 500;
-
-    public static Scene run() {
+    static Scene run() {
 
         // Tittle
         Label lTittle = new Label("Settings");
+        lTittle.setId("bold-label-50");
 
         // Buttons
         Button bReturn = new Button("Return");
@@ -37,22 +34,4 @@ public class sSettings {
 
         return new Scene(bpLayout, width, height);
     }
-
-    // Getters and Setters
-    public static int getWidth() {
-        return width;
-    }
-
-    public static void setWidth(int width) {
-        sSettings.width = width;
-    }
-
-    public static int getHeight() {
-        return height;
-    }
-
-    public static void setHeight(int height) {
-        sSettings.height = height;
-    }
-
 }

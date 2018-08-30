@@ -9,11 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class sJoin {
-
-    // Settings
-    static private int width = 700;
-    static private int height = 800;
+public abstract class sJoin extends ScenesFormat{
 
     public static Scene run(){
 
@@ -53,11 +49,6 @@ public class sJoin {
         Button bExit = new Button("Exit");
         bExit.setOnAction(e -> Main.setScene(sPlay.run()));
         GridPane.setConstraints(ipButton, 1, 3);
-
-        //Add everything to grid
-        grid.getChildren().addAll(hostLabel, hostInput, portLabel, portInput, ipButton);
-
-        Scene scene = new Scene(grid, width, height);
 
         // Layouts
         VBox vbLayout = new VBox();
