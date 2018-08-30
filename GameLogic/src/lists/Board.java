@@ -1,3 +1,5 @@
+package lists;
+
 /**
  * @author José Acuña
  * @version 1.0
@@ -10,7 +12,7 @@ public class Board {
     private int columns;
     private Node head;
 
-    // Private constructor
+    /** Private constructor **/
     private Board(int rows, int columns){
         this.rows = rows;
         this.columns = columns;
@@ -19,9 +21,9 @@ public class Board {
 
     /**
      * Singleton constructor
-     * @param rows amount of rows in the BoardGame
-     * @param columns amount of columns in the BoardGame
-     * @return returns a Board instance
+     * @param rows int: amount of rows in the BoardGame
+     * @param columns int: amount of columns in the BoardGame
+     * @return returns a lists.Board instance
      */
     public static synchronized Board init(int rows, int columns){
         if (instance == null) instance = new Board(rows,columns);
@@ -29,24 +31,49 @@ public class Board {
     }
 
     /**
-     * Resets the Board Size to new values
-     * @param rows amount of rows in the BoardGame
-     * @param columns amount of columns in the BoardGame
+     * Resets the lists.Board Size to new values
+     * @param rows int: amount of rows in the BoardGame
+     * @param columns int: amount of columns in the BoardGame
      */
-    public void setBoardSize(int rows, int columns){
+    public final void setBoardSize(int rows, int columns){
         this.rows = rows;
         this.columns = columns;
         this.head = make_columns();
     }
 
+    /**
+     * Gets a the node in the given index
+     * @param row int: in which row to search
+     * @param column int: in which column to search
+     * @return Node
+     */
+    public Node getIndex(int row, int column){
+        Node node = head;
+        int i = 0;
+        while (i < row){
+            node = node.bottom;
+            i++;
+        }
+        int j = 0;
+        while (j < column) {
+            node = node.right;
+            j++;
+        }
+        return node;
+    }
+
+    /**
+     * Gets the first Node in the matrix
+     * @return Node
+     */
     public Node getBoardHead(){
         return head;
     }
 
+    /** Private methods **/
     private SimpleList make_rows(){
         SimpleList rows_list = new SimpleList<Node>();
         int i = 1;
-
         while (i <= rows) {
             Node tmp = new Node();
             rows_list.addAtEnd(tmp);
@@ -81,7 +108,7 @@ public class Board {
                 second_row.top_left = first_row.left;
                 second_row.top_right = first_row.right;
 
-                // Move to next Node
+                // Move to next lists.Node
                 first_row = first_row.right;
                 second_row = second_row.right;
             }

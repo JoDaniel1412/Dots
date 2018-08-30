@@ -1,3 +1,7 @@
+package lists;
+
+import lists.Node;
+
 public class SimpleList<T> {
     private Node<T> first;
     private int large;
