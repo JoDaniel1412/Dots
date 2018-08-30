@@ -2,8 +2,8 @@ public class Node {
 
     // Pointers
     Node next = null;
-    Node right;
-    Node left;
+    Node right = null;
+    Node left = null;
     Node top;
     Node bottom;
     Node top_right;
@@ -11,7 +11,4 @@ public class Node {
     Node bottom_right;
     Node bottom_left;
 
-    public void Node(){
-
-    }
 }
