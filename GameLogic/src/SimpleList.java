@@ -1,10 +1,8 @@
-package LIST;
-
-public class simpleList<T> {
+public class SimpleList<T> {
     private Node<T> first;
     private int large;
 
-    public simpleList(){
+    public SimpleList(){
         this.first = null;
         this.large = 0;
     }
@@ -37,9 +35,11 @@ public class simpleList<T> {
     public Node<T> getFirst() {
         return first;
     }
+
     public void showLarge() {
         System.out.println(this.getLarge());
     }
+
     public int getLarge() {
         return large;
     }
@@ -55,6 +55,7 @@ public class simpleList<T> {
             temporal = temporal.getNext();
         }
     }
+
     public void delete(int index){
         if (index < this.getLarge()){
             int i = 0;

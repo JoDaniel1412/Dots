@@ -1,3 +1,8 @@
+/**
+ * @author José Acuña
+ * @version 1.0
+ * @since 29-08-2018
+ */
 public class Board {
 
     private static Board instance = null;
@@ -36,12 +41,12 @@ public class Board {
 
     public Node getBoardHead(){return head;}
 
-    private List make_rows(){
-        List rows_list = new List();
+    private SimpleList make_rows(){
+        SimpleList rows_list = new SimpleList<Node>();
         int i = 0;
         while (i < rows) {
             Node tmp = new Node();
-            rows_list.append(tmp);
+            rows_list.addAtEnd(tmp);
             int j = 0;
             while (j < columns) {
                 tmp.right = new Node();
@@ -55,7 +60,7 @@ public class Board {
     }
 
     private Node make_columns(){
-        Node tmp = make_rows().head;
+        Node tmp = make_rows().getFirst();
         Node first_node = tmp;
 
         // Mode between rows

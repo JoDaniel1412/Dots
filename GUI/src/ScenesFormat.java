@@ -1,5 +1,8 @@
 import javafx.scene.Scene;
 
+/**
+ * @author José Acuña
+ */
 abstract class ScenesFormat {
     static int width = 700;
     static int height = 800;
