@@ -1,13 +1,40 @@
-public class List8 {
+public class Board {
 
+    private static Board instance = null;
     private int rows;
     private int columns;
-    private Node head = make_columns();
+    private Node head;
 
-    public List8(int rows, int columns){
+    // Private constructor
+    private Board(int rows, int columns){
         this.rows = rows;
         this.columns = columns;
+        this.head = make_columns();
     }
+
+    /**
+     * Singleton constructor
+     * @param rows amount of rows in the BoardGame
+     * @param columns amount of columns in the BoardGame
+     * @return returns a Board instance
+     */
+    public static synchronized Board getBoard(int rows, int columns){
+        if (instance == null) instance = new Board(rows,columns);
+        return instance;
+    }
+
+    /**
+     * Resets the Board Size to new values
+     * @param rows amount of rows in the BoardGame
+     * @param columns amount of columns in the BoardGame
+     */
+    public void setBoardSize(int rows, int columns){
+        this.rows = rows;
+        this.columns = columns;
+        this.head = make_columns();
+    }
+
+    public Node getBoardHead(){return head;}
 
     private List make_rows(){
         List rows_list = new List();
