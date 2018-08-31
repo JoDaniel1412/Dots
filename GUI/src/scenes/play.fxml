@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
@@ -31,11 +32,11 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" onDragDetected="#pressed_return" onMouseDragEntered="#pressed_return" prefHeight="180.0" prefWidth="200.0" scaleX="0.9" scaleY="0.9" styleClass="bold-label-25" stylesheets="@Dark.css">
                            <children>
-                              <TextField layoutX="125.0" layoutY="287.0" minHeight="-Infinity" prefHeight="24.0" prefWidth="222.0" />
                               <Button layoutX="276.0" layoutY="507.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="142.0" text="Search" />
-                              <TextField layoutX="129.0" layoutY="139.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="222.0" />
-                              <Label layoutX="109.0" layoutY="80.0" prefHeight="73.0" prefWidth="50.0" styleClass="bold-label-25" stylesheets="@Dark.css" text="IP" />
-                              <Label layoutX="115.0" layoutY="250.0" styleClass="bold-label-25" text="Port" />
+                              <JFXTextField focusColor="#ffe572" layoutX="103.0" layoutY="125.0" promptText="192.168.1.128" />
+                              <JFXTextField focusColor="#ffe572" layoutX="101.0" layoutY="273.0" promptText="8080" />
+                              <Label layoutX="110.0" layoutY="86.0" prefHeight="36.0" prefWidth="131.0" styleClass="bold-label-25" text="IP address" />
+                              <Label layoutX="107.0" layoutY="235.0" styleClass="bold-label-25" text="Port" />
                            </children></AnchorPane>
                     </content>
                   </Tab>

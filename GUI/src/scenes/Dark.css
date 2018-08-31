@@ -1,13 +1,11 @@
+*{
+    -fx-primary : #383838;
+    -fx-secundary : #AB4642;
+    -fx-primarytext : #e8e8e8;
+}
+
 .root{
-    -fx-background-color: #383838;
-    -fx-pref-width: 700;
-    -fx-pref-height: 800;
-}
-.border-pane{
-    -fx-pref-width: 700;
-    -fx-pref-height: 800;
-}
-.anchor-pane{
+    -fx-background-color: -fx-primary;
     -fx-pref-width: 700;
     -fx-pref-height: 800;
 }
@@ -15,20 +13,20 @@
     -fx-fill: -fx-primarytext;
 }
 .label{
-    -fx-text-fill: #e8e8e8;
+    -fx-text-fill: -fx-primarytext;
     -fx-font-size: 50;
 }
 .tab{
     -fx-pref-width: 335;
     -fx-pref-height: 60;
-    -fx-background-color: #AB4642;
+    -fx-background-color: -fx-secundary;
 }
 .tab-header-background{
-    -fx-background-color: #AB4642;
+    -fx-background-color: -fx-secundary;
     -fx-alignment: Center;
 }
 .button{
-    -fx-background-color: #AB4642;
+    -fx-background-color: -fx-secundary;
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4;
     -fx-font-size: 30;
@@ -36,7 +34,7 @@
 }
 .button:hover{
     -fx-background-color: #FFFFFF;
-    -fx-text-fill: #AB4642;
+    -fx-text-fill: -fx-secundary;
 }
 
 .bold-label-150{
