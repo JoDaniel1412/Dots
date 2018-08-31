@@ -27,7 +27,7 @@ public class Main extends Application{
     }
 
     // Method used for switch scenes
-    public static void setScene(String scene) throws IOException {
+    static void setScene(String scene) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource(scene));
         window.setScene(new Scene(root));
     }

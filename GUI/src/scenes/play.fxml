@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -16,15 +17,22 @@
                <tabs>
                   <Tab text="Host">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" onDragDone="#pressed_return" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="204.0" layoutY="194.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="5x5" />
+                              <Button layoutX="336.0" layoutY="194.0" mnemonicParsing="false" text="7x7" />
+                              <Button layoutX="466.0" layoutY="194.0" mnemonicParsing="false" text="9x9" />
+                              <Label layoutX="35.0" layoutY="197.0" prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Board Size" />
+                              <Button layoutX="287.0" layoutY="489.0" mnemonicParsing="false" text="Create" />
+                           </children></AnchorPane>
                     </content>
                   </Tab>
                   <Tab text="Join">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" scaleX="0.9" scaleY="0.9" styleClass="bold-label-25" stylesheets="@Dark.css">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" onDragDetected="#pressed_return" onMouseDragEntered="#pressed_return" prefHeight="180.0" prefWidth="200.0" scaleX="0.9" scaleY="0.9" styleClass="bold-label-25" stylesheets="@Dark.css">
                            <children>
                               <TextField layoutX="125.0" layoutY="287.0" minHeight="-Infinity" prefHeight="24.0" prefWidth="222.0" />
-                              <Button layoutX="121.0" layoutY="512.0" mnemonicParsing="false" text="Join" />
+                              <Button layoutX="276.0" layoutY="507.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="142.0" text="Search" />
                               <TextField layoutX="129.0" layoutY="139.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="222.0" />
                               <Label layoutX="109.0" layoutY="80.0" prefHeight="73.0" prefWidth="50.0" styleClass="bold-label-25" stylesheets="@Dark.css" text="IP" />
                               <Label layoutX="115.0" layoutY="250.0" styleClass="bold-label-25" text="Port" />
@@ -40,7 +48,7 @@
          <top>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#pressed_return" opacity="0.32" prefHeight="100.0" prefWidth="53.0" textOverrun="CLIP" translateX="-275.0" />
+                  <JFXHamburger onDragDetected="#pressed_return" prefHeight="100.0" prefWidth="31.0" scaleX="1.3" scaleY="1.5" translateX="-280.0" />
                   <Label id="lTittle" alignment="CENTER" contentDisplay="CENTER" styleClass="bold-label-50" stylesheets="@Dark.css" text="Play" translateX="-20.0" />
                </children>
             </HBox>
