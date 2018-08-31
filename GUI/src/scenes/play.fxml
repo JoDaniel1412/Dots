@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #383838;" stylesheets="@Dark.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sPlay">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="700.0">
+         <center>
+            <JFXTabPane prefHeight="300.0" prefWidth="700.0" stylesheets="@Dark.css" BorderPane.alignment="CENTER">
+               <tabs>
+                  <Tab text="Host">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+                  <Tab text="Join">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" scaleX="0.9" scaleY="0.9" styleClass="bold-label-25" stylesheets="@Dark.css">
+                           <children>
+                              <TextField layoutX="125.0" layoutY="287.0" minHeight="-Infinity" prefHeight="24.0" prefWidth="222.0" />
+                              <Button layoutX="121.0" layoutY="512.0" mnemonicParsing="false" text="Join" />
+                              <TextField layoutX="129.0" layoutY="139.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="222.0" />
+                              <Label layoutX="109.0" layoutY="80.0" prefHeight="73.0" prefWidth="50.0" styleClass="bold-label-25" stylesheets="@Dark.css" text="IP" />
+                              <Label layoutX="115.0" layoutY="250.0" styleClass="bold-label-25" text="Port" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </JFXTabPane>
+         </center>
+         <top>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#pressed_return" opacity="0.32" prefHeight="100.0" prefWidth="53.0" textOverrun="CLIP" translateX="-275.0" />
+                  <Label id="lTittle" alignment="CENTER" contentDisplay="CENTER" styleClass="bold-label-50" stylesheets="@Dark.css" text="Play" translateX="-20.0" />
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

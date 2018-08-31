@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #383838;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sMenu">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="700.0" stylesheets="@Dark.css">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="12.0" stylesheets="@Dark.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#pressed_play" stylesheets="@Dark.css" text="Play" />
+                  <Button mnemonicParsing="false" stylesheets="@Dark.css" text="Settings" />
+                  <Button mnemonicParsing="false" onAction="#pressed_return" stylesheets="@Dark.css" text="Exit" />
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <Label styleClass="bold-label-150" text="Dots" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
