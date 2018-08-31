@@ -1,7 +1,8 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
 
 
 public class Main extends Application{
@@ -13,11 +14,11 @@ public class Main extends Application{
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage){
+
         window = primaryStage;
         window.setTitle("Dots");
-        Image icon = new Image("resources/noun_dots.png");
-        window.getIcons().add(icon);
+        window.getIcons().add(new Image("icon.png"));
         setScene(sMenu.run());
         window.show();
     }
