@@ -27,21 +27,21 @@
                                        <children>
                                           <Label prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Board Size" />
                                           <Button id="bBoardSize1" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="5x5" />
-                                          <Button id="bBoardSize3" mnemonicParsing="false" text="9x9" />
                                           <Button id="bBoardSize2" mnemonicParsing="false" text="7x7" />
+                                          <Button id="bBoardSize3" mnemonicParsing="false" text="9x9" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
                                           <Label prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Time (min)" />
-                                          <Button id="bBoardSize1" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="2" />
-                                          <Button id="bBoardSize1" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="4" />
-                                          <Button id="bBoardSize1" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="6" />
+                                          <Button id="bGameTime1" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="2" />
+                                          <Button id="bGameTime2" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="4" />
+                                          <Button id="bGameTime3" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="6" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="BASELINE_CENTER" prefHeight="87.0" prefWidth="700.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Create" />
+                                          <Button id="bCreateGame" mnemonicParsing="false" text="Create" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -57,17 +57,17 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                        <children>
-                                          <JFXTextField focusColor="#ffe572" labelFloat="true" promptText="IP address" unFocusColor="#5a5a5a" />
+                                          <JFXTextField id="eIPAddress" focusColor="#ffe572" labelFloat="true" promptText="IP address" unFocusColor="#5a5a5a" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                        <children>
-                                          <JFXTextField focusColor="#ffe572" labelFloat="true" promptText="Port" unFocusColor="#5a5a5a" />
+                                          <JFXTextField id="ePort" focusColor="#ffe572" labelFloat="true" promptText="Port" unFocusColor="#5a5a5a" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="BASELINE_CENTER" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="142.0" text="Search" />
+                                          <Button id="bSearchGame" mnemonicParsing="false" prefHeight="73.0" prefWidth="142.0" text="Search" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -82,12 +82,20 @@
             </JFXTabPane>
          </center>
          <top>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <GridPane alignment="CENTER" prefHeight="77.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+              </rowConstraints>
                <children>
-                  <JFXHamburger onDragDetected="#pressed_return" prefHeight="100.0" prefWidth="31.0" scaleX="1.3" scaleY="1.5" translateX="-280.0" />
-                  <Label id="lTittle" alignment="CENTER" contentDisplay="CENTER" styleClass="bold-label-50" stylesheets="@Dark.css" text="Play" translateX="-20.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="bold-label-50" text="Play" GridPane.columnIndex="1" />
+                  <JFXHamburger alignment="CENTER" onDragDetected="#pressed_return" prefHeight="44.0" prefWidth="62.0" scaleX="1.5" scaleY="2.0" />
                </children>
-            </HBox>
+            </GridPane>
          </top>
       </BorderPane>
    </children>
