@@ -1,5 +1,4 @@
 import javafx.fxml.FXML;
-
 import java.io.IOException;
 
 abstract class sScene {

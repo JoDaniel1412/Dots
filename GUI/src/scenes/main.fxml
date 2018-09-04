@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #383838;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sMenu">
+<AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #383838;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sMenu">
    <children>
-      <BorderPane prefHeight="800.0" prefWidth="700.0" stylesheets="@Dark.css">
+      <BorderPane prefHeight="800.0" prefWidth="700.0" stylesheets="@Dark.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="12.0" stylesheets="@Dark.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#pressed_play" stylesheets="@Dark.css" text="Play" />
-                  <Button mnemonicParsing="false" stylesheets="@Dark.css" text="Settings" />
-                  <Button mnemonicParsing="false" onAction="#pressed_return" stylesheets="@Dark.css" text="Exit" />
+                  <Button id="bPlay" mnemonicParsing="false" onAction="#pressed_play" stylesheets="@Dark.css" text="Play" />
+                  <Button id="bSettings" mnemonicParsing="false" stylesheets="@Dark.css" text="Settings" />
+                  <Button id="bReturn" mnemonicParsing="false" onAction="#pressed_return" stylesheets="@Dark.css" text="Exit" />
                </children>
             </VBox>
          </center>
          <top>
-            <Label styleClass="bold-label-150" text="Dots" BorderPane.alignment="CENTER" />
+            <Label id="lTittle" styleClass="bold-label-150" text="Dots" BorderPane.alignment="CENTER" />
          </top>
       </BorderPane>
    </children>

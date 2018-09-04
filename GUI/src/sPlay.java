@@ -1,3 +1,5 @@
+import javafx.fxml.FXML;
+
 import java.io.IOException;
 
 public class sPlay extends sScene{
@@ -5,5 +7,10 @@ public class sPlay extends sScene{
     @Override
     void pressed_return() throws IOException {
         Main.setScene("scenes/main.fxml");
+    }
+
+    @FXML
+    void pressed_setGridSize(int rows, int columns){
+        System.out.printf("%d %d", rows, columns);
     }
 }

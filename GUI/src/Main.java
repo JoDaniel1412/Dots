@@ -19,7 +19,9 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception{
 
         window = primaryStage;
-        window.setResizable(false);
+        //window.setResizable(false);
+        window.setMinHeight(700);
+        window.setMinWidth(600);
         window.setTitle("Dots");
         window.getIcons().add(new Image("icon.png"));
         setScene("scenes/main.fxml");
