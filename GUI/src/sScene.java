@@ -9,19 +9,19 @@ abstract class sScene {
     @FXML
     abstract void pressed_return() throws IOException;
 
-    public static int getWidth() {
+    static int getWidth() {
         return width;
     }
 
-    public static void setWidth(int width) {
+    static void setWidth(int width) {
         sScene.width = width;
     }
 
-    public static int getHeight() {
+    static int getHeight() {
         return height;
     }
 
-    public static void setHeight(int height) {
+    static void setHeight(int height) {
         sScene.height = height;
     }
 }

@@ -13,7 +13,7 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="12.0" stylesheets="@Dark.css" BorderPane.alignment="CENTER">
                <children>
                   <Button id="bPlay" mnemonicParsing="false" onAction="#pressed_play" stylesheets="@Dark.css" text="Play" />
-                  <Button id="bSettings" mnemonicParsing="false" stylesheets="@Dark.css" text="Settings" />
+                  <Button id="bSettings" mnemonicParsing="false" onAction="#pressed_settings" stylesheets="@Dark.css" text="Settings" />
                   <Button id="bReturn" mnemonicParsing="false" onAction="#pressed_return" stylesheets="@Dark.css" text="Exit" />
                </children>
             </VBox>

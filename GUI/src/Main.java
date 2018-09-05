@@ -29,8 +29,8 @@ public class Main extends Application{
     }
 
     // Method used for switch scenes
-    static void setScene(String new_scene) throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource(new_scene));
+    static void setScene(String scene_route) throws IOException {
+        Parent root = FXMLLoader.load(Main.class.getResource(scene_route));
         Scene scene = new Scene(root);
         var width = window.getWidth();
         var height = window.getHeight();
@@ -39,6 +39,10 @@ public class Main extends Application{
         // Sets the new scene dimensions based on last one
         window.setWidth(width);
         window.setHeight(height);
+    }
+
+    static void setFullScreen(boolean value){
+        window.setFullScreen(value);
     }
 
     // Method that ends the game
