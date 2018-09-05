@@ -17,11 +17,11 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
         window = primaryStage;
-        //window.setResizable(false);
-        window.setMinHeight(700);
+        window.setWidth(sScene.getWidth());
+        window.setHeight(sScene.getHeight());
         window.setMinWidth(600);
+        window.setMinHeight(700);
         window.setTitle("Dots");
         window.getIcons().add(new Image("icon.png"));
         setScene("scenes/main.fxml");
@@ -29,9 +29,16 @@ public class Main extends Application{
     }
 
     // Method used for switch scenes
-    static void setScene(String scene) throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource(scene));
-        window.setScene(new Scene(root));
+    static void setScene(String new_scene) throws IOException {
+        Parent root = FXMLLoader.load(Main.class.getResource(new_scene));
+        Scene scene = new Scene(root);
+        var width = window.getWidth();
+        var height = window.getHeight();
+        window.setScene(scene);
+
+        // Sets the new scene dimensions based on last one
+        window.setWidth(width);
+        window.setHeight(height);
     }
 
     // Method that ends the game
