@@ -28,23 +28,18 @@ public class SideChecker {
     static boolean CheckSides(Node node1, Node node2) {
         if (node1.getTop() == node2) {
             if (CheckRight(node1, node2)) {
-                if (CheckRightUp(node1, node2)) {
-                    System.out.println("Point");
-                    return true;
-                }
+                return CheckRightUp(node1, node2);
+
             }
             if (CheckLeft(node1, node2)){
-                if (CheckLeftUp(node1, node2)){
-                    return true;
-                }
+                return CheckLeftUp(node1, node2);
             }
 
         }
         if (node1.getBottom() == node2){
             if (CheckRight(node1, node2)){
-                if (CheckRightDown(node1, node2)){
-                    return true;
-                }
+                return CheckRightDown(node1, node2);
+
             }
             if (CheckLeft(node1, node2)){
                 return CheckLeftDown(node1, node2);
