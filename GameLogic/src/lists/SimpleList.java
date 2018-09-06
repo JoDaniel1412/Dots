@@ -83,7 +83,7 @@ public class SimpleList<T> {
     public Node<T> getByIndex(int i){
         int j = 0;
         Node temp = this.getFirst();
-        while (j < i){
+        while (j != i){
             temp = temp.next;
             j++;
         }
