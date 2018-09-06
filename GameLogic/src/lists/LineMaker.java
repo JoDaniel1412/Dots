@@ -4,30 +4,58 @@ import PointsChecker.MainChecker;
 
 public class LineMaker {
 
-    public static boolean matchNode(Node node1, Node node2){
-        int i = 0;
-        SimpleList node1Pointers = new SimpleList();
-        node1Pointers.addAtEnd(node1.getTop_left());
-        node1Pointers.addAtEnd(node1.getLeft());
-        node1Pointers.addAtEnd(node1.getBottom_left());
-        node1Pointers.addAtEnd(node1.getBottom());
-        node1Pointers.addAtEnd(node1.getBottom_right());
-        node1Pointers.addAtEnd(node1.getRight());
-        node1Pointers.addAtEnd(node1.getTop_right());
-        node1Pointers.addAtEnd(node1.getTop());
-        while (i < 8){
-            if (node1Pointers.getByIndex(i).getValue() == node2){
-
-                return true;
-            }
-            i++;
+    private static boolean Verifier(Node node1, Node node2){
+        if (node1.getTop() == node2 && !node1.isTopState()){
+            node1.setTopState(true);
+            node2.setBottomState(true);
+            return true;
+        }
+        if (node1.getBottom() == node2 && !node1.isBottomState()){
+            node1.setBottomState(true);
+            node2.setTopState(true);
+            return true;
+        }
+        if (node1.getRight() == node2 && !node1.isRightState()){
+            node1.setRightState(true);
+            node2.setLeftState(true);
+            return true;
+        }
+        if (node1.getLeft() == node2 && !node1.isLeftState()){
+            node1.setLeftState(true);
+            node2.setRightState(true);
+            return true;
+        }
+        if (node1.getTop_left() == node2 && !node1.isTop_leftState()){
+            node1.setTop_leftState(true);
+            node2.setBottom_rightState(true);
+            return true;
+        }
+        if (node1.getTop_right() == node2 && !node1.isTop_rightState()){
+            node1.setTop_rightState(true);
+            node2.setBottom_leftState(true);
+            return true;
+        }
+        if (node1.getBottom_left() == node2 && !node1.isBottom_leftState()){
+            node1.setBottom_leftState(true);
+            node2.setTop_rightState(true);
+            return true;
+        }
+        if (node1.getBottom_right() == node2 && !node1.isBottom_rightState()){
+            node1.setBottom_rightState(true);
+            node2.setTop_leftState(true);
+            return true;
         }
         return false;
     }
-    public static void ReceiveDots (Node node1, Node node2){
-        if (matchNode(node1, node2)){
 
-            if (MainChecker.DotsReceiver(node1, node2));
+
+         public static void ReceiveDots (Node node1, Node node2){
+            if (Verifier(node1, node2)) {
+                if (MainChecker.DotsReceiver(node1, node2)) ;
+                    System.out.println("Agregue punto");
+            }
         }
+
+
     }
-}
+
