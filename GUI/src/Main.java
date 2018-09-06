@@ -17,19 +17,36 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
         window = primaryStage;
-        window.setResizable(false);
+        window.setWidth(sScene.getWidth());
+        window.setHeight(sScene.getHeight());
+        window.setMinWidth(600);
+        window.setMinHeight(700);
         window.setTitle("Dots");
         window.getIcons().add(new Image("icon.png"));
-        setScene("scenes/main.fxml");
+        setScene("scenes/menu.fxml");
         window.show();
     }
 
     // Method used for switch scenes
-    static void setScene(String scene) throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource(scene));
-        window.setScene(new Scene(root));
+    static void setScene(String scene_route) throws IOException {
+        Parent root = FXMLLoader.load(Main.class.getResource(scene_route));
+        Scene scene = new Scene(root);
+        var width = window.getWidth();
+        var height = window.getHeight();
+        var fullscreen = window.isFullScreen();
+        window.setScene(scene);
+
+        // Sets the new scene dimensions based on last one
+        if (fullscreen) window.setFullScreen(true);
+        else {
+            window.setWidth(width);
+            window.setHeight(height);
+        }
+    }
+
+    static void setFullScreen(boolean value){
+        window.setFullScreen(value);
     }
 
     // Method that ends the game

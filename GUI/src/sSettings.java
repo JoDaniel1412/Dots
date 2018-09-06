@@ -2,7 +2,7 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class sPlay extends sScene{
+public class sSettings extends sScene{
 
     @Override
     void pressed_return() throws IOException {
@@ -10,7 +10,12 @@ public class sPlay extends sScene{
     }
 
     @FXML
-    void pressed_setGridSize(int rows, int columns){
-        System.out.printf("%d %d", rows, columns);
+    void pressed_fullscreen(){
+        Main.setFullScreen(true);
+    }
+
+    @FXML
+    void pressed_windowed(){
+        Main.setFullScreen(false);
     }
 }

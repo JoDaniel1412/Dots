@@ -3,7 +3,6 @@
     -fx-secundary : #AB4642;
     -fx-primarytext : #e8e8e8;
 }
-
 .root{
     -fx-background-color: -fx-primary;
     -fx-pref-width: 700;
@@ -12,10 +11,32 @@
 .glyph-icon {
     -fx-fill: -fx-primarytext;
 }
+
+/* Entries */
+.text-field{
+    -fx-text-fill: -fx-primarytext;
+}
+
+/* Label */
 .label{
     -fx-text-fill: -fx-primarytext;
     -fx-font-size: 50;
 }
+.bold-label-150{
+    -fx-font-weight: bold;
+    -fx-font-size: 150;
+}
+
+.bold-label-50{
+    -fx-font-weight: bold;
+    -fx-font-size: 50;
+}
+.bold-label-25{
+    -fx-font-weight: bold;
+    -fx-font-size: 25;
+}
+
+/* Tab */
 .tab{
     -fx-pref-width: 335;
     -fx-pref-height: 60;
@@ -25,6 +46,8 @@
     -fx-background-color: -fx-secundary;
     -fx-alignment: Center;
 }
+
+/* Button */
 .button{
     -fx-background-color: -fx-secundary;
     -fx-text-fill: #FFFFFF;
@@ -35,18 +58,4 @@
 .button:hover{
     -fx-background-color: #FFFFFF;
     -fx-text-fill: -fx-secundary;
-}
-
-.bold-label-150{
-     -fx-font-weight: bold;
-     -fx-font-size: 150;
-}
-
-.bold-label-50{
-    -fx-font-weight: bold;
-    -fx-font-size: 50;
-}
-.bold-label-25{
-    -fx-font-weight: bold;
-    -fx-font-size: 25;
 }
