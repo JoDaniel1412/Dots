@@ -87,7 +87,6 @@ public class SimpleList<T> {
             temp = temp.next;
             j++;
         }
-        System.out.println(temp.getValue());
         return temp;
     }
 }
