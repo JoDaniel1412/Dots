@@ -80,4 +80,14 @@ public class SimpleList<T> {
             System.out.println("List out of index");
         }
     }
+    public Node<T> getByIndex(int i){
+        int j = 0;
+        Node temp = this.getFirst();
+        while (j < i){
+            temp = temp.next;
+            j++;
+        }
+        System.out.println(temp.getValue());
+        return temp;
+    }
 }
