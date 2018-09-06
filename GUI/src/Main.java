@@ -24,7 +24,7 @@ public class Main extends Application{
         window.setMinHeight(700);
         window.setTitle("Dots");
         window.getIcons().add(new Image("icon.png"));
-        setScene("scenes/main.fxml");
+        setScene("scenes/menu.fxml");
         window.show();
     }
 
@@ -34,11 +34,15 @@ public class Main extends Application{
         Scene scene = new Scene(root);
         var width = window.getWidth();
         var height = window.getHeight();
+        var fullscreen = window.isFullScreen();
         window.setScene(scene);
 
         // Sets the new scene dimensions based on last one
-        window.setWidth(width);
-        window.setHeight(height);
+        if (fullscreen) window.setFullScreen(true);
+        else {
+            window.setWidth(width);
+            window.setHeight(height);
+        }
     }
 
     static void setFullScreen(boolean value){
