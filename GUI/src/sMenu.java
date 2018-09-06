@@ -15,6 +15,6 @@ public class sMenu extends sScene {
 
     @FXML
     void pressed_settings() throws IOException {
-        Main.setScene("scenes/ssettings.fxml");
+        Main.setScene("scenes/settings.fxml");
     }
 }
