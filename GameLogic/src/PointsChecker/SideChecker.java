@@ -34,7 +34,7 @@ public class SideChecker {
                 }
             }
             if (CheckLeft(node1, node2)){
-                if (CheckLeftDown(node1, node2)){
+                if (CheckLeftUp(node1, node2)){
                     return true;
                 }
             }
@@ -47,9 +47,7 @@ public class SideChecker {
                 }
             }
             if (CheckLeft(node1, node2)){
-                if(CheckLeftDown(node1, node2)){
-                    return true;
-                }
+                return CheckLeftDown(node1, node2);
             }
         }
         return false;
