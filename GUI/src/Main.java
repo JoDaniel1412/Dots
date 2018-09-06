@@ -21,7 +21,7 @@ public class Main extends Application{
         window = primaryStage;
         window.setResizable(false);
         window.setTitle("Dots");
-        window.getIcons().add(new Image("icon.png"));
+        //window.getIcons().add(new Image("icon.png"));
         setScene("scenes/main.fxml");
         window.show();
     }
