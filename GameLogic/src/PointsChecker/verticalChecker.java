@@ -13,16 +13,28 @@ public class verticalChecker {
         return node1.isBottomState() && node2.isBottomState();
     }
     private static boolean checkUpRight(Node node1, Node node2){
-        return node1.getTop().isRightState() && node2.getTop().isLeftState();
+        if (!node1.isTop_rightState() && !node2.isTop_leftState()) {
+            return node1.getTop().isRightState() && node2.getTop().isLeftState();
+        }
+        return false;
     }
     private static boolean checkUpLeft(Node node1, Node node2){
-        return node1.getTop().isLeftState() && node2.getTop().isRightState();
+        if (!node1.isTop_leftState() && !node2.isTop_rightState() ) {
+            return node1.getTop().isLeftState() && node2.getTop().isRightState();
+        }
+        return false;
     }
     private static boolean checkDownRight(Node node1, Node node2){
-        return node1.getBottom().isRightState() && node2.getBottom().isLeftState();
+        if (!node1.isBottom_rightState() && !node2.isBottom_leftState()) {
+            return node1.getBottom().isRightState() && node2.getBottom().isLeftState();
+        }
+        return false;
     }
     private static boolean checkDownLeft(Node node1, Node node2){
-        return node1.getBottom().isLeftState() && node2.getBottom().isRightState();
+        if (!node1.isBottom_leftState() && !node2.isBottom_rightState()) {
+            return node1.getBottom().isLeftState() && node2.getBottom().isRightState();
+        }
+        return false;
     }
 
     public static boolean checkverticals(Node node1, Node node2){
