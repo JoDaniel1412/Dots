@@ -12,14 +12,10 @@ public class MainChecker {
         }
 
         if ((node1.getTop_left() == node2) || (node1.getTop_right() == node2)){
-
+            return DiagonalChecker.CheckUpDiagonal(node1, node2);
         }
         if ((node1.getBottom_left() == node2) || (node1.getBottom_right() == node2)){
-
-        }
-        else {
-            System.out.println("Dots selected not available");
-            return false;
+            return DiagonalChecker.CheckDownDiagonal(node1, node1);
         }
         return false;
     }

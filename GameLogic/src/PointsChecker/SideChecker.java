@@ -25,7 +25,7 @@ public class SideChecker {
         return node1.getLeft().isBottomState() && node2.getLeft().isTopState();
     }
 
-    static boolean CheckSides(Node node1, Node node2) {
+    public static boolean CheckSides(Node node1, Node node2) {
         if (node1.getTop() == node2) {
             if (CheckRight(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isBottom_rightState()) {
