@@ -4,7 +4,7 @@ import java.io.IOException;
 abstract class sScene {
 
     private static int width = 700;
-    private static int height = 800;
+    private static int height = 700;
 
     @FXML
     abstract void pressed_return() throws IOException;
