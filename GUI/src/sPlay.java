@@ -16,6 +16,6 @@ public class sPlay extends sScene{
 
     @FXML
     void pressed_start() throws IOException {
-        Main.setScene("scene/game.fxml");
+        Main.setScene("scenes/game.fxml");
     }
 }

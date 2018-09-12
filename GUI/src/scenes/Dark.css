@@ -18,7 +18,8 @@
 }
 .text-field-short{
     -fx-max-width: 30;
-    -fx-background-color: -fx-primary;
+    -fx-background-color: -fx-secundary;
+    -fx-font-size: 25;
 }
 
 /* Label */
