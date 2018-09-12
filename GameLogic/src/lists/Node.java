@@ -35,7 +35,7 @@ public class Node<T>{
     int topRightPlayer;
     int bottomRightPlayer;
     int bottomLeftPlayer;
-    int topRighPlayer;
+    int topLeftPlayer;
 
 
     /**
@@ -257,12 +257,12 @@ public class Node<T>{
         this.bottomRightPlayer = bottomRightPlayer;
     }
 
-    public int getTopRighPlayer() {
-        return topRighPlayer;
+    public int getTopLeftPlayer() {
+        return topLeftPlayer;
     }
 
-    public void setTopRighPlayer(int topRighPlayer) {
-        this.topRighPlayer = topRighPlayer;
+    public void setTopLeftPlayer(int topLeftPlayer) {
+        this.topLeftPlayer = topLeftPlayer;
     }
 
     public int getBottomLeftPlayer() {
