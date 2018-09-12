@@ -1,6 +1,7 @@
 package lists;
 
-import PointsChecker.MainChecker;
+import lists.Node;
+import points.checker.MainChecker;
 
 public class LineMaker {
 

@@ -1,4 +1,4 @@
-package PointsChecker;
+package points.checker;
 
 import lists.Node;
 
