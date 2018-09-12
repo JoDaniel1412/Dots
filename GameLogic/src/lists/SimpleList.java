@@ -25,6 +25,17 @@ public class SimpleList<T> {
             this.large += 1;
         }
     }
+    public void addAtBeginning (T value){
+        if(this.isEmpty()){
+            this.first = new Node<>(value);
+            this.large += 1;
+        }
+        else{
+            Node tmp = new Node<>(value);
+            tmp.setNext(this.first);
+            this.first = tmp;
+        }
+    }
 
     public boolean isEmpty(){
         Node next = this.getFirst();
