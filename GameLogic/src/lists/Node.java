@@ -27,6 +27,16 @@ public class Node<T>{
     private boolean bottom_leftState;
 
 
+    //Who made the line
+    int topPlayer;
+    int bottomPlayer;
+    int rightPlayer;
+    int leftPlayer;
+    int topRightPlayer;
+    int bottomRightPlayer;
+    int bottomLeftPlayer;
+    int topRighPlayer;
+
 
     /**
      * Sets a node to contain data
@@ -199,4 +209,67 @@ public class Node<T>{
         this.bottom_leftState = bottom_left;
     }
 
+    public int getTopPlayer() {
+        return topPlayer;
+    }
+
+    public void setTopPlayer(int topPlayer) {
+        this.topPlayer = topPlayer;
+    }
+
+    public int getBottomPlayer() {
+        return bottomPlayer;
+    }
+
+    public void setBottomPlayer(int bottomPlayer) {
+        this.bottomPlayer = bottomPlayer;
+    }
+
+    public int getRightPlayer() {
+        return rightPlayer;
+    }
+
+    public void setRightPlayer(int rightPlayer) {
+        this.rightPlayer = rightPlayer;
+    }
+
+    public int getLeftPlayer() {
+        return leftPlayer;
+    }
+
+    public void setLeftPlayer(int leftPlayer) {
+        this.leftPlayer = leftPlayer;
+    }
+
+    public int getTopRightPlayer() {
+        return topRightPlayer;
+    }
+
+    public void setTopRightPlayer(int topRightPlayer) {
+        this.topRightPlayer = topRightPlayer;
+    }
+
+    public int getBottomRightPlayer() {
+        return bottomRightPlayer;
+    }
+
+    public void setBottomRightPlayer(int bottomRightPlayer) {
+        this.bottomRightPlayer = bottomRightPlayer;
+    }
+
+    public int getTopRighPlayer() {
+        return topRighPlayer;
+    }
+
+    public void setTopRighPlayer(int topRighPlayer) {
+        this.topRighPlayer = topRighPlayer;
+    }
+
+    public int getBottomLeftPlayer() {
+        return bottomLeftPlayer;
+    }
+
+    public void setBottomLeftPlayer(int bottomLeftPlayer) {
+        this.bottomLeftPlayer = bottomLeftPlayer;
+    }
 }
