@@ -7,6 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/GUI/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/GameLogic/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sockets/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -63,3 +63,8 @@
     -fx-background-color: #FFFFFF;
     -fx-text-fill: -fx-secundary;
 }
+.button-circular{
+    -fx-background-radius: 50%;
+    -fx-min-width: 50;
+
+}

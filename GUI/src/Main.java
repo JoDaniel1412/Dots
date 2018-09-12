@@ -23,7 +23,7 @@ public class Main extends Application{
         window.setMinWidth(600);
         window.setMinHeight(700);
         window.setTitle("Dots");
-        //window.getIcons().add(new Image("icon.png"));
+        window.getIcons().add(new Image("resources/icon.png"));
         setScene("scenes/menu.fxml");
         window.show();
     }
