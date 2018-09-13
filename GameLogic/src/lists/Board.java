@@ -1,7 +1,7 @@
 package lists;
 
 /**
- * @author José Acuña
+ * @author Jose Acuna
  * @version 1.0
  * @since 29-08-2018
  */
@@ -70,7 +70,10 @@ public class Board {
         return head;
     }
 
-    /** Private methods **/
+    /**
+     * Sets a double link between continuous nodes
+     * @return SimpleList white the head of each row
+     */
     private SimpleList make_rows(){
         SimpleList rows_list = new SimpleList<Node>();
         int i = 1;
@@ -89,6 +92,10 @@ public class Board {
         return rows_list;
     }
 
+    /**
+     * Sets the vertical and diagonal link between nodes
+     * @return the first node of the Board
+     */
     private Node make_columns(){
         Node tmp = make_rows().getFirst();
         Node first_node = (Node) tmp.getValue();
@@ -115,5 +122,15 @@ public class Board {
             tmp = tmp.next;
         }
         return first_node;
+    }
+
+    /* Getters and Setters */
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
     }
 }

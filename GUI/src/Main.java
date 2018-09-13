@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Main extends Application{
 
-    private static Stage window;
+    static Stage window;
 
     public static void main(String[] args) {
         launch(args);
@@ -23,7 +23,7 @@ public class Main extends Application{
         window.setMinWidth(600);
         window.setMinHeight(700);
         window.setTitle("Dots");
-        //window.getIcons().add(new Image("icon.png"));
+        window.getIcons().add(new Image("resources/icon.png"));
         setScene("scenes/menu.fxml");
         window.show();
     }
@@ -52,5 +52,6 @@ public class Main extends Application{
     // Method that ends the game
     static void close(){
         window.close();
+        Platform.exit();
     }
 }

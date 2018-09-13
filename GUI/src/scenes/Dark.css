@@ -16,6 +16,11 @@
 .text-field{
     -fx-text-fill: -fx-primarytext;
 }
+.text-field-short{
+    -fx-max-width: 30;
+    -fx-background-color: -fx-secundary;
+    -fx-font-size: 25;
+}
 
 /* Label */
 .label{
@@ -58,4 +63,9 @@
 .button:hover{
     -fx-background-color: #FFFFFF;
     -fx-text-fill: -fx-secundary;
+}
+.button-circular{
+    -fx-background-radius: 50%;
+    -fx-min-width: 50;
+
 }
