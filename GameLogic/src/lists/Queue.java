@@ -1,6 +1,6 @@
 package lists;
 
-import java.util.ArrayList;
+
 
 public class Queue <T>{
     private SimpleList <T> list;
@@ -19,5 +19,8 @@ public class Queue <T>{
     }
     public Node peek(){
         return this.list.getByIndex(0);
+    }
+    public int GetLarge(){
+        return this.list.getLarge();
     }
 }
