@@ -124,4 +124,13 @@ public class Board {
         return first_node;
     }
 
+    /* Getters and Setters */
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
 }

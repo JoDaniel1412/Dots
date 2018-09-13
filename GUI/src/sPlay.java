@@ -17,5 +17,6 @@ public class sPlay extends sScene{
     @FXML
     void pressed_start() throws IOException {
         Main.setScene("scenes/game.fxml");
+        Main.window.setResizable(false);
     }
 }

@@ -10,9 +10,9 @@ import lists.Node;
  */
 public class Dots extends Circle {
 
-    static Color color = Color.GREEN;
-    static Color color_hover = Color.LIGHTGREEN;
-    static double radius = 20;
+    private static Color color = Color.GREEN;
+    private static Color color_hover = Color.LIGHTGREEN;
+    public static double radius = 20;
     private Node node;
     private Circle dot;
 
@@ -29,9 +29,10 @@ public class Dots extends Circle {
      */
     private Circle draw_dot(double xPoss, double yPoss){
         Circle c = new Circle(xPoss, yPoss, radius);
+        c.setFill(color);
         c.setOnMouseClicked(e-> pressed_dot());
-        c.setOnMouseEntered(e-> switch_color(c, Color.GREEN));
-        c.setOnMouseExited(e-> switch_color(c, Color.GOLD));
+        c.setOnMouseEntered(e-> switch_color(c, color_hover));
+        c.setOnMouseExited(e-> switch_color(c, color));
         return c;
     }
 
