@@ -14,8 +14,7 @@ public class sGame {
     @FXML
     public void draw_board(){
         Board board = Board.init(4, 4);
-        Node head = board.getBoardHead();
-        Node tmp = head;
+        Node tmp = board.getBoardHead();
         double radius = Dots.radius;
         var rows = board.getRows();
         var columns = board.getColumns();
@@ -27,9 +26,9 @@ public class sGame {
         while (i < rows) {
             var xPoss = xOffset;
             while (j < columns) {
+                tmp = board.getIndex(i, j);
                 Dots dot = new Dots(xPoss, yPoss, tmp);
                 paneBoard.getChildren().addAll(dot.getDot());
-                //tmp = tmp.getRight();
                 xPoss += xOffset;
                 j++;
             }

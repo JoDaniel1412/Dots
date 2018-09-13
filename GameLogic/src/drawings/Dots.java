@@ -10,8 +10,9 @@ import lists.Node;
  */
 public class Dots extends Circle {
 
-    private static Color color = Color.GREEN;
-    private static Color color_hover = Color.LIGHTGREEN;
+    private static Color dark_red = new Color(0.57f, 0.23333f, 0.22f, 1.0f);
+    private static Color color = dark_red;
+    private static Color color_hover = Color.WHITE;
     public static double radius = 20;
     private Node node;
     private Circle dot;
