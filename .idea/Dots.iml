@@ -11,5 +11,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.jfoenix:jfoenix:9.0.61" level="project" />
+    <orderEntry type="library" name="jfoenix-9.0.5" level="project" />
   </component>
 </module>
