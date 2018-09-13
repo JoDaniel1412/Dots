@@ -26,17 +26,17 @@
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
                                           <Label prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Board Size" />
-                                          <Button id="bBoardSize1" mnemonicParsing="false" text="5x5" />
-                                          <Button id="bBoardSize2" mnemonicParsing="false" text="7x7" />
-                                          <Button id="bBoardSize3" mnemonicParsing="false" text="9x9" />
+                                          <Button fx:id="bBoardSize1" mnemonicParsing="false" text="5x5" onAction="#pressed_bBoardSize1" />
+                                          <Button fx:id="bBoardSize2" mnemonicParsing="false" text="7x7" />
+                                          <Button fx:id="bBoardSize3" mnemonicParsing="false" text="9x9" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
                                           <Label prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Time (min)" />
-                                          <Button id="bGameTime1" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="2" />
-                                          <Button id="bGameTime2" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="4" />
-                                          <Button id="bGameTime3" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="6" />
+                                          <Button fx:id="bGameTime1" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="2" />
+                                          <Button fx:id="bGameTime2" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="4" />
+                                          <Button fx:id="bGameTime3" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="6" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="BASELINE_CENTER" prefHeight="87.0" prefWidth="700.0">
