@@ -8,16 +8,26 @@ import org.codehaus.jackson.map.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-class DotsInteraction {
+/**
+ * Facade class used to connect the GameLogic whit Sockets
+ * @author José Acuña
+ */
+public class DotsInteraction {
 
     private static DoubleArray<Node> doubleArray = new DoubleArray<>();
+    private static ObjectMapper mapper = new ObjectMapper();
+    private static File json = new File("Sockets/message.json");
 
-    public static void dot_pressed(Node node) throws IOException, InterruptedException {
+
+    /**
+     * Method that handles the dots pressed by the player
+     * @param node the node that the player selected
+     * @throws IOException in case that the Json conversion failed
+     * @throws InterruptedException in case the client couldn't send the info
+     */
+    static void dot_pressed(Node node) throws IOException, InterruptedException {
         doubleArray.add(node);
         if(doubleArray.getSecond() != null){
-            ObjectMapper mapper = new ObjectMapper();
-            File json = new File("Sockets/message.json");
-
             // Search for the node index
             Board board = Board.getInstance();
             var firstNode = board.searchIndex(doubleArray.getFirst());
@@ -29,5 +39,11 @@ class DotsInteraction {
             Cliente.enviarInfo(json);
             doubleArray.clear();
         }
+    }
+
+    public static void analise_dots(String json){
+
+        System.out.println(json);
+
     }
 }

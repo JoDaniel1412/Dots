@@ -1,5 +1,6 @@
 package client;
 
+import drawings.DotsInteraction;
 import java.io.*;
 import java.net.Socket;
 
@@ -27,14 +28,14 @@ public class Cliente extends Thread {
     /**
      * Metodo que Solicita la informacion del servidor
      */
-    public static String solicitarInfo() throws IOException, InterruptedException {
+    public static void solicitarInfo() throws IOException, InterruptedException {
         sleep(100);
         Socket conexionServer = new Socket(ip, 4876);
         BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
         String message = entradaDatos.readLine();
         conexionServer.close();
         System.out.println("Client receive: " + message);
-        return message;
+        DotsInteraction.analise_dots(message);
     }
 
     /**
