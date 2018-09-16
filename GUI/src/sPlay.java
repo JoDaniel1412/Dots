@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import server.Servidor;
 
 import java.io.IOException;
 
@@ -31,6 +32,7 @@ public class sPlay extends sScene{
 
     @FXML
     void pressed_start() throws IOException {
+        Servidor.init();
         Main.setScene("scenes/game.fxml");
         Main.window.setResizable(false);
     }

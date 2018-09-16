@@ -11,23 +11,34 @@ import java.net.Socket;
  * Clase que se extiende de Thread
  */
 public class Servidor extends Thread {
-    String message;
-    ServerSocket servidorI;
-    ServerSocket servidorS;
+    private String message;
+    private ServerSocket servidorI;
+    private ServerSocket servidorS;
 
     /**
      * Crea los puertos de entrada y salida de informacion del servidor
-     * @throws IOException
+     * @throws IOException en case de que los puertos esten ocupados
      */
-    public Servidor() throws IOException {
+    private Servidor(String msg) throws IOException {
+        super(msg);
         this.servidorI = new ServerSocket(4876);
         this.servidorS = new ServerSocket(4392);
     }
 
     /**
+     * Clase que inicia el servidor y lo pone a escuchar y enviar
+     * @throws IOException en caso de que los puertos esten ocupados
+     */
+    public static void init() throws IOException {
+        Thread servidor = new Servidor("server");
+        servidor.start();
+
+    }
+
+    /**
      * Metodo que envia la informacion a los clientes
      */
-    public void iniciar() {
+    public void write() {
         try {
             Socket cliente = servidorI.accept();
             PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
@@ -41,28 +52,23 @@ public class Servidor extends Thread {
     /**
      * Metodo que lee que le envio el cliente
      */
-    public void run() {
+    public void read() {
         try {
-
             Socket cliente = servidorS.accept();
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
-            //if (entrada.readLine() != null) {
-            this.message = entrada.readLine();
-            //}
+            message = entrada.readLine();
             cliente.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String args[]) throws IOException {
-        Servidor servidor = new Servidor();
-        servidor.start();
+    public void run(){
         while (true) {
-            servidor.run();
-            servidor.iniciar();
-
+            read();
+            write();
         }
     }
+
 }
 

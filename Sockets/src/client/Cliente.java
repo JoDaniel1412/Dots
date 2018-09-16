@@ -1,9 +1,6 @@
 package client;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -11,9 +8,8 @@ import java.net.Socket;
  */
 public class Cliente extends Thread {
 
-
-    public Cliente() {
-    }
+    static String ip = "localHost";
+    static int port = 8888;
 
     /**
      * Clase que maneja la logica de comandos
@@ -37,43 +33,25 @@ public class Cliente extends Thread {
     /**
      * Metodo que Solicita la informacion del servidor
      */
-    public void solicitarInfo() {
-
-        try {
-            sleep(100);
-            Socket conexionServer = new Socket("localHost", 4876);
-            BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
-            getChar(entradaDatos.readLine());
-            System.out.println(entradaDatos.readLine());
-            conexionServer.close();
-        } catch (IOException | InterruptedException a) {
-            System.out.println("Error recibiendo datos");
-        }
+    public static String solicitarInfo() throws IOException, InterruptedException {
+        sleep(100);
+        Socket conexionServer = new Socket(ip, 4876);
+        BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
+        String message = entradaDatos.readLine();
+        conexionServer.close();
+        System.out.println(message);
+        return message;
     }
 
     /**
      * Metodo que envia la informacion al servidor para que este la analice
-     * @param message
+     * @param message archivo Json a enviar
      */
-    public void enviarInfo(String message) {
-        try {
-            sleep(100);
-            Socket conexionServer = new Socket("localHost", 4392);
-            PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
-            salida.println(message);
-            conexionServer.close();
-        } catch (IOException a) {
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        Cliente c1   = new Cliente();
-        while(true) {
-            c1.enviarInfo("log 4 2 3 2");
-            c1.solicitarInfo();
-        }
-
+    public static void enviarInfo(File message) throws InterruptedException, IOException {
+        sleep(100);
+        Socket conexionServer = new Socket(ip, 4392);
+        PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
+        salida.println(message);
+        conexionServer.close();
     }
 }

@@ -1,8 +1,12 @@
 package drawings;
 
+import client.Cliente;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import lists.DoubleArray;
 import lists.Node;
+
+import java.io.IOException;
 
 /**
  * @author Jose Acuna
@@ -31,7 +35,13 @@ public class Dots extends Circle {
     private Circle draw_dot(double xPoss, double yPoss){
         Circle c = new Circle(xPoss, yPoss, radius);
         c.setFill(color);
-        c.setOnMouseClicked(e-> pressed_dot());
+        c.setOnMouseClicked(e-> {
+            try {
+                pressed_dot();
+            } catch (IOException | InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        });
         c.setOnMouseEntered(e-> switch_color(c, color_hover));
         c.setOnMouseExited(e-> switch_color(c, color));
         return c;
@@ -49,8 +59,8 @@ public class Dots extends Circle {
     /**
      * Dots action to do
      */
-    private void pressed_dot(){
-
+    private void pressed_dot() throws IOException, InterruptedException {
+        DotsInteraction.dot_pressed(node);
     }
 
     /* Getters */
