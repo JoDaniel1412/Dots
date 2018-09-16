@@ -1,6 +1,8 @@
 package client;
 
 import drawings.DotsInteraction;
+import server.Servidor;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -11,7 +13,8 @@ import java.net.Socket;
 public class Cliente extends Thread {
 
     private static String ip = "localHost";
-    private static int port = 8888;
+    private static int portI = Servidor.portI;
+    private static int portS = Servidor.portS;
     private static Thread cliente;
 
     private Cliente(String msg) {
@@ -30,7 +33,7 @@ public class Cliente extends Thread {
      */
     public static void solicitarInfo() throws IOException, InterruptedException {
         sleep(100);
-        Socket conexionServer = new Socket(ip, 4876);
+        Socket conexionServer = new Socket(ip, portI);
         BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
         String message = entradaDatos.readLine();
         conexionServer.close();
@@ -44,7 +47,7 @@ public class Cliente extends Thread {
      */
     public static void enviarInfo(File message) throws InterruptedException, IOException {
         sleep(100);
-        Socket conexionServer = new Socket(ip, 4392);
+        Socket conexionServer = new Socket(ip, portS);
         PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
         salida.println(message);
         conexionServer.close();

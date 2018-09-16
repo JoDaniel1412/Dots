@@ -43,7 +43,7 @@ public class DotsInteraction {
 
     public static void analise_dots(String json){
 
-        System.out.println(json);
+        //System.out.println(json);
 
     }
 }

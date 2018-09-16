@@ -13,6 +13,8 @@ public class Servidor extends Thread {
     private String message;
     private static ServerSocket servidorI;
     private static ServerSocket servidorS;
+    public static int portI = 4876;
+    public static int portS = 4392;
     private static Thread servidor;
 
     /**
@@ -21,8 +23,8 @@ public class Servidor extends Thread {
      */
     private Servidor(String msg) throws IOException {
         super(msg);
-        servidorI = new ServerSocket(4876);
-        servidorS = new ServerSocket(4392);
+        servidorI = new ServerSocket(portI);
+        servidorS = new ServerSocket(portS);
     }
 
     /**
