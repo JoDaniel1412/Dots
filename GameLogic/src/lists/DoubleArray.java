@@ -5,13 +5,19 @@ public class DoubleArray <T>{
     private T first;
     private T second;
 
+    public DoubleArray(){}
+
+    public DoubleArray(T first, T second){
+        this.first = first;
+        this.second = second;
+    }
+
     public void add(T value){
         if (first == null){
             first = value;
         } else if (second == null){
             second = value;
         }
-        System.out.println(value);
     }
 
     public void clear(){

@@ -1,8 +1,8 @@
 package lists;
 
 /**
- * @author Jose Acuna
- * @version 1.0
+ * @author José Acuña
+ * @version 1.1
  * @since 29-08-2018
  */
 public class Board {
@@ -62,12 +62,22 @@ public class Board {
         return node;
     }
 
-    /**
-     * Gets the first Node in the matrix
-     * @return Node
-     */
-    public Node getBoardHead(){
-        return head;
+    public DoubleArray searchIndex(Node node){
+        DoubleArray doubleArray = null;
+        Node tmp;
+        int i = 0, j =0;
+        while (i < rows){
+            while (j < columns){
+                tmp = getIndex(i, j);
+                if(node == tmp){
+                    doubleArray = new DoubleArray<>(i, j);
+                }
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return doubleArray;
     }
 
     /**
@@ -125,6 +135,13 @@ public class Board {
     }
 
     /* Getters and Setters */
+    public static Board getInstance(){
+        return instance;
+    }
+
+    public Node getBoardHead(){
+        return head;
+    }
 
     public int getRows() {
         return rows;

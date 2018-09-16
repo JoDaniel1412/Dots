@@ -9,7 +9,7 @@ import lists.Node;
 import java.io.IOException;
 
 /**
- * @author Jose Acuna
+ * @author José Acuña
  * @since 11-9-2018
  */
 public class Dots extends Circle {

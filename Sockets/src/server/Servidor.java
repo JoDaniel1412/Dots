@@ -9,11 +9,14 @@ import java.net.Socket;
 
 /**
  * Clase que se extiende de Thread
+ * @author Jesus Sandoval Morales
+ * @author José Acuña
  */
 public class Servidor extends Thread {
     private String message;
-    private ServerSocket servidorI;
-    private ServerSocket servidorS;
+    private static ServerSocket servidorI;
+    private static ServerSocket servidorS;
+    private static Thread servidor;
 
     /**
      * Crea los puertos de entrada y salida de informacion del servidor
@@ -21,8 +24,8 @@ public class Servidor extends Thread {
      */
     private Servidor(String msg) throws IOException {
         super(msg);
-        this.servidorI = new ServerSocket(4876);
-        this.servidorS = new ServerSocket(4392);
+        servidorI = new ServerSocket(4876);
+        servidorS = new ServerSocket(4392);
     }
 
     /**
@@ -30,9 +33,8 @@ public class Servidor extends Thread {
      * @throws IOException en caso de que los puertos esten ocupados
      */
     public static void init() throws IOException {
-        Thread servidor = new Servidor("server");
+        servidor = new Servidor("server");
         servidor.start();
-
     }
 
     /**
@@ -44,6 +46,7 @@ public class Servidor extends Thread {
             PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
             salida.println(message);
             cliente.close();
+            System.out.println("Server send: " + message);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,6 +61,7 @@ public class Servidor extends Thread {
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
             message = entrada.readLine();
             cliente.close();
+            System.out.println("Server receive: " + message);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -70,5 +74,10 @@ public class Servidor extends Thread {
         }
     }
 
+    public static void exit() throws IOException {
+        servidor.stop();
+        servidorI.close();
+        servidorS.close();
+    }
 }
 

@@ -5,31 +5,25 @@ import java.net.Socket;
 
 /**
  * @author Jesus Sandoval Morales
+ * @author José Acuña
  */
 public class Cliente extends Thread {
 
-    static String ip = "localHost";
-    static int port = 8888;
+    private static String ip = "localHost";
+    private static int port = 8888;
+    private static Thread cliente;
 
-    /**
-     * Clase que maneja la logica de comandos
-     * @param esta
-     * @return un String que verifica el comando recibido
-     */
-    public String getChar(String esta) {
-        String noEsta = "";
-        noEsta = esta.substring(0,3);
-        String temp;
-        if(noEsta.equals("LGC")){//Maneja la logica como tal obteniendo el comando deseado
-            //temp = gameLogic();
-        }else if(noEsta.equals("WIN")){//Llama a la funcion que dice quie
-            //temp = youWin();
-        }else if(noEsta.equals("LOS")){
-            //temp = youLose;
-        }
-        return noEsta;
+    private Cliente(String msg) {
+        super(msg);
     }
 
+    /**
+     * Inicializa el thread
+     */
+    public static void init(){
+        cliente = new Cliente("server");
+        cliente.start();
+    }
     /**
      * Metodo que Solicita la informacion del servidor
      */
@@ -39,7 +33,7 @@ public class Cliente extends Thread {
         BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
         String message = entradaDatos.readLine();
         conexionServer.close();
-        System.out.println(message);
+        System.out.println("Client receive: " + message);
         return message;
     }
 
@@ -53,5 +47,26 @@ public class Cliente extends Thread {
         PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
         salida.println(message);
         conexionServer.close();
+        System.out.println("Client send: " + message);
+    }
+
+    /**
+     * Ejecucion del thread
+     */
+    public void run(){
+        while (true) {
+            try {
+                Cliente.solicitarInfo();
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Finaliza el thread
+     */
+    public static void exit(){
+        cliente.stop();
     }
 }

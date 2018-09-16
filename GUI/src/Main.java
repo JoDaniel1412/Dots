@@ -1,3 +1,4 @@
+import client.Cliente;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
@@ -5,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import server.Servidor;
+
 import java.io.IOException;
 
 
@@ -54,5 +57,7 @@ public class Main extends Application{
     static void close(){
         window.close();
         Platform.exit();
+        //Servidor.exit();
+        Cliente.exit();
     }
 }

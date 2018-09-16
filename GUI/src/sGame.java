@@ -18,8 +18,7 @@ public class sGame {
     @FXML
     public void draw_board(){
         Board board = Board.init(4, 4);
-        Node tmp = board.getBoardHead();
-        double radius = Dots.radius;
+        Node tmp;
         var rows = board.getRows();
         var columns = board.getColumns();
         double xOffset = getPaneBoardWidth() / (columns + 1);
