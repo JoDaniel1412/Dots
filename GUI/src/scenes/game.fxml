@@ -26,6 +26,7 @@
                      <children>
                         <Label styleClass="bold-label-25" text="P1" />
                         <TextField styleClass="text-field-short" />
+                        <Button mnemonicParsing="false" onAction="#fill" text="Button" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
