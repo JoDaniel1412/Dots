@@ -37,7 +37,7 @@
                                     </HBox>
                                     <HBox alignment="BASELINE_CENTER" prefHeight="87.0" prefWidth="700.0">
                                        <children>
-                                          <Button id="bCreateGame" mnemonicParsing="false" onAction="#pressed_start" text="Create" />
+                                          <Button id="bCreateGame" mnemonicParsing="false" onAction="#pressed_create" text="Create" />
                                        </children>
                                     </HBox>
                                  </children>

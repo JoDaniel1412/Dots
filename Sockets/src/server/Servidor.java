@@ -13,6 +13,7 @@ public class Servidor extends Thread {
     private String message;
     private static ServerSocket servidorI;
     private static ServerSocket servidorS;
+    public static String ipAdress = "localHost";
     public static int portI = 4876;
     public static int portS = 4392;
     private static Thread servidor;

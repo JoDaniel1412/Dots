@@ -30,10 +30,10 @@ public class sPlay extends sScene {
         Main.setScene("fxml/menu.fxml");
     }
     @FXML
-    void pressed_start() throws IOException {
+    void pressed_create() throws IOException {
         Servidor.init();
         Cliente.init();
-        Main.setScene("fxml/game.fxml");
+        Main.setScene("fxml/waiting.fxml");
         Main.window.setResizable(false);
     }
     @FXML
