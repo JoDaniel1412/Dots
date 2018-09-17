@@ -1,4 +1,4 @@
-package lists;
+package logic;
 
 import lists.Node;
 import points.checker.MainChecker;

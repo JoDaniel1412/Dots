@@ -1,7 +1,7 @@
 import javafx.fxml.FXML;
 import java.io.IOException;
 
-abstract class sScene {
+public abstract class sScene {
 
     private static int width = 700;
     private static int height = 700;
@@ -9,7 +9,7 @@ abstract class sScene {
     @FXML
     abstract void pressed_return() throws IOException;
 
-    static int getWidth() {
+    public static int getWidth() {
         return width;
     }
 
@@ -17,7 +17,7 @@ abstract class sScene {
         sScene.width = width;
     }
 
-    static int getHeight() {
+    public static int getHeight() {
         return height;
     }
 

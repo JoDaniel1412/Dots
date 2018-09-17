@@ -6,14 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import server.Servidor;
 
 import java.io.IOException;
 
 
 public class Main extends Application{
 
-    static Stage window;
+    public static Stage window;
 
     public static void main(String[] args) {
         launch(args);
@@ -28,12 +27,12 @@ public class Main extends Application{
         window.setMinHeight(700);
         window.setTitle("Dots");
         window.getIcons().add(new Image("resources/icon.png"));
-        setScene("scenes/menu.fxml");
+        setScene("fxml/menu.fxml");
         window.show();
     }
 
-    // Method used for switch scenes
-    static void setScene(String scene_route) throws IOException {
+    // Method used for switch fxml
+     static void setScene(String scene_route) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource(scene_route));
         Scene scene = new Scene(root);
         var width = window.getWidth();
@@ -41,7 +40,7 @@ public class Main extends Application{
         var fullscreen = window.isFullScreen();
         window.setScene(scene);
 
-        // Sets the new scene dimensions based on last one
+        // Sets the new scenes dimensions based on last one
         if (fullscreen) window.setFullScreen(true);
         else {
             window.setWidth(width);

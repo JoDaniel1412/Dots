@@ -1,6 +1,6 @@
 package client;
 
-import drawings.DotsInteraction;
+import logic.DotsInteraction;
 import server.Servidor;
 
 import java.io.*;
@@ -25,7 +25,7 @@ public class Cliente extends Thread {
      * Inicializa el thread
      */
     public static void init(){
-        cliente = new Cliente("server");
+        cliente = new Cliente("client");
         cliente.start();
     }
     /**

@@ -2,11 +2,11 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class sSettings extends sScene{
+public class sSettings extends sScene {
 
     @Override
     void pressed_return() throws IOException {
-        Main.setScene("scenes/menu.fxml");
+        Main.setScene("fxml/menu.fxml");
     }
 
     @FXML

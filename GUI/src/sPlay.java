@@ -5,7 +5,7 @@ import server.Servidor;
 
 import java.io.IOException;
 
-public class sPlay extends sScene{
+public class sPlay extends sScene {
 
     @FXML
     private Button bBoardSize1;
@@ -23,7 +23,7 @@ public class sPlay extends sScene{
 
     @Override
     void pressed_return() throws IOException {
-        Main.setScene("scenes/menu.fxml");
+        Main.setScene("fxml/menu.fxml");
     }
 
     @FXML
@@ -35,7 +35,7 @@ public class sPlay extends sScene{
     void pressed_start() throws IOException {
         Servidor.init();
         Cliente.init();
-        Main.setScene("scenes/game.fxml");
+        Main.setScene("fxml/game.fxml");
         Main.window.setResizable(false);
     }
 }

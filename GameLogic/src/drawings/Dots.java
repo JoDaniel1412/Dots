@@ -1,10 +1,9 @@
 package drawings;
 
-import client.Cliente;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import lists.DoubleArray;
 import lists.Node;
+import logic.DotsInteraction;
 
 import java.io.IOException;
 
@@ -20,10 +19,14 @@ public class Dots extends Circle {
     public static double radius = 20;
     private Node node;
     private Circle dot;
+    public double xPoss;
+    public double yPoss;
 
     public Dots(double xPoss, double yPoss, Node node){
         this.dot = draw_dot(xPoss, yPoss);
         this.node = node;
+        this.xPoss = xPoss;
+        this.yPoss = yPoss;
     }
 
     /**
@@ -60,7 +63,7 @@ public class Dots extends Circle {
      * Dots action to do
      */
     private void pressed_dot() throws IOException, InterruptedException {
-        DotsInteraction.dot_pressed(node);
+        DotsInteraction.dot_pressed(node, this);
     }
 
     /* Getters */
