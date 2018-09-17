@@ -18,4 +18,9 @@ public class sMenu extends sScene {
     void pressed_settings() throws IOException {
         Main.setScene("fxml/settings.fxml");
     }
+
+    @FXML
+    void pressed_devTest() throws IOException {
+        Main.setScene("fxml/game.fxml");
+    }
 }
