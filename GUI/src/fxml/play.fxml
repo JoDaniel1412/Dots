@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #383838;" stylesheets="@Dark.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sPlay">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -19,22 +22,22 @@
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
                                           <Label prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Board Size" />
-                                          <Button fx:id="bBoardSize1" mnemonicParsing="false" text="5x5" onAction="#pressed_bBoardSize1" />
-                                          <Button fx:id="bBoardSize2" mnemonicParsing="false" text="7x7" />
-                                          <Button fx:id="bBoardSize3" mnemonicParsing="false" text="9x9" />
+                                          <Button fx:id="bBoardSize1" mnemonicParsing="false" onAction="#pressed_bBoardSize1" text="5x5" />
+                                          <Button fx:id="bBoardSize2" mnemonicParsing="false" onAction="#pressed_bBoardSize2" styleClass="button-toggle" text="7x7" />
+                                          <Button fx:id="bBoardSize3" mnemonicParsing="false" onAction="#pressed_bBoardSize3" text="9x9" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
                                           <Label prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Time (min)" />
-                                          <Button fx:id="bGameTime1" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="2" />
-                                          <Button fx:id="bGameTime2" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="4" />
-                                          <Button fx:id="bGameTime3" mnemonicParsing="false" prefHeight="65.0" prefWidth="88.0" text="6" />
+                                          <Button fx:id="bGameTime1" mnemonicParsing="false" onAction="#pressed_bGameTime1" prefHeight="65.0" prefWidth="88.0" text="2" />
+                                          <Button fx:id="bGameTime2" mnemonicParsing="false" onAction="#pressed_bGameTime2" prefHeight="65.0" prefWidth="88.0" styleClass="button-toggle" text="4" />
+                                          <Button fx:id="bGameTime3" mnemonicParsing="false" onAction="#pressed_bGameTime3" prefHeight="65.0" prefWidth="88.0" text="6" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="BASELINE_CENTER" prefHeight="87.0" prefWidth="700.0">
                                        <children>
-                                          <Button id="bCreateGame" mnemonicParsing="false" text="Create" onAction="#pressed_start" />
+                                          <Button id="bCreateGame" mnemonicParsing="false" onAction="#pressed_start" text="Create" />
                                        </children>
                                     </HBox>
                                  </children>
