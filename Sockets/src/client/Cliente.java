@@ -2,7 +2,6 @@ package client;
 
 import logic.DotsInteraction;
 import server.Servidor;
-
 import java.io.*;
 import java.net.Socket;
 
@@ -35,7 +34,7 @@ public class Cliente extends Thread {
         sleep(100);
         Socket conexionServer = new Socket(ip, portI);
         BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
-        String message = entradaDatos.readLine();
+        File message = new File(entradaDatos.readLine());
         conexionServer.close();
         System.out.println("Client receive: " + message);
         DotsInteraction.analise_dots(message);

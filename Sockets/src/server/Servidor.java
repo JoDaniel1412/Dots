@@ -10,12 +10,12 @@ import java.net.Socket;
  * @author José Acuña
  */
 public class Servidor extends Thread {
-    private String message;
+    private File message;
     private static ServerSocket servidorI;
     private static ServerSocket servidorS;
     public static String ipAdress = "localHost";
-    public static int portI = 4876;
-    public static int portS = 4392;
+    public static int portI = 6666;
+    public static int portS = 7777;
     private static Thread servidor;
 
     /**
@@ -59,7 +59,7 @@ public class Servidor extends Thread {
         try {
             Socket cliente = servidorS.accept();
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
-            message = entrada.readLine();
+            message = new File(entrada.readLine());
             cliente.close();
             System.out.println("Server receive: " + message);
         } catch (IOException e) {
