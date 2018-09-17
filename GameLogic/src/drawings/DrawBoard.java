@@ -6,6 +6,10 @@ import javafx.scene.shape.Line;
 import lists.Board;
 import lists.Node;
 
+/**
+ * Class that handles all drawings in the sGame
+ * @author José Acuña
+ */
 public class DrawBoard{
 
     private AnchorPane paneBoard;
@@ -53,6 +57,10 @@ public class DrawBoard{
         }
     }
 
+    /**
+     * Draws a line in the Anchor Pane
+     * @param line a class Line shape
+     */
     private void draw_line(Line line){
         paneBoard.getChildren().addAll(line);
     }

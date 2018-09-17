@@ -8,6 +8,7 @@ import logic.DotsInteraction;
 import java.io.IOException;
 
 /**
+ * Wrapper class for drawing custom circles
  * @author José Acuña
  * @since 11-9-2018
  */

@@ -32,8 +32,8 @@ public class sPlay extends sScene {
     @FXML
     void pressed_create() throws IOException {
         Servidor.init();
-        Cliente.init();
-        Main.setScene("fxml/game.fxml");
+        Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
+        Main.setScene("fxml/waiting.fxml");
         Main.window.setResizable(false);
     }
     @FXML

@@ -1,7 +1,7 @@
 package client;
 
 import logic.DotsInteraction;
-import server.Servidor;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -11,9 +11,9 @@ import java.net.Socket;
  */
 public class Cliente extends Thread {
 
-    private static String ip = "localHost";
-    private static int portI = Servidor.portI;
-    private static int portS = Servidor.portS;
+    private static String ip;
+    private static int portI;
+    private static int portO;
     private static Thread cliente;
 
     private Cliente(String msg) {
@@ -23,8 +23,11 @@ public class Cliente extends Thread {
     /**
      * Inicializa el thread
      */
-    public static void init(){
+    public static void init(String ip, int portI, int portO){
         cliente = new Cliente("client");
+        ((Cliente) cliente).setIp(ip);
+        ((Cliente) cliente).setPortI(portI);
+        ((Cliente) cliente).setPortO(portO);
         cliente.start();
     }
     /**
@@ -37,7 +40,7 @@ public class Cliente extends Thread {
         File message = new File(entradaDatos.readLine());
         conexionServer.close();
         System.out.println("Client receive: " + message);
-        DotsInteraction.analise_dots(message);
+        DotsInteraction.received_dots(message);
     }
 
     /**
@@ -46,7 +49,7 @@ public class Cliente extends Thread {
      */
     public static void enviarInfo(File message) throws InterruptedException, IOException {
         sleep(100);
-        Socket conexionServer = new Socket(ip, portS);
+        Socket conexionServer = new Socket(ip, portO);
         PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
         salida.println(message);
         conexionServer.close();
@@ -72,4 +75,19 @@ public class Cliente extends Thread {
     public static void exit(){
         cliente.stop();
     }
+
+    /** Getters and Setters **/
+    private void setIp(String ip){
+        Cliente.ip = ip;
+    }
+
+    private void setPortI(int port){
+        Cliente.portI = port;
+    }
+
+    private void setPortO(int port){
+        Cliente.portO = port;
+    }
+
+
 }

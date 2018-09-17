@@ -28,12 +28,7 @@ public class SimpleList<T> {
 
     public boolean isEmpty(){
         Node next = this.getFirst();
-        if(next == null){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return next == null;
     }
 
     public Node<T> getFirst() {

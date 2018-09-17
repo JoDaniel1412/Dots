@@ -1,8 +1,10 @@
 package server;
 
 import java.io.*;
+import java.net.Inet4Address;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 /**
  * Clase que se extiende de Thread
@@ -11,11 +13,11 @@ import java.net.Socket;
  */
 public class Servidor extends Thread {
     private File message;
+    private static ServerSocket servidorO;
     private static ServerSocket servidorI;
-    private static ServerSocket servidorS;
-    public static String ipAdress = "localHost";
-    public static int portI = 6666;
-    public static int portS = 7777;
+    public static String ipAdress;
+    public static int portO = 6666;
+    public static int portI = 7777;
     private static Thread servidor;
 
     /**
@@ -24,8 +26,9 @@ public class Servidor extends Thread {
      */
     private Servidor(String msg) throws IOException {
         super(msg);
+        servidorO = new ServerSocket(portO);
         servidorI = new ServerSocket(portI);
-        servidorS = new ServerSocket(portS);
+        setIpAdress();
     }
 
     /**
@@ -42,7 +45,7 @@ public class Servidor extends Thread {
      */
     public void write() {
         try {
-            Socket cliente = servidorI.accept();
+            Socket cliente = servidorO.accept();
             PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
             salida.println(message);
             cliente.close();
@@ -57,7 +60,7 @@ public class Servidor extends Thread {
      */
     public void read() {
         try {
-            Socket cliente = servidorS.accept();
+            Socket cliente = servidorI.accept();
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
             message = new File(entrada.readLine());
             cliente.close();
@@ -76,8 +79,12 @@ public class Servidor extends Thread {
 
     public static void exit() throws IOException {
         servidor.stop();
+        servidorO.close();
         servidorI.close();
-        servidorS.close();
+    }
+
+    private void setIpAdress() throws UnknownHostException {
+         ipAdress = Inet4Address.getLocalHost().getHostAddress();
     }
 }
 

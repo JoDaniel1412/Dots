@@ -10,8 +10,9 @@ public class sWaiting {
     @FXML
     public Label portLabel;
 
-    public sWaiting(){
+    @FXML
+    public void init(){
         ipLabel.setText(Servidor.ipAdress);
-        portLabel.setText(String.valueOf(Servidor.portI));
+        portLabel.setText(String.valueOf(Servidor.portO));
     }
 }

@@ -4,7 +4,6 @@ import client.Cliente;
 import drawings.Dots;
 import drawings.DrawBoard;
 import drawings.Lines;
-import javafx.scene.shape.Line;
 import lists.Board;
 import lists.DoubleArray;
 import lists.Node;
@@ -12,6 +11,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 
 /**
  * Facade class used to connect the GameLogic whit Sockets
@@ -22,7 +22,7 @@ public class DotsInteraction {
     private static DoubleArray<Node> doubleArray = new DoubleArray<>();
     private static DoubleArray<Dots> dotsDoubleArray = new DoubleArray<>();
     private static ObjectMapper mapper = new ObjectMapper();
-    private static File json = new File("Sockets/message.json");
+    private static File json = new File("Sockets/message_send.json");
 
 
     /**
@@ -43,7 +43,7 @@ public class DotsInteraction {
             var firstNode = board.searchIndex(doubleArray.getFirst());
             var secondNode = board.searchIndex(doubleArray.getSecond());
 
-            // Draws the line
+            // Draws the line in local
             var firstDot = dotsDoubleArray.getFirst();
             var secondDot = dotsDoubleArray.getSecond();
             Lines.draw_line(firstDot.xPoss, firstDot.yPoss, secondDot.xPoss, secondDot.yPoss);
@@ -58,9 +58,22 @@ public class DotsInteraction {
         }
     }
 
-    public static void analise_dots(File json){
+    /**
+     * Handles the dots received by the server and draws the line
+     * @param json file with the index of the nodes to link
+     */
+    public static void received_dots(File json) throws IOException {
+        DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
+        var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // remove non digits
+        var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // remove non digits
 
-        //System.out.println(json);
+        int first_dot_row = first_dot.charAt(0);
+        int first_dot_column = first_dot.charAt(1);
 
+        int second_dot_row = second_dot.charAt(0);
+        int second_dot_column = second_dot.charAt(1);
+
+        Lines.draw_line(first_dot_row, first_dot_column, second_dot_row, second_dot_column);
+        //DrawBoard.draw.check_lines();
     }
 }

@@ -57,6 +57,6 @@ public class Main extends Application{
         window.close();
         Platform.exit();
         //Servidor.exit();
-        Cliente.exit();
+        //Cliente.exit();
     }
 }
