@@ -22,6 +22,7 @@ public class DrawBoard{
      */
     public void check_lines(){
         draw_line(Lines.line);
+        draw_board();
     }
 
     /**

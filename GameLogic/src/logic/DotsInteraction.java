@@ -32,8 +32,10 @@ public class DotsInteraction {
      * @throws InterruptedException in case the client couldn't send the info
      */
     public static void dot_pressed(Node node, Dots dot) throws IOException, InterruptedException {
-        doubleArray.add(node);
-        dotsDoubleArray.add(dot);
+        if (doubleArray.getFirst() != node) {
+            doubleArray.add(node);
+            dotsDoubleArray.add(dot);
+        }
         if(doubleArray.getSecond() != null){
 
             // Search for the node index

@@ -7,13 +7,14 @@ import lists.SimpleList;
 public class Lines extends Line {
 
     public static Line line;
-    private static Color color1 = Color.RED;
-    private static Color color2 = Color.BLUE;
+    private static Color color1 = new Color(0.76f, 0.01f, 0.01f, 1.0f);
+    private static Color color2 = new Color(0f, 0.70f, 0.66f, 1.0f);
     private static Color color = color1;
 
     public static void draw_line(double xStart, double yStart, double xFinal, double yFinal){
         Line line = new Line(xStart, yStart, xFinal, yFinal);
-        line.setFill(color);
+        line.setStrokeWidth(10);
+        line.setStroke(color);
         Lines.line = line;
     }
 
