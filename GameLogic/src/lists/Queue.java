@@ -13,9 +13,12 @@ public class Queue <T>{
         this.list.addAtEnd(element);
     }
     public Node deQueue (){
-        Node first = this.list.getByIndex(0);
-        this.list.delete(0);
-        return first;
+        if (this.list.getLarge() != 0) {
+            Node first = this.list.getByIndex(0);
+            this.list.delete(0);
+            return first;
+        }
+        return null;
     }
     public Node peek(){
         return this.list.getByIndex(0);

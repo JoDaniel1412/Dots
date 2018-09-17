@@ -4,6 +4,8 @@ import lists.Node;
 import lists.Queue;
 import lists.Stack;
 
+
+
 public class MainChecker {
     public static boolean DotsReceiver(Node node1, Node node2) {
         Node beginning = node1;
@@ -12,93 +14,113 @@ public class MainChecker {
 
 
 
+        return mainCycle(node2, node1, beginning);
 
 
 
+    }
+
+    private static boolean mainCycle(Node node1, Node previous, Node beginning){
+        Queue checkThis;
+        checkThis = MainChecker.getActivesNodes(node1, previous);
+        boolean result = false;
+
+        int cont = 0;
+        while (checkThis.GetLarge() != 0){
+
+            Node first = (Node) checkThis.peek().getValue();
+            if (MainChecker.CompareWithBeginning(beginning,checkThis)){
+                System.out.println("punto");
+                result = true;
+                break;
+            }
+            if (0 < checkThis.GetLarge() && !result){
+                return mainCycle(first, node1, beginning);
+                }
+
+            else{
+                checkThis.deQueue();
+            }
+            cont ++;
+        }
+        return result;
+    }
+
+    private static boolean stopCicle(){
         return true;
     }
 
-
-
-    private static Queue pointers(Node node) {
-        Queue list = new Queue();
-        list.enQueue(node.isTopState());
-        list.enQueue(node.isTop_rightState());
-        list.enQueue(node.isRightState());
-        list.enQueue(node.isBottom_rightState());
-        list.enQueue(node.isBottomState());
-        list.enQueue(node.isBottom_leftState());
-        list.enQueue(node.isLeftState());
-        list.enQueue(node.isTop_leftState());
+    public static Queue getActivesNodes(Node node, Node previous){
+        Queue list;
+        list = MainChecker.AddActivesNodes(node, previous);
         return list;
     }
-    private static Queue getActivesNodes(Node node, Node previous){
+    private static Queue AddActivesNodes(Node node, Node previous){
         Queue list = new Queue();
-        Queue pointersState = MainChecker.pointers(node);
-        int cont = 0;
-        while (cont < 8){
-            if((boolean) pointersState.deQueue().getValue()){
-                list = AddActivesNodes(cont, list, node, previous);
-            }
-
-            cont ++;
-            }
-        return list;
-    }
-    private static Queue AddActivesNodes(int num, Queue list, Node node, Node previous){
-        if (num == 0){
-            if (node.getTop() != previous) {
+        //System.out.println(previous + "        holis");
+        if (node.isTopState() && node.getTop()!= previous){
+            if (node.getTop() != null) {
+                System.out.println("top");
                 list.enQueue(node.getTop());
             }
         }
-        if (num == 1){
-            if (node.getTop_right() != previous) {
+        if (node.isTop_rightState() && node.getTop_right()!= previous){
+            if (node.getTop_right() != null) {
                 list.enQueue(node.getTop_right());
             }
         }
-        if (num == 2){
-            if (node.getRight() != previous) {
+        if (node.isRightState() && node.getRight()!= previous){
+            if (node.getRight() != null) {
+                System.out.println("right");
                 list.enQueue(node.getRight());
             }
         }
-        if (num == 3){
-            if (node.getBottom_right() != previous) {
+        if (node.isBottom_rightState() && node.getBottom_right()!= previous){
+            if (node.getBottom_right() != null) {
                 list.enQueue(node.getBottom_right());
             }
         }
-        if (num == 4){
-            if (node.getBottom() != previous) {
+        if (node.isBottomState() && node.getBottom()!= previous){
+            if (node.getBottom() != null) {
                 list.enQueue(node.getBottom());
             }
         }
-        if (num == 5){
-            if (node.getBottom_left() != previous) {
+        if (node.isLeftState() && node.getBottom_left()!= previous){
+            if (node.getTop_left() != null) {
                 list.enQueue(node.getBottom_left());
             }
         }
-        if (num == 6){
-            if (node.getLeft() != previous) {
+        if (node.isLeftState() && node.getLeft()!= previous){
+            if (node.getLeft() != null) {
+                System.out.println("Left");
                 list.enQueue(node.getLeft());
             }
         }
-        if (num == 7){
-            if (node.getTop_left()!= previous) {
+        if (node.isTop_leftState() && node.getTop_left()!= previous){
+            if (node.getTop_left() != null) {
                 list.enQueue(node.getTop_left());
             }
         }
         return list;
     }
 
-    private static Boolean CompareWithBeginning(Node Begining, Queue list){
+    public static Boolean CompareWithBeginning(Node Beginning, Queue list){
         int large = list.GetLarge();
+        Queue List2 = list;
+        //System.out.println(large);
         int cont = 0;
+        boolean result = false;
         while (cont < large) {
-            if (list.deQueue() == Begining){
-                return true;
+            if (List2.deQueue().getValue() == Beginning){
+                result = true;
+                break;
             }
+
             cont ++;
+
+
         }
-        return false;
+        return result;
     }
 }
 

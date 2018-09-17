@@ -28,7 +28,7 @@ public class Node<T>{
 
 
     //Who made the line
-    int topPlayer;
+    private int topPlayer;
     int bottomPlayer;
     int rightPlayer;
     int leftPlayer;
