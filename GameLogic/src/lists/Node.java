@@ -1,8 +1,11 @@
 package lists;
 
+import drawings.Dots;
+
 public class Node<T>{
 
     private T value = null;
+    private Dots dot;
 
     // Pointers
     Node next = null;
@@ -26,16 +29,15 @@ public class Node<T>{
     private boolean bottom_rightState;
     private boolean bottom_leftState;
 
-
     //Who made the line
-    int topPlayer;
-    int bottomPlayer;
-    int rightPlayer;
-    int leftPlayer;
-    int topRightPlayer;
-    int bottomRightPlayer;
-    int bottomLeftPlayer;
-    int topLeftPlayer;
+    private int topPlayer;
+    private int bottomPlayer;
+    private int rightPlayer;
+    private int leftPlayer;
+    private int topRightPlayer;
+    private int bottomRightPlayer;
+    private int bottomLeftPlayer;
+    private int topLeftPlayer;
 
 
     /**
@@ -271,5 +273,13 @@ public class Node<T>{
 
     public void setBottomLeftPlayer(int bottomLeftPlayer) {
         this.bottomLeftPlayer = bottomLeftPlayer;
+    }
+
+    public Dots getDot(){
+        return dot;
+    }
+
+    public void setDot(Dots dot){
+        this.dot = dot;
     }
 }

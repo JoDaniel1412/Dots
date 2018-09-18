@@ -2,7 +2,6 @@ package PointsChecker;
 
 import lists.Node;
 
-
 public class SideChecker {
 
     private static boolean CheckRight(Node node1, Node node2) {
@@ -59,6 +58,4 @@ public class SideChecker {
         }
         return false;
     }
-
-
 }

@@ -2,7 +2,7 @@ package lists;
 
 /**
  * @author José Acuña
- * @version 1.0
+ * @version 1.1
  * @since 29-08-2018
  */
 public class Board {
@@ -62,15 +62,28 @@ public class Board {
         return node;
     }
 
-    /**
-     * Gets the first Node in the matrix
-     * @return Node
-     */
-    public Node getBoardHead(){
-        return head;
+    public DoubleArray searchIndex(Node node){
+        DoubleArray doubleArray = null;
+        Node tmp;
+        int i = 0, j =0;
+        while (i < rows){
+            while (j < columns){
+                tmp = getIndex(i, j);
+                if(node == tmp){
+                    doubleArray = new DoubleArray<>(i, j);
+                }
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return doubleArray;
     }
 
-    /** Private methods **/
+    /**
+     * Sets a double link between continuous nodes
+     * @return SimpleList white the head of each row
+     */
     private SimpleList make_rows(){
         SimpleList rows_list = new SimpleList<Node>();
         int i = 1;
@@ -89,6 +102,10 @@ public class Board {
         return rows_list;
     }
 
+    /**
+     * Sets the vertical and diagonal link between nodes
+     * @return the first node of the Board
+     */
     private Node make_columns(){
         Node tmp = make_rows().getFirst();
         Node first_node = (Node) tmp.getValue();
@@ -117,4 +134,20 @@ public class Board {
         return first_node;
     }
 
+    /* Getters and Setters */
+    public static Board getInstance(){
+        return instance;
+    }
+
+    public Node getBoardHead(){
+        return head;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
 }

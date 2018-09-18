@@ -4,7 +4,6 @@ import lists.Node;
 
 public class DiagonalChecker {
 
-
     public static boolean CheckUpDiagonal(Node node1, Node node2) {
         if (node1.getTop_right() == node2) {
             if (node1.isTopState() && node2.isLeftState()) {
@@ -37,4 +36,7 @@ public class DiagonalChecker {
         }
         return false;
     }
+
+
+
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #383838;" stylesheets="@Dark.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sPlay">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <JFXTabPane depthTest="DISABLE" prefHeight="300.0" prefWidth="700.0" stylesheets="@Dark.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+               <tabs>
+                  <Tab closable="false" text="Host">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" onDragDone="#pressed_return" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="640.0" prefWidth="700.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                       <children>
+                                          <Label prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Board Size" />
+                                          <Button fx:id="bBoardSize1" mnemonicParsing="false" onAction="#pressed_bBoardSize1" text="5x5" />
+                                          <Button fx:id="bBoardSize2" mnemonicParsing="false" onAction="#pressed_bBoardSize2" styleClass="button-toggle" text="7x7" />
+                                          <Button fx:id="bBoardSize3" mnemonicParsing="false" onAction="#pressed_bBoardSize3" text="9x9" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                       <children>
+                                          <Label prefHeight="59.0" prefWidth="135.0" styleClass="bold-label-25" text="Time (min)" />
+                                          <Button fx:id="bGameTime1" mnemonicParsing="false" onAction="#pressed_bGameTime1" prefHeight="65.0" prefWidth="88.0" text="2" />
+                                          <Button fx:id="bGameTime2" mnemonicParsing="false" onAction="#pressed_bGameTime2" prefHeight="65.0" prefWidth="88.0" styleClass="button-toggle" text="4" />
+                                          <Button fx:id="bGameTime3" mnemonicParsing="false" onAction="#pressed_bGameTime3" prefHeight="65.0" prefWidth="88.0" text="6" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BASELINE_CENTER" prefHeight="87.0" prefWidth="700.0">
+                                       <children>
+                                          <Button id="bCreateGame" mnemonicParsing="false" onAction="#pressed_create" text="Create" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab closable="false" text="Join">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" onDragDetected="#pressed_return" onMouseDragEntered="#pressed_return" prefHeight="180.0" prefWidth="200.0" scaleX="0.9" scaleY="0.9" styleClass="bold-label-25" stylesheets="@Dark.css">
+                           <children>
+                              <VBox alignment="CENTER" layoutX="-7.0" layoutY="1.0" prefHeight="640.0" prefWidth="716.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <JFXTextField id="eIPAddress" fx:id="eIpAddress" focusColor="#ffe572" labelFloat="true" promptText="IP address" text="localHost" unFocusColor="#5a5a5a" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <JFXTextField fx:id="ePort1" focusColor="#ffe572" labelFloat="true" promptText="Port1" text="8888" unFocusColor="#5a5a5a" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <JFXTextField fx:id="ePort2" focusColor="#ffe572" labelFloat="true" promptText="Port2" text="9999" unFocusColor="#5a5a5a" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="BASELINE_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Button id="bSearchGame" mnemonicParsing="false" onAction="#pressed_search" prefHeight="73.0" prefWidth="142.0" text="Search" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </JFXTabPane>
+         </center>
+         <top>
+            <GridPane alignment="CENTER" prefHeight="77.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="bold-label-50" text="Play" GridPane.columnIndex="1" />
+                  <JFXHamburger alignment="CENTER" onDragDetected="#pressed_return" prefHeight="44.0" prefWidth="62.0" scaleX="1.5" scaleY="2.0" />
+               </children>
+            </GridPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
