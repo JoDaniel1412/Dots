@@ -25,6 +25,17 @@ public class SimpleList<T> {
             this.large += 1;
         }
     }
+    public void addAtBeginning (T value){
+        if(this.isEmpty()){
+            this.first = new Node<>(value);
+            this.large += 1;
+        }
+        else{
+            Node tmp = new Node<>(value);
+            tmp.setNext(this.first);
+            this.first = tmp;
+        }
+    }
 
     public boolean isEmpty(){
         Node next = this.getFirst();
@@ -59,18 +70,23 @@ public class SimpleList<T> {
         if (index < this.getLarge()){
             int i = 0;
             Node temporal = this.first;
-            while (temporal.getNext() != null){
-                i += 1;
-                if (i == index){
-                    temporal.setNext(temporal.getNext().getNext());
-                    this.large -= 1;
-                    break;
-                }
-                else{
-                    temporal = temporal.getNext();
+            if (index == 0){
+                this.first = this.getByIndex(1);
+            }
+            else {
+                while (temporal.getNext() != null) {
+
+                    if (i == index) {
+                        temporal.setNext(temporal.getNext().getNext());
+                        this.large -= 1;
+                        break;
+                    } else {
+                        temporal = temporal.getNext();
+                    }
+                    i += 1;
                 }
             }
-        }
+            }
         else{
             System.out.println("List out of index");
         }
