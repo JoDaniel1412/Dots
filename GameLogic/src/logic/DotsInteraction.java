@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Facade class used to connect the GameLogic whit Sockets
+ * Facade class used to connect the GameLogic whit Sockets and GUI
  * @author José Acuña
  */
 public class DotsInteraction {
@@ -23,11 +23,13 @@ public class DotsInteraction {
     private static DoubleArray<Dots> dotsDoubleArray = new DoubleArray<>();
     private static ObjectMapper mapper = new ObjectMapper();
     private static File json = new File("Sockets/message_send.json");
+    private static short line_repeater = 1;
 
 
     /**
      * Method that handles the dots pressed by the player
      * @param node the node that the player selected
+     * @param dot the dot coordinates to draw line
      * @throws IOException in case that the Json conversion failed
      * @throws InterruptedException in case the client couldn't send the info
      */
@@ -52,6 +54,7 @@ public class DotsInteraction {
                 // Draws the line in local
                 var firstDot = dotsDoubleArray.getFirst();
                 var secondDot = dotsDoubleArray.getSecond();
+                Lines.color = Lines.color1;
                 Lines.draw_line(firstDot.xPoss, firstDot.yPoss, secondDot.xPoss, secondDot.yPoss);
                 DrawBoard.draw.check_lines();
                 dotsDoubleArray.clear();
@@ -61,6 +64,7 @@ public class DotsInteraction {
                 mapper.writeValue(json, nodesIndex);
                 Cliente.enviarInfo(json);
                 doubleArray.clear();
+                line_repeater = 0;
             }else {
                 doubleArray.clear();
                 dotsDoubleArray.clear();
@@ -89,6 +93,11 @@ public class DotsInteraction {
         Dots second_dot_coordinate = board.getIndex(second_dot_row, second_dot_column).getDot();
 
         // Draws the line in the pane
-        Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
+        if (line_repeater == 1) {
+            Lines.color = Lines.color2;
+            Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
+        }else {
+            line_repeater = 1;
+        }
     }
 }

@@ -1,8 +1,7 @@
 package drawings;
 
-import javafx.scene.shape.Line;
 import javafx.scene.paint.Color;
-import lists.SimpleList;
+import javafx.scene.shape.Line;
 
 /**
  * Wrapper class for drawing custom lines
@@ -12,10 +11,10 @@ import lists.SimpleList;
 public class Lines extends Line {
 
     public static Line line; // This will be draw in the Board
+    public static Color color1 = new Color(0.76f, 0.01f, 0.01f, 1.0f);
+    public static Color color2 = new Color(0f, 0.70f, 0.66f, 1.0f);
+    public static Color color = color1;
     private static double line_width = Dots.radius;
-    private static Color color1 = new Color(0.76f, 0.01f, 0.01f, 1.0f);
-    private static Color color2 = new Color(0f, 0.70f, 0.66f, 1.0f);
-    private static Color color = color1;
 
     /**
      * Creates a line shape to be draw
