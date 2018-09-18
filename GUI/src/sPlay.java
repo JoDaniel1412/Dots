@@ -2,6 +2,7 @@ import client.Cliente;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import lists.Board;
 import server.Servidor;
 
 import java.io.IOException;
@@ -49,7 +50,6 @@ public class sPlay extends sScene {
         String ip = eIpAddress.getText();
         String port1 = ePort1.getText();
         String port2 = ePort2.getText();
-        System.out.println(port1);
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
             Main.setScene("fxml/game.fxml");
@@ -61,18 +61,21 @@ public class sPlay extends sScene {
         bBoardSize1.getStyleClass().add("button-toggle");
         bBoardSize2.getStyleClass().remove("button-toggle");
         bBoardSize3.getStyleClass().remove("button-toggle");
+        Board.getInstance().setBoardSize(5,5);
     }
     @FXML
     private void pressed_bBoardSize2(){
         bBoardSize1.getStyleClass().remove("button-toggle");
         bBoardSize2.getStyleClass().add("button-toggle");
         bBoardSize3.getStyleClass().remove("button-toggle");
+        Board.getInstance().setBoardSize(7,7);
     }
     @FXML
     private void pressed_bBoardSize3(){
         bBoardSize1.getStyleClass().remove("button-toggle");
         bBoardSize2.getStyleClass().remove("button-toggle");
         bBoardSize3.getStyleClass().add("button-toggle");
+        Board.getInstance().setBoardSize(9,9);
     }
     @FXML
     private void pressed_bGameTime1(){

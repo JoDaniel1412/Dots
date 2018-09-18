@@ -1,11 +1,12 @@
-import client.Cliente;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import lists.Board;
+
 import java.io.IOException;
 
 
@@ -27,6 +28,7 @@ public class Main extends Application{
         window.setTitle("Dots");
         window.getIcons().add(new Image("resources/icon.png"));
         setScene("fxml/menu.fxml");
+        Board.init(7, 7);
         window.show();
     }
 

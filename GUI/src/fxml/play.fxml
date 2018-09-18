@@ -53,7 +53,7 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                        <children>
-                                          <JFXTextField id="eIPAddress" fx:id="eIpAddress" focusColor="#ffe572" labelFloat="true" promptText="IP address" unFocusColor="#5a5a5a" />
+                                          <JFXTextField id="eIPAddress" fx:id="eIpAddress" focusColor="#ffe572" labelFloat="true" promptText="IP address" text="localHost" unFocusColor="#5a5a5a" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">

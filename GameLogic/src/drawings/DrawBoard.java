@@ -2,7 +2,6 @@ package drawings;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import lists.Board;
 import lists.Node;
@@ -44,7 +43,7 @@ public class DrawBoard{
      * Class that draws the dots in the Anchor Pane
      */
     private void draw_board(){
-        Board board = Board.init(4, 4);
+        Board board = Board.getInstance();
         Node tmp;
         var rows = board.getRows();
         var columns = board.getColumns();
