@@ -70,19 +70,18 @@ public class DotsInteraction {
         var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // remove non digits
         var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // remove non digits
 
-        int first_dot_row = first_dot.charAt(0);
-        int first_dot_column = first_dot.charAt(1);
+        int first_dot_row = Integer.parseInt(String.valueOf(first_dot.charAt(0)));
+        int first_dot_column = Integer.parseInt(String.valueOf(first_dot.charAt(1)));
 
-        int second_dot_row = second_dot.charAt(0);
-        int second_dot_column = second_dot.charAt(1);
+        int second_dot_row = Integer.parseInt(String.valueOf(second_dot.charAt(0)));
+        int second_dot_column = Integer.parseInt(String.valueOf(second_dot.charAt(1)));
 
-        Lines.draw_line(first_dot_row, first_dot_column, second_dot_row, second_dot_column);
-        AnimationTimer drawer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                DrawBoard.draw.check_lines();
-            }
-        };
-        drawer.start();
+        // search for the Dot coordinates
+        Board board = Board.getInstance();
+        Dots first_dot_coordinate = board.getIndex(first_dot_row, first_dot_column).getDot();
+        Dots second_dot_coordinate = board.getIndex(second_dot_row, second_dot_column).getDot();
+
+        // Draws the line in the pane
+        Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
     }
 }

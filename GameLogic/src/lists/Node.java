@@ -1,8 +1,11 @@
 package lists;
 
+import drawings.Dots;
+
 public class Node<T>{
 
     private T value = null;
+    private Dots dot;
 
     // Pointers
     Node next = null;
@@ -199,4 +202,11 @@ public class Node<T>{
         this.bottom_leftState = bottom_left;
     }
 
+    public Dots getDot(){
+        return dot;
+    }
+
+    public void setDot(Dots dot){
+        this.dot = dot;
+    }
 }

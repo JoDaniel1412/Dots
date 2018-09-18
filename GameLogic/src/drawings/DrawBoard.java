@@ -35,8 +35,8 @@ public class DrawBoard{
     public void check_lines(){
         if(Lines.line != null) {
             draw_line(Lines.line);
-            Lines.line = null;
             draw.draw_board();
+            Lines.line = null;
         }
     }
 
@@ -58,6 +58,7 @@ public class DrawBoard{
             while (j < columns) {
                 tmp = board.getIndex(i, j);
                 Dots dot = new Dots(xPoss, yPoss, tmp);
+                tmp.setDot(dot);
                 paneBoard.getChildren().addAll(dot.getDot());
                 xPoss += xOffset;
                 j++;

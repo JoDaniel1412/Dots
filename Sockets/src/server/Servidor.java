@@ -74,6 +74,8 @@ public class Servidor extends Thread {
         while (true) {
             read();
             write();
+            write();
+
         }
     }
 
