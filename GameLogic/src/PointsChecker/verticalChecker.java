@@ -7,6 +7,8 @@ import lists.Node;
 public class verticalChecker {
 
     private static boolean checkUp(Node node1, Node node2){
+        System.out.println(node1.isTopState());
+        System.out.println(node2.isTopState());
         return node1.isTopState() && node2.isTopState();
     }
     private static boolean checkDown(Node node1, Node node2){
@@ -26,6 +28,8 @@ public class verticalChecker {
     }
 
     public static boolean checkverticals(Node node1, Node node2){
+        System.out.println(node1.getRight());
+        System.out.println(node2);
         if (node1.getRight() == node2){
             if(checkUp(node1, node2)){
                 if (!node1.isTop_rightState() && !node2.isTop_leftState()) {
