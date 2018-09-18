@@ -1,3 +1,4 @@
+import client.Cliente;
 import drawings.Dots;
 import drawings.DrawBoard;
 import drawings.Lines;
@@ -14,7 +15,7 @@ import javafx.scene.canvas.Canvas;
 
 import java.awt.*;
 
-public class sGame extends Thread{
+public class sGame{
 
     @FXML
     public AnchorPane paneBoard;

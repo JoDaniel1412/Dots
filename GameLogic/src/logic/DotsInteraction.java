@@ -4,6 +4,9 @@ import client.Cliente;
 import drawings.Dots;
 import drawings.DrawBoard;
 import drawings.Lines;
+import javafx.animation.AnimationTimer;
+import javafx.concurrent.Task;
+import javafx.concurrent.Worker;
 import lists.Board;
 import lists.DoubleArray;
 import lists.Node;
@@ -74,6 +77,12 @@ public class DotsInteraction {
         int second_dot_column = second_dot.charAt(1);
 
         Lines.draw_line(first_dot_row, first_dot_column, second_dot_row, second_dot_column);
-        //DrawBoard.draw.check_lines();
+        AnimationTimer drawer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                DrawBoard.draw.check_lines();
+            }
+        };
+        drawer.start();
     }
 }

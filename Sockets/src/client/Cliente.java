@@ -21,7 +21,10 @@ public class Cliente extends Thread {
     }
 
     /**
-     * Inicializa el thread
+     * Inicia el thread
+     * @param ip direccion del servidor
+     * @param portI puerto que entra al servidor y salida del cliente
+     * @param portO pueto de salida del servidor y entrada del cliente
      */
     public static void init(String ip, int portI, int portO){
         cliente = new Cliente("client");

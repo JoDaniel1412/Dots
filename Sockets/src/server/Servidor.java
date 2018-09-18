@@ -13,8 +13,8 @@ import java.net.UnknownHostException;
  */
 public class Servidor extends Thread {
     private File message;
-    private static ServerSocket servidorO;
     private static ServerSocket servidorI;
+    private static ServerSocket servidorO;
     public static String ipAdress;
     public static int portI = 8888;
     public static int portO = 9999;

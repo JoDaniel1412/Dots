@@ -1,5 +1,6 @@
 package drawings;
 
+import javafx.animation.AnimationTimer;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -18,15 +19,25 @@ public class DrawBoard{
     public static void init(AnchorPane pane){
         draw = new DrawBoard();
         draw.paneBoard = pane;
+        AnimationTimer drawer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                draw.check_lines();
+            }
+        };
         draw.draw_board();
+        drawer.start();
     }
 
     /**
      * Class that draw a line between two Dots
      */
     public void check_lines(){
-        draw_line(Lines.line);
-        draw_board();
+        if(Lines.line != null) {
+            draw_line(Lines.line);
+            Lines.line = null;
+            draw.draw_board();
+        }
     }
 
     /**
