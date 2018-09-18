@@ -2,7 +2,6 @@ package PointsChecker;
 
 import lists.Node;
 import lists.Queue;
-import lists.Stack;
 
 
 
@@ -11,9 +10,6 @@ public class MainChecker {
     public static boolean DotsReceiver(Node node1, Node node2) {
         Node beginning = node1;
         return mainCycle(node2, node1, beginning);
-
-
-
     }
 
     private static boolean mainCycle(Node node1, Node previous, Node beginning){
@@ -26,7 +22,6 @@ public class MainChecker {
 
             Node first = (Node) checkThis.peek().getValue();
             if (MainChecker.CompareWithBeginning(beginning,checkThis)){
-                System.out.println("punto");
                 result = true;
                 break;
             }
@@ -53,10 +48,8 @@ public class MainChecker {
     }
     private static Queue AddActivesNodes(Node node, Node previous){
         Queue list = new Queue();
-        //System.out.println(previous + "        holis");
         if (node.isTopState() && node.getTop()!= previous){
             if (node.getTop() != null) {
-                System.out.println("top");
                 list.enQueue(node.getTop());
             }
         }
@@ -67,7 +60,6 @@ public class MainChecker {
         }
         if (node.isRightState() && node.getRight()!= previous){
             if (node.getRight() != null) {
-                System.out.println("right");
                 list.enQueue(node.getRight());
             }
         }
@@ -88,7 +80,6 @@ public class MainChecker {
         }
         if (node.isLeftState() && node.getLeft()!= previous){
             if (node.getLeft() != null) {
-                System.out.println("Left");
                 list.enQueue(node.getLeft());
             }
         }
@@ -103,7 +94,6 @@ public class MainChecker {
     public static Boolean CompareWithBeginning(Node Beginning, Queue list){
         int large = list.GetLarge();
         Queue List2 = list;
-        //System.out.println(large);
         int cont = 0;
         boolean result = false;
         while (cont < large) {

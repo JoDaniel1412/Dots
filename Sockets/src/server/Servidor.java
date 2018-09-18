@@ -49,7 +49,7 @@ public class Servidor extends Thread {
             PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
             salida.println(message);
             cliente.close();
-            System.out.println("Server send: " + message);
+            //System.out.println("Server send: " + message);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,7 +64,7 @@ public class Servidor extends Thread {
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
             message = new File(entrada.readLine());
             cliente.close();
-            System.out.println("Server receive: " + message);
+            //System.out.println("Server receive: " + message);
         } catch (IOException e) {
             e.printStackTrace();
         }

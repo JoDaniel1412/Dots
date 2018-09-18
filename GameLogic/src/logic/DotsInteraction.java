@@ -1,12 +1,10 @@
 package logic;
 
+import PointsChecker.MainChecker;
 import client.Cliente;
 import drawings.Dots;
 import drawings.DrawBoard;
 import drawings.Lines;
-import javafx.animation.AnimationTimer;
-import javafx.concurrent.Task;
-import javafx.concurrent.Worker;
 import lists.Board;
 import lists.DoubleArray;
 import lists.Node;
@@ -14,7 +12,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedHashMap;
 
 /**
  * Facade class used to connect the GameLogic whit Sockets
@@ -39,25 +36,35 @@ public class DotsInteraction {
             doubleArray.add(node);
             dotsDoubleArray.add(dot);
         }
-        if(doubleArray.getSecond() != null){
+        if(doubleArray.getSecond() != null) {
 
-            // Search for the node index
-            Board board = Board.getInstance();
-            var firstNode = board.searchIndex(doubleArray.getFirst());
-            var secondNode = board.searchIndex(doubleArray.getSecond());
+            if (LineMaker.Verifier(doubleArray.getFirst(), doubleArray.getSecond())) {  // Verify if nodes are consecutive
 
-            // Draws the line in local
-            var firstDot = dotsDoubleArray.getFirst();
-            var secondDot = dotsDoubleArray.getSecond();
-            Lines.draw_line(firstDot.xPoss, firstDot.yPoss, secondDot.xPoss, secondDot.yPoss);
-            DrawBoard.draw.check_lines();
-            dotsDoubleArray.clear();
+                if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){  // Verify if point was make
+                    System.out.println("POINT!");
+                }
 
-            // Makes a json and sends it to the Server
-            DoubleArray<DoubleArray> nodesIndex = new DoubleArray<>(firstNode, secondNode);
-            mapper.writeValue(json, nodesIndex);
-            Cliente.enviarInfo(json);
-            doubleArray.clear();
+                // Search for the node index
+                Board board = Board.getInstance();
+                var firstNode = board.searchIndex(doubleArray.getFirst());
+                var secondNode = board.searchIndex(doubleArray.getSecond());
+
+                // Draws the line in local
+                var firstDot = dotsDoubleArray.getFirst();
+                var secondDot = dotsDoubleArray.getSecond();
+                Lines.draw_line(firstDot.xPoss, firstDot.yPoss, secondDot.xPoss, secondDot.yPoss);
+                DrawBoard.draw.check_lines();
+                dotsDoubleArray.clear();
+
+                // Makes a json and sends it to the Server
+                DoubleArray<DoubleArray> nodesIndex = new DoubleArray<>(firstNode, secondNode);
+                mapper.writeValue(json, nodesIndex);
+                Cliente.enviarInfo(json);
+                doubleArray.clear();
+            }else {
+                doubleArray.clear();
+                dotsDoubleArray.clear();
+            }
         }
     }
 

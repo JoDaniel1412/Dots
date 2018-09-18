@@ -42,7 +42,7 @@ public class Cliente extends Thread {
         BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
         File message = new File(entradaDatos.readLine());
         conexionServer.close();
-        System.out.println("Client receive: " + message);
+        //System.out.println("Client receive: " + message);
         DotsInteraction.received_dots(message);
     }
 
@@ -56,7 +56,7 @@ public class Cliente extends Thread {
         PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
         salida.println(message);
         conexionServer.close();
-        System.out.println("Client send: " + message);
+        //System.out.println("Client send: " + message);
     }
 
     /**

@@ -1,11 +1,10 @@
 package logic;
 
 import lists.Node;
-import points.checker.MainChecker;
 
 public class LineMaker {
 
-    private static boolean Verifier(Node node1, Node node2){
+    public static boolean Verifier(Node node1, Node node2){
         if (node1.getTop() == node2 && !node1.isTopState()){
             node1.setTopState(true);
             node2.setBottomState(true);
@@ -48,15 +47,5 @@ public class LineMaker {
         }
         return false;
     }
-
-
-         public static void ReceiveDots (Node node1, Node node2){
-            if (Verifier(node1, node2)) {
-                if (MainChecker.DotsReceiver(node1, node2)) ;
-                    System.out.println("Agregue punto");
-            }
-        }
-
-
-    }
+}
 
