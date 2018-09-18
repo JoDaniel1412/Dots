@@ -16,8 +16,8 @@ public class Servidor extends Thread {
     private static ServerSocket servidorO;
     private static ServerSocket servidorI;
     public static String ipAdress;
-    public static int portO = 6666;
-    public static int portI = 7777;
+    public static int portI = 8888;
+    public static int portO = 9999;
     private static Thread servidor;
 
     /**

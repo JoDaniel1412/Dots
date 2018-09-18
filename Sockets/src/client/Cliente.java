@@ -26,8 +26,8 @@ public class Cliente extends Thread {
     public static void init(String ip, int portI, int portO){
         cliente = new Cliente("client");
         ((Cliente) cliente).setIp(ip);
-        ((Cliente) cliente).setPortI(portI);
-        ((Cliente) cliente).setPortO(portO);
+        ((Cliente) cliente).setPortI(portO);
+        ((Cliente) cliente).setPortO(portI);
         cliente.start();
     }
     /**

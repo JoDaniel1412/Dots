@@ -53,17 +53,22 @@
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                        <children>
-                                          <JFXTextField id="eIPAddress" focusColor="#ffe572" labelFloat="true" promptText="IP address" unFocusColor="#5a5a5a" />
+                                          <JFXTextField id="eIPAddress" fx:id="eIpAddress" focusColor="#ffe572" labelFloat="true" promptText="IP address" unFocusColor="#5a5a5a" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                        <children>
-                                          <JFXTextField id="ePort" focusColor="#ffe572" labelFloat="true" promptText="Port" unFocusColor="#5a5a5a" />
+                                          <JFXTextField fx:id="ePort1" focusColor="#ffe572" labelFloat="true" promptText="Port1" unFocusColor="#5a5a5a" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <JFXTextField fx:id="ePort2" focusColor="#ffe572" labelFloat="true" promptText="Port2" unFocusColor="#5a5a5a" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="BASELINE_CENTER" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <Button id="bSearchGame" mnemonicParsing="false" prefHeight="73.0" prefWidth="142.0" text="Search" />
+                                          <Button id="bSearchGame" mnemonicParsing="false" onAction="#pressed_search" prefHeight="73.0" prefWidth="142.0" text="Search" />
                                        </children>
                                     </HBox>
                                  </children>

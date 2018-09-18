@@ -6,13 +6,15 @@ public class sWaiting {
 
     @FXML
     public Label ipLabel;
-
     @FXML
-    public Label portLabel;
+    public Label portLabel1;
+    @FXML
+    public Label portLabel2;
 
     @FXML
     public void init(){
         ipLabel.setText(Servidor.ipAdress);
-        portLabel.setText(String.valueOf(Servidor.portO));
+        portLabel1.setText(String.valueOf(Servidor.portI));
+        portLabel2.setText(String.valueOf(Servidor.portO));
     }
 }
