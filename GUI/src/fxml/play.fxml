@@ -58,12 +58,12 @@
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                        <children>
-                                          <JFXTextField fx:id="ePort1" focusColor="#ffe572" labelFloat="true" promptText="Port1" unFocusColor="#5a5a5a" />
+                                          <JFXTextField fx:id="ePort1" focusColor="#ffe572" labelFloat="true" promptText="Port1" text="8888" unFocusColor="#5a5a5a" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                        <children>
-                                          <JFXTextField fx:id="ePort2" focusColor="#ffe572" labelFloat="true" promptText="Port2" unFocusColor="#5a5a5a" />
+                                          <JFXTextField fx:id="ePort2" focusColor="#ffe572" labelFloat="true" promptText="Port2" text="9999" unFocusColor="#5a5a5a" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="BASELINE_CENTER" prefHeight="100.0" prefWidth="200.0">
