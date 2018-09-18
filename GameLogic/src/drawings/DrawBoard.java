@@ -1,10 +1,12 @@
 package drawings;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import lists.Board;
 import lists.Node;
+import logic.DotsInteraction;
 
 /**
  * Class that handles all drawings in the sGame
@@ -12,12 +14,16 @@ import lists.Node;
  */
 public class DrawBoard{
 
-    private AnchorPane paneBoard;
     public static DrawBoard draw;
+    private AnchorPane paneBoard;
+    private Label p1Score;
+    private Label p2Score;
 
-    public static void init(AnchorPane pane){
+    public static void init(AnchorPane pane, Label p1Score, Label p2Score){
         draw = new DrawBoard();
         draw.paneBoard = pane;
+        draw.p1Score = p1Score;
+        draw.p2Score = p2Score;
         AnimationTimer drawer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -36,7 +42,13 @@ public class DrawBoard{
             draw_line(Lines.line);
             draw.draw_board();
             Lines.line = null;
+            set_scores();
         }
+    }
+
+    private void set_scores(){
+        p1Score.setText(String.valueOf(DotsInteraction.getP1Score()));
+        p2Score.setText(String.valueOf(DotsInteraction.getP2Score()));
     }
 
     /**

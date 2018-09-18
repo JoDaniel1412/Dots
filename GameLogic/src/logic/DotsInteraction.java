@@ -24,10 +24,12 @@ public class DotsInteraction {
     private static ObjectMapper mapper = new ObjectMapper();
     private static File json = new File("Sockets/message_send.json");
     private static short line_repeater = 1;
+    private static int p1Score = 0;
+    private static int p2Score = 0;
 
 
     /**
-     * Method that handles the dots pressed by the player
+     * Method that handles the dots pressed by the player, verification and scores
      * @param node the node that the player selected
      * @param dot the dot coordinates to draw line
      * @throws IOException in case that the Json conversion failed
@@ -42,8 +44,10 @@ public class DotsInteraction {
 
             if (LineMaker.Verifier(doubleArray.getFirst(), doubleArray.getSecond())) {  // Verify if nodes are consecutive
 
-                if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){  // Verify if point was make
-                    System.out.println("POINT!");
+                // Verify if point was make
+                if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){
+                    p1Score++;
+                    System.out.println("Point");
                 }
 
                 // Search for the node index
@@ -78,16 +82,16 @@ public class DotsInteraction {
      */
     public static void received_dots(File json) throws IOException {
         DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
-        var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // remove non digits
-        var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // remove non digits
+        var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // Remove non digits
+        var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // Remove non digits
 
-        int first_dot_row = Integer.parseInt(String.valueOf(first_dot.charAt(0)));
-        int first_dot_column = Integer.parseInt(String.valueOf(first_dot.charAt(1)));
+        int first_dot_row = Integer.parseInt(String.valueOf(first_dot.charAt(0))); // First Node Index
+        int first_dot_column = Integer.parseInt(String.valueOf(first_dot.charAt(1))); // First Node Index
 
-        int second_dot_row = Integer.parseInt(String.valueOf(second_dot.charAt(0)));
-        int second_dot_column = Integer.parseInt(String.valueOf(second_dot.charAt(1)));
+        int second_dot_row = Integer.parseInt(String.valueOf(second_dot.charAt(0))); // Second Node Index
+        int second_dot_column = Integer.parseInt(String.valueOf(second_dot.charAt(1))); // Second Node Index
 
-        // search for the Dot coordinates
+        // Search for the Dot coordinates
         Board board = Board.getInstance();
         Dots first_dot_coordinate = board.getIndex(first_dot_row, first_dot_column).getDot();
         Dots second_dot_coordinate = board.getIndex(second_dot_row, second_dot_column).getDot();
@@ -98,6 +102,20 @@ public class DotsInteraction {
             Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
         }else {
             line_repeater = 1;
+
+            // Verify if point was make by the other player
+            if (MainChecker.DotsReceiver(first_dot_coordinate.getNode(), second_dot_coordinate.getNode())) {
+                p2Score++;
+            }
         }
+    }
+
+    /** Getters **/
+    public static int getP1Score() {
+        return p1Score;
+    }
+
+    public static int getP2Score() {
+        return p2Score;
     }
 }

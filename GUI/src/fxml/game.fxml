@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.canvas.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -25,14 +26,20 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <Label styleClass="bold-label-25" text="P1" />
-                        <TextField styleClass="text-field-short" />
+                        <Label fx:id="lScoreP1" styleClass="bold-label-25" text="0" />
                      </children>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
                      <children>
-                        <TextField styleClass="text-field-short" />
+                        <Label fx:id="lScoreP2" styleClass="bold-label-25" text="0" />
                         <Label styleClass="bold-label-25" text="P2" />
                      </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
                   </HBox>
                </children>
             </GridPane>
