@@ -7,11 +7,10 @@
       <sourceFolder url="file://$MODULE_DIR$/GUI/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Sockets/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="com.jfoenix:jfoenix:9.0.61" level="project" />
     <orderEntry type="library" name="jfoenix-9.0.5" level="project" />
-    <orderEntry type="library" name="jackson-all-1.9.01" level="project" />
   </component>
 </module>

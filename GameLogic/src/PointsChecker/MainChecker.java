@@ -7,13 +7,9 @@ import lists.Stack;
 
 
 public class MainChecker {
+
     public static boolean DotsReceiver(Node node1, Node node2) {
         Node beginning = node1;
-
-
-
-
-
         return mainCycle(node2, node1, beginning);
 
 
