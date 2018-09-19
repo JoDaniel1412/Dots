@@ -1,6 +1,7 @@
 package PointsChecker;
 
 import lists.Node;
+import logic.Blocker;
 
 public class SideChecker {
 
@@ -100,6 +101,7 @@ public class SideChecker {
             if (CheckRight(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isBottom_rightState()) {
                     if(CheckRightUp(node1, node2)){
+                        Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);
                         if (node2.isLeftState() && node1.isTop_leftState()) {
                             return true;
                         }
@@ -115,6 +117,7 @@ public class SideChecker {
             if (CheckLeft(node1, node2)){
                 if (!node1.isTop_leftState() && !node2.isBottom_rightState()) {
                     if(CheckLeftUp(node1, node2)){
+                        Blocker.BlockZone(2, node2, node2.getLeft(), node1.getLeft(), node1);
                         if (node2.isRightState() && node1.isTop_rightState()) {
                             return true;
                         }
@@ -140,6 +143,7 @@ public class SideChecker {
             if (CheckRight(node1, node2)){
                 if (!node1.isBottom_rightState() && !node2.isTop_rightState()) {
                     if(CheckRightDown(node1, node2)){
+                        Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);
                         if (node2.isLeftState() && node1.isTop_leftState()) {
                             return true;
                         }
@@ -154,6 +158,7 @@ public class SideChecker {
             if (CheckLeft(node1, node2)){
                 if (!node1.isBottom_leftState() && !node2.isTop_leftState()) {
                     if(CheckLeftDown(node1, node2)){
+                        Blocker.BlockZone(2, node2, node2.getLeft(), node1.getLeft(), node1);
                         if (node2.isRightState() && node1.isTop_rightState()) {
                             return true;
                         }

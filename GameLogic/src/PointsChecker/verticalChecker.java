@@ -2,6 +2,8 @@ package PointsChecker;
 
 import lists.Node;
 
+import logic.Blocker;
+
 public class verticalChecker {
 
     private static boolean checkUp(Node node1, Node node2) {
@@ -97,6 +99,8 @@ public class verticalChecker {
         if (node1.getRight() == node2) {
             if (checkUp(node1, node2) && checkDown(node1, node2)) {
                 if (checkUpRight(node1, node2) && checkDownRight(node1, node2) && noRightDiagonals(node1, node2)) {
+                    Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
+                    Blocker.BlockZone(2, node1, node1.getBottom(), node2.getBottom(), node2);
                     return true;
                 }
             }
@@ -104,13 +108,12 @@ public class verticalChecker {
 
             if (checkUp(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isTop_leftState()) {
+                    Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
                     if (checkUpRight(node1, node2)) {
                         if (node2.isBottomState() && node1.isBottom_rightState()) {
-                            System.out.println("holis");
                             return true;
                         }
                         if (node1.isBottomState() && node1.getBottom().isTop_rightState()) {
-                            System.out.println("Double");
                             return true;
                         }
                         return true;
@@ -120,12 +123,11 @@ public class verticalChecker {
             if (checkDown(node1, node2)) {
                 if (!node1.isBottom_rightState() && !node2.isBottom_leftState()) {
                     if (checkDownRight(node1, node2)) {
+                        Blocker.BlockZone(2, node1, node1.getBottom(), node2.getBottom(), node2);
                         if (node2.isTopState() && node1.isTop_rightState()) {
-                            System.out.println("holis");
                             return true;
                         }
                         if (node1.isTopState() && node2.isTop_leftState()) {
-                            System.out.println("Double");
                             return true;
                         }
                         return true;
@@ -133,7 +135,6 @@ public class verticalChecker {
                 }
             }
             if (verticalChecker.checkRightDiagonal(node1, node2)) {
-                System.out.println("Me cago en licha");
                 return true;
             }
             if (verticalChecker.checkLeftDiagonal(node1, node2)) {
@@ -152,6 +153,7 @@ public class verticalChecker {
             if (checkUp(node1, node2)) {
                 if (!node1.isTop_leftState() && !node2.isTop_rightState()) {
                     if (checkUpLeft(node1, node2)) {
+                        Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
                         if (node2.isBottomState() && node1.isBottom_leftState()) {
                             return true;
                         }
@@ -165,6 +167,7 @@ public class verticalChecker {
             if (checkDown(node1, node2)) {
                 if (!node1.isBottom_leftState() && !node2.isBottom_rightState()) {
                     if(checkDownLeft(node1, node2)){
+                        Blocker.BlockZone(2, node1, node1.getBottom(), node2.getBottom(), node2);
                         if (node2.isTopState() && node1.isTop_leftState()) {
                             return true;
                         }
