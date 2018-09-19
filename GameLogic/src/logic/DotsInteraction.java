@@ -26,6 +26,7 @@ public class DotsInteraction {
     private static short line_repeater = 1;
     private static int p1Score = 0;
     private static int p2Score = 0;
+    private static int points = 0;
 
 
     /**
@@ -45,7 +46,8 @@ public class DotsInteraction {
 
             if (LineMaker.Verifier(doubleArray.getFirst(), doubleArray.getSecond())) {  // Verify if nodes are consecutive
                 if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){  // Verify if point was make
-                    p1Score++;
+                    p1Score += points;
+                    points = 0;
                 }
 
                 // Search for the node index
@@ -115,8 +117,8 @@ public class DotsInteraction {
 
         if (LineMaker.Verifier(first_node, second_node)) {  // Verify if nodes are consecutive
             if (MainChecker.DotsReceiver(first_node, second_node)) {  // Verify if point was make by the other player
-                p2Score++;
-                System.out.println("Point2");
+                p2Score += points;
+                points = 0;
             }
         }
         if (line_repeater == 1) {  // Draws the line in the pane
@@ -126,6 +128,14 @@ public class DotsInteraction {
         } else {
             line_repeater = 1;
         }
+    }
+
+    /**
+     * Sets the points for the player
+     * @param points int amount of points
+     */
+    public static void point_made(int points){
+        DotsInteraction.points += points;
     }
 
     /**
