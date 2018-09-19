@@ -1,4 +1,5 @@
 import client.Cliente;
+import client.Commands;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -39,12 +40,13 @@ public class sPlay extends sScene {
         Main.setScene("fxml/menu.fxml");
     }
     @FXML
-    void pressed_create() throws IOException {
+    void pressed_create() throws IOException, InterruptedException {
         Servidor.init();
         Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
         Main.setScene("fxml/game.fxml");
         Main.window.setResizable(false);
+        Commands.send_command("start");
     }
     @FXML
     void pressed_search() throws IOException {

@@ -15,6 +15,8 @@ public class Commands {
     private String command;
     private static ObjectMapper mapper = new ObjectMapper();
 
+    public Commands(){}
+
     public Commands(String command){
         this.command = command;
     }
@@ -24,25 +26,38 @@ public class Commands {
      * @param json file to transform in Commands object
      * @return boolean if the decode is successful
      */
-    public static boolean try_read(File json) {
+    static boolean try_read(File json) {
         try {
             Commands obj = mapper.readValue(json, Commands.class);
             obj.analise(obj.command);
             return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
-
+    /**
+     * Sends a command to the server
+     * @param message string to send
+     * @throws IOException in case the mapper fail
+     * @throws InterruptedException in case it couldn't send the message to the server
+     */
+    public static void send_command(String message) throws IOException, InterruptedException {
+        File json = new File("Sockets/command_send.json");
+        mapper.writeValue(json, new Commands(message));
+        Cliente.enviarInfo(json);
+    }
 
     /**
      * Tells the Game what to do with the message given
      * @param command a specific string
      */
-    private void analise(String command){}
-
+    private void analise(String command){
+        if(command.equals("start")){
+            System.out.println("pene");
+        }
+    }
 
     /** Getters and Setters **/
     public String getCommand() {

@@ -81,9 +81,9 @@ public class DotsInteraction {
             received_dots(arrayIndex);
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     /**

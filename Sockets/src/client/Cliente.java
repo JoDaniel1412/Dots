@@ -82,7 +82,9 @@ public class Cliente extends Thread {
 
     private static void analise(File message){
         if (!DotsInteraction.try_read(message)){
-            Commands.try_read(message);
+            if(!Commands.try_read(message)){
+                System.out.println("Couldn't read Json");
+            }
         }
     }
 
