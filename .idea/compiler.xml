@@ -14,7 +14,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Dots" options="--add-modules=javafx.graphics,javafx.fxml,javafx.base,javafx.controls" />
+      <module name="Dots" options="--add-modules=javafx.graphics,javafx.fxml,javafx.base,javafx.controls,javafx.media" />
       <module name="JavaFxApplication" options="--add-modules=javafx.graphics,javafx.fxml" />
     </option>
   </component>

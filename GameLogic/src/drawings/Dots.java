@@ -77,6 +77,7 @@ public class Dots extends Circle {
      * Dots action to do
      */
     private void pressed_dot() throws IOException, InterruptedException {
+        //Sound.play("file:resources/sounds/hit.wav");
         DotsInteraction.dot_pressed(node, this);
     }
 

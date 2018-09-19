@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/GUI/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Sockets/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
     <orderEntry type="inheritedJdk" />
