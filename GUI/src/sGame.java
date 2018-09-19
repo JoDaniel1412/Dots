@@ -8,13 +8,23 @@ public class sGame{
     @FXML
     public AnchorPane paneBoard;
     @FXML
+    private Label lP1;
+    @FXML
+    private Label lP2;
+    @FXML
     private Label lScoreP1;
     @FXML
     private Label lScoreP2;
+    @FXML
+    private Label lP1Turn;
+    @FXML
+    private Label lP2Turn;
 
     @FXML
     public void draw_board(){
-        DrawBoard.init(paneBoard, lScoreP1, lScoreP2);
+        //lP1.setTextFill(DrawBoard.p1Color);
+        //lP2.setTextFill(DrawBoard.p2Color);
+        DrawBoard.init(paneBoard, lScoreP1, lScoreP2, lP1Turn, lP2Turn);
     }
 
     /** Getters and Setters **/

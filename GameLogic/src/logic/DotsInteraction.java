@@ -64,6 +64,7 @@ public class DotsInteraction {
                 DoubleArray<DoubleArray> nodesIndex = new DoubleArray<>(firstNode, secondNode);
                 mapper.writeValue(json, nodesIndex);
                 Cliente.enviarInfo(json);
+                Cliente.setTurn(false);
                 line_repeater = 0;
 
                 clear_arrays();
@@ -77,6 +78,7 @@ public class DotsInteraction {
     /**
      * Handles the dots received by the server and draws the line
      * @param json file with the index of the nodes to link
+     * @throws IOException in case that the json couldn't be read
      */
     public static void received_dots(File json) throws IOException {
         DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
@@ -107,6 +109,7 @@ public class DotsInteraction {
         if (line_repeater == 1) {  // Draws the line in the pane
             Lines.color = Lines.color2;
             Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
+            Cliente.setTurn(true);
         } else {
             line_repeater = 1;
         }

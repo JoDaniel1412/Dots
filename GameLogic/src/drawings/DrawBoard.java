@@ -1,8 +1,10 @@
 package drawings;
 
+import client.Cliente;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import lists.Board;
 import lists.Node;
@@ -15,19 +17,28 @@ import logic.DotsInteraction;
 public class DrawBoard{
 
     public static DrawBoard draw;
+    public static Color p1Color = Dots.aqua_blue;
+    public static Color p2Color = Dots.green_leaf;
     private AnchorPane paneBoard;
     private Label p1Score;
     private Label p2Score;
+    private Label p1Turn;
+    private Label p2Turn;
 
-    public static void init(AnchorPane pane, Label p1Score, Label p2Score){
+
+    public static void init(AnchorPane pane, Label p1Score, Label p2Score, Label p1Turn, Label p2Turn){
         draw = new DrawBoard();
         draw.paneBoard = pane;
         draw.p1Score = p1Score;
         draw.p2Score = p2Score;
+        draw.p1Turn = p1Turn;
+        draw.p2Turn = p2Turn;
         AnimationTimer drawer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 draw.check_lines();
+                draw.set_scores();
+                draw.check_turns();
             }
         };
         draw.draw_board();
@@ -42,13 +53,26 @@ public class DrawBoard{
             draw_line(Lines.line);
             draw.draw_board();
             Lines.line = null;
-            set_scores();
         }
     }
 
     private void set_scores(){
         p1Score.setText(String.valueOf(DotsInteraction.getP1Score()));
         p2Score.setText(String.valueOf(DotsInteraction.getP2Score()));
+    }
+
+    private void check_turns(){
+        if(Cliente.isTurn()){
+            p1Turn.setOpacity(1.0);
+            p2Turn.setOpacity(0.3);
+            p1Turn.setTextFill(p1Color);
+            p2Turn.setTextFill(Dots.bone_white);
+        } else {
+            p1Turn.setOpacity(0.3);
+            p2Turn.setOpacity(1.0);
+            p1Turn.setTextFill(Dots.bone_white);
+            p2Turn.setTextFill(p2Color);
+        }
     }
 
     /**

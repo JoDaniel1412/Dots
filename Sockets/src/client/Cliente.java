@@ -15,6 +15,7 @@ public class Cliente extends Thread {
     private static int portI;
     private static int portO;
     private static Thread cliente;
+    private static boolean turn;
 
     private Cliente(String msg) {
         super(msg);
@@ -92,5 +93,11 @@ public class Cliente extends Thread {
         Cliente.portO = port;
     }
 
+    public static boolean isTurn() {
+        return turn;
+    }
 
+    public static void setTurn(boolean turn) {
+        Cliente.turn = turn;
+    }
 }

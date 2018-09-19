@@ -42,6 +42,7 @@ public class sPlay extends sScene {
     void pressed_create() throws IOException {
         Servidor.init();
         Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
+        Cliente.setTurn(true);
         Main.setScene("fxml/game.fxml");
         Main.window.setResizable(false);
     }
@@ -52,6 +53,7 @@ public class sPlay extends sScene {
         String port2 = ePort2.getText();
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
+            Cliente.setTurn(false);
             Main.setScene("fxml/game.fxml");
             Main.window.setResizable(false);
         }

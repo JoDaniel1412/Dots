@@ -11,8 +11,8 @@ import javafx.scene.shape.Line;
 public class Lines extends Line {
 
     public static Line line; // This will be draw in the Board
-    public static Color color1 = Dots.green_leaf;
-    public static Color color2 = Dots.aqua_blue;
+    public static Color color1 = DrawBoard.p1Color;
+    public static Color color2 = DrawBoard.p2Color;
     public static Color color = color1;
     private static double line_width = Dots.radius;
 
