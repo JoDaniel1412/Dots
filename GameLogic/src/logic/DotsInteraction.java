@@ -39,20 +39,13 @@ public class DotsInteraction {
         if (doubleArray.getFirst() != node) {
             doubleArray.add(node);
             dotsDoubleArray.add(dot);
-
-            // Adds a focused circle to the dot
             DrawBoard.draw.getPaneBoard().getChildren().addAll(dot.focuse());
         }
-        if(doubleArray.getSecond() != null) {
-
-            // Removes the focused circles from the dots
-            DrawBoard.draw.getPaneBoard().getChildren().remove(dotsDoubleArray.getFirst().focused);
-            DrawBoard.draw.getPaneBoard().getChildren().remove(dot.focused);
+        if(doubleArray.getSecond() != null) {  // Run logic when second dot is selected
 
             if (LineMaker.Verifier(doubleArray.getFirst(), doubleArray.getSecond())) {  // Verify if nodes are consecutive
 
-                // Verify if point was make
-                if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){
+                if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){  // Verify if point was make
                     p1Score++;
                     System.out.println("Point1");
                 }
@@ -68,14 +61,14 @@ public class DotsInteraction {
                 Lines.color = Lines.color1;
                 Lines.draw_line(firstDot.xPoss, firstDot.yPoss, secondDot.xPoss, secondDot.yPoss);
                 DrawBoard.draw.check_lines();
-                dotsDoubleArray.clear();
 
                 // Makes a json and sends it to the Server
                 DoubleArray<DoubleArray> nodesIndex = new DoubleArray<>(firstNode, secondNode);
                 mapper.writeValue(json, nodesIndex);
                 Cliente.enviarInfo(json);
-                doubleArray.clear();
                 line_repeater = 0;
+
+                clear_arrays();
             }else {
                 clear_arrays();
             }
@@ -103,18 +96,21 @@ public class DotsInteraction {
         Dots first_dot_coordinate = board.getIndex(first_dot_row, first_dot_column).getDot();
         Dots second_dot_coordinate = board.getIndex(second_dot_row, second_dot_column).getDot();
 
-        // Draws the line in the pane
-        if (line_repeater == 1) {
-            Lines.color = Lines.color2;
-            Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
-        }else {
-            line_repeater = 1;
+        // Gets the nodes
+        Node first_node = first_dot_coordinate.getNode();
+        Node second_node = second_dot_coordinate.getNode();
 
-            // Verify if point was make by the other player
-            if (MainChecker.DotsReceiver(first_dot_coordinate.getNode(), second_dot_coordinate.getNode())) {
+        if (LineMaker.Verifier(first_node, second_node)) {  // Verify if nodes are consecutive
+            if (MainChecker.DotsReceiver(first_node, second_node)) {  // Verify if point was make by the other player
                 p2Score++;
                 System.out.println("Point2");
             }
+        }
+        if (line_repeater == 1) {  // Draws the line in the pane
+            Lines.color = Lines.color2;
+            Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
+        } else {
+            line_repeater = 1;
         }
     }
 
