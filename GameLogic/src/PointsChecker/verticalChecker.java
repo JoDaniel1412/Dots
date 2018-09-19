@@ -89,11 +89,13 @@ public class verticalChecker {
     private static boolean noRightDiagonals(Node node1, Node node2) {
         return (!node1.isTop_rightState() && !node2.isTop_leftState() && !node1.isBottom_rightState() && !node2.isBottom_leftState());
     }
+    private static boolean noLeftDiagonals(Node node1, Node node2) {
+        return (!node1.isTop_leftState() && !node2.isTop_rightState() && !node1.isBottom_leftState() && !node2.isBottom_rightState());
+    }
 
     public static boolean checkverticals(Node node1, Node node2) {
         if (node1.getRight() == node2) {
             if (checkUp(node1, node2) && checkDown(node1, node2)) {
-                System.out.println("Me cago en licha");
                 if (checkUpRight(node1, node2) && checkDownRight(node1, node2) && noRightDiagonals(node1, node2)) {
                     return true;
                 }
@@ -103,18 +105,30 @@ public class verticalChecker {
             if (checkUp(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isTop_leftState()) {
                     if (checkUpRight(node1, node2)) {
-                        boolean result = true;
-                        System.out.println(node2.isBottomState());
-                        System.out.println(node1.isBottom_rightState());
                         if (node2.isBottomState() && node1.isBottom_rightState()) {
                             System.out.println("holis");
-                            result = true;
+                            return true;
                         }
                         if (node1.isBottomState() && node1.getBottom().isTop_rightState()) {
                             System.out.println("Double");
-                            result = true;
+                            return true;
                         }
-                        return result;
+                        return true;
+                    }
+                }
+            }
+            if (checkDown(node1, node2)) {
+                if (!node1.isBottom_rightState() && !node2.isBottom_leftState()) {
+                    if (checkDownRight(node1, node2)) {
+                        if (node2.isTopState() && node1.isTop_rightState()) {
+                            System.out.println("holis");
+                            return true;
+                        }
+                        if (node1.isTopState() && node2.isTop_leftState()) {
+                            System.out.println("Double");
+                            return true;
+                        }
+                        return true;
                     }
                 }
             }
@@ -122,37 +136,53 @@ public class verticalChecker {
                 System.out.println("Me cago en licha");
                 return true;
             }
-                if (verticalChecker.checkLeftDiagonal(node1, node2)) {
+            if (verticalChecker.checkLeftDiagonal(node1, node2)) {
+                return true;
+            }
+
+        }
+        if (node1.getLeft() == node2) {
+            if (checkUp(node1, node2) && checkDown(node1, node2)) {
+                if (checkUpLeft(node1, node2) && checkDownLeft(node1, node2) && noLeftDiagonals(node1, node2)) {
                     return true;
                 }
-                if (checkDown(node1, node2)) {
-                    if (!node1.isTop_rightState() && !node2.isBottom_leftState()) {
-                        return checkDownRight(node1, node2);
-                    }
-                }
             }
-            if (node1.getLeft() == node2) {
-                if (checkUp(node1, node2) && checkDown(node1, node2)) {
-                    if (checkUpLeft(node1, node2) && checkDownLeft(node1, node2)) {
-                        System.out.println("Doble");
+
+
+            if (checkUp(node1, node2)) {
+                if (!node1.isTop_leftState() && !node2.isTop_rightState()) {
+                    if (checkUpLeft(node1, node2)) {
+                        if (node2.isBottomState() && node1.isBottom_leftState()) {
+                            return true;
+                        }
+                        if (node1.isBottomState() && node2.isBottom_rightState()) {
+                            return true;
+                        }
                         return true;
                     }
                 }
-                if (verticalChecker.checkLeftDiagonal(node1, node2)) {
-                    return true;
-                }
-                if (checkUp(node1, node2)) {
-                    if (!node1.isTop_leftState() && !node2.isTop_rightState()) {
-                        return checkUpLeft(node1, node2);
-                    }
-                }
-                if (checkDown(node1, node2)) {
-                    if (!node1.isBottom_leftState() && !node2.isBottom_rightState()) {
-                        return checkDownLeft(node1, node2);
+            }
+            if (checkDown(node1, node2)) {
+                if (!node1.isBottom_leftState() && !node2.isBottom_rightState()) {
+                    if(checkDownLeft(node1, node2)){
+                        if (node2.isTopState() && node1.isTop_leftState()) {
+                            return true;
+                        }
+                        if (node1.isTopState() && node2.isTop_rightState()) {
+                            return true;
+                        }
+                        return true;
                     }
                 }
             }
-            return false;
+
+            return verticalChecker.checkLeftDiagonal(node1, node2);
+
         }
+        return false;
+    }
 
 }
+
+
+
