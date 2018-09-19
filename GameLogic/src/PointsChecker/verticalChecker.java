@@ -82,6 +82,12 @@ public class verticalChecker {
 
     public static boolean checkverticals(Node node1, Node node2){
         if (node1.getRight() == node2){
+            if (checkUp(node1, node2) && checkDown(node1, node2)){
+                if (checkUpRight(node1, node2) && checkDownRight(node1, node2)){
+                    System.out.println("Doble");
+                    return true;
+                }
+            }
             if (verticalChecker.checkRightDiagonal(node1, node2)){
                 return true;
             }
@@ -102,6 +108,12 @@ public class verticalChecker {
             }
         }
         if (node1.getLeft() == node2){
+            if (checkUp(node1, node2) && checkDown(node1, node2)){
+                if (checkUpLeft(node1, node2) && checkDownLeft(node1, node2)){
+                    System.out.println("Doble");
+                    return true;
+                }
+            }
             if (verticalChecker.checkLeftDiagonal(node1, node2)){
                 return true;
             }

@@ -85,15 +85,24 @@ public class SideChecker {
 
     public static boolean CheckSides(Node node1, Node node2) {
         if (node1.getTop() == node2) {
+            if (CheckRight(node1, node2) && CheckLeft(node1, node2)){
+                if (CheckLeftUp(node1, node2) && CheckRightUp(node1, node2)){
+                    System.out.println("Doble");
+                    return true;
+                }
+            }
+
             if (SideChecker.checkUpDiagonal(node1, node2)){
                 return true;
             }
+
             if (CheckRight(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isBottom_rightState()) {
                     return CheckRightUp(node1, node2);
                 }
 
             }
+
             if (CheckLeft(node1, node2)){
                 if (!node1.isTop_leftState() && !node2.isBottom_rightState()) {
                     return CheckLeftUp(node1, node2);
@@ -103,7 +112,14 @@ public class SideChecker {
             }
 
         }
+
         if (node1.getBottom() == node2){
+            if (CheckRight(node1, node2) && CheckLeft(node1, node2)){
+                if (CheckLeftDown(node1, node2) && CheckRightDown(node1, node2)){
+                    System.out.println("Doble");
+                    return true;
+                }
+            }
             if (SideChecker.checkDownDiagonal(node1, node2)){
                 return true;
             }
