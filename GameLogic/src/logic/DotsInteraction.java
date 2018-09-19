@@ -44,10 +44,8 @@ public class DotsInteraction {
         if(doubleArray.getSecond() != null) {  // Run logic when second dot is selected
 
             if (LineMaker.Verifier(doubleArray.getFirst(), doubleArray.getSecond())) {  // Verify if nodes are consecutive
-
                 if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){  // Verify if point was make
                     p1Score++;
-                    System.out.println("Point1");
                 }
 
                 // Search for the node index
@@ -114,8 +112,10 @@ public class DotsInteraction {
         }
     }
 
+    /**
+     * Clears the DoubleArrays and focused circles
+     */
     private static void clear_arrays(){
-        // Removes the focused circles from the dots
         var first_focused = dotsDoubleArray.getFirst().focused;
         var second_focused = dotsDoubleArray.getSecond().focused;
         if (first_focused != null && second_focused != null) {
