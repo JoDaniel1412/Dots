@@ -24,6 +24,7 @@ public class Dots extends Circle {
     public static double radius = 10;
     private Node node;
     private Circle dot;
+    public Circle focused;
     public double xPoss;
     public double yPoss;
 
@@ -32,6 +33,14 @@ public class Dots extends Circle {
         this.node = node;
         this.xPoss = xPoss;
         this.yPoss = yPoss;
+    }
+
+    /**
+     * Sets a color for the dot in pressed state
+     */
+    public Circle focuse(){
+        focused = new Circle(xPoss, yPoss, radius+3, bone_white);
+        return focused;
     }
 
     /**

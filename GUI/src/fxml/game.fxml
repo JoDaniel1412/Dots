@@ -22,7 +22,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label onMouseEntered="#draw_board" text="DOTS" GridPane.columnIndex="1" />
+                  <Label text="DOTS" GridPane.columnIndex="1" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <Label styleClass="bold-label-25" text="P1" />

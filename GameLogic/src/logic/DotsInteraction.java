@@ -1,6 +1,6 @@
 package logic;
 
-import PointsChecker.MainChecker;
+import points.checker.MainChecker;
 import client.Cliente;
 import drawings.Dots;
 import drawings.DrawBoard;
@@ -39,15 +39,22 @@ public class DotsInteraction {
         if (doubleArray.getFirst() != node) {
             doubleArray.add(node);
             dotsDoubleArray.add(dot);
+
+            // Adds a focused circle to the dot
+            DrawBoard.draw.getPaneBoard().getChildren().addAll(dot.focuse());
         }
         if(doubleArray.getSecond() != null) {
+
+            // Removes the focused circles from the dots
+            DrawBoard.draw.getPaneBoard().getChildren().remove(dotsDoubleArray.getFirst().focused);
+            DrawBoard.draw.getPaneBoard().getChildren().remove(dot.focused);
 
             if (LineMaker.Verifier(doubleArray.getFirst(), doubleArray.getSecond())) {  // Verify if nodes are consecutive
 
                 // Verify if point was make
                 if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){
                     p1Score++;
-                    System.out.println("Point");
+                    System.out.println("Point1");
                 }
 
                 // Search for the node index
@@ -70,9 +77,9 @@ public class DotsInteraction {
                 doubleArray.clear();
                 line_repeater = 0;
             }else {
-                doubleArray.clear();
-                dotsDoubleArray.clear();
+                clear_arrays();
             }
+
         }
     }
 
@@ -106,8 +113,21 @@ public class DotsInteraction {
             // Verify if point was make by the other player
             if (MainChecker.DotsReceiver(first_dot_coordinate.getNode(), second_dot_coordinate.getNode())) {
                 p2Score++;
+                System.out.println("Point2");
             }
         }
+    }
+
+    private static void clear_arrays(){
+        // Removes the focused circles from the dots
+        var first_focused = dotsDoubleArray.getFirst().focused;
+        var second_focused = dotsDoubleArray.getSecond().focused;
+        if (first_focused != null && second_focused != null) {
+            DrawBoard.draw.getPaneBoard().getChildren().remove(first_focused);
+            DrawBoard.draw.getPaneBoard().getChildren().remove(second_focused);
+        }
+        doubleArray.clear();
+        dotsDoubleArray.clear();
     }
 
     /** Getters **/

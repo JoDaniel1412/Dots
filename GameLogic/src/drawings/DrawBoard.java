@@ -88,6 +88,12 @@ public class DrawBoard{
         paneBoard.getChildren().addAll(line);
     }
 
+
+    /** Getters **/
+    public AnchorPane getPaneBoard() {
+        return paneBoard;
+    }
+
     private double getPaneBoardWidth() {
         return paneBoard.getWidth();
     }
