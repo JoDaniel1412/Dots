@@ -108,8 +108,8 @@ public class verticalChecker {
 
             if (checkUp(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isTop_leftState()) {
-                    Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
                     if (checkUpRight(node1, node2)) {
+                        Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
                         if (node2.isBottomState() && node1.isBottom_rightState()) {
                             return true;
                         }
@@ -155,9 +155,11 @@ public class verticalChecker {
                     if (checkUpLeft(node1, node2)) {
                         Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
                         if (node2.isBottomState() && node1.isBottom_leftState()) {
+                            Blocker.BlockZone(1, node1, node2,node2.getBottom());
                             return true;
                         }
                         if (node1.isBottomState() && node2.isBottom_rightState()) {
+                            Blocker.BlockZone(1, node2, node1,node1.getTop());
                             return true;
                         }
                         return true;
@@ -169,9 +171,11 @@ public class verticalChecker {
                     if(checkDownLeft(node1, node2)){
                         Blocker.BlockZone(2, node1, node1.getBottom(), node2.getBottom(), node2);
                         if (node2.isTopState() && node1.isTop_leftState()) {
+                            Blocker.BlockZone(1, node1, node2,node2.getTop());
                             return true;
                         }
                         if (node1.isTopState() && node2.isTop_rightState()) {
+                            Blocker.BlockZone(1, node2, node1, node1.getTop());
                             return true;
                         }
                         return true;

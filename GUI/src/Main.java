@@ -26,8 +26,8 @@ public class Main extends Application {
         window = primaryStage;
         window.setWidth(sScene.getWidth());
         window.setHeight(sScene.getHeight());
-        window.setMinWidth(600);
-        window.setMinHeight(700);
+        window.setMinWidth(700);
+        window.setMinHeight(800);
         window.setTitle("Dots");
         window.getIcons().add(new Image("file:resources/icon.png"));
         mainInterface = new MainInterface(this);
