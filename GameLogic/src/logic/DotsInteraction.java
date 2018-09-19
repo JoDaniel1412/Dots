@@ -1,6 +1,6 @@
 package logic;
 
-import points.checker.MainChecker;
+import PointsChecker.MainChecker;
 import client.Cliente;
 import drawings.Dots;
 import drawings.DrawBoard;
