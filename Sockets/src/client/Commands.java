@@ -5,7 +5,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-public class Commands {
+public class Commands <T>{
 
     /**
      * start
@@ -13,12 +13,21 @@ public class Commands {
      * surrender
      */
     private String command;
+    public T play;
+    private static Commands instance;
     private static ObjectMapper mapper = new ObjectMapper();
 
-    public Commands(){}
+    private Commands(){}
 
-    public Commands(String command){
+    private Commands(String command){
         this.command = command;
+    }
+
+    public static Commands init(){
+        if (instance == null){
+            instance = new Commands();
+        }
+        return instance;
     }
 
     /**
@@ -53,9 +62,9 @@ public class Commands {
      * Tells the Game what to do with the message given
      * @param command a specific string
      */
-    private void analise(String command){
+    private void analise(String command) {
         if(command.equals("start")){
-            System.out.println("pene");
+            //play.pressed_start();
         }
     }
 

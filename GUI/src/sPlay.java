@@ -39,25 +39,29 @@ public class sPlay extends sScene {
     void pressed_return() throws IOException {
         Main.setScene("fxml/menu.fxml");
     }
+    public static void pressed_start() throws IOException {
+        Main.setScene("fxml/game.fxml");
+    }
     @FXML
-    void pressed_create() throws IOException, InterruptedException {
+    void pressed_create() throws IOException{
         Servidor.init();
         Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
-        Main.setScene("fxml/game.fxml");
+        Main.setScene("fxml/waiting.fxml");
         Main.window.setResizable(false);
-        Commands.send_command("start");
+        Commands.init().play = this;
     }
     @FXML
-    void pressed_search() throws IOException {
+    void pressed_search() throws IOException, InterruptedException {
         String ip = eIpAddress.getText();
         String port1 = ePort1.getText();
         String port2 = ePort2.getText();
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
             Cliente.setTurn(false);
-            Main.setScene("fxml/game.fxml");
+            Main.setScene("fxml/waiting.fxml");
             Main.window.setResizable(false);
+            Commands.send_command("start");
         }
     }
     @FXML
