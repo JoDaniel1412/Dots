@@ -1,3 +1,5 @@
+package scenes;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import server.Servidor;

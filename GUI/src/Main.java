@@ -6,13 +6,16 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lists.Board;
+import scenes.MainInterface;
+import scenes.sScene;
 
 import java.io.IOException;
 
 
-public class Main extends Application{
+public class Main extends Application {
 
     public static Stage window;
+    private static MainInterface mainInterface;
 
     public static void main(String[] args) {
         launch(args);
@@ -27,14 +30,15 @@ public class Main extends Application{
         window.setMinHeight(700);
         window.setTitle("Dots");
         window.getIcons().add(new Image("file:resources/icon.png"));
-        setScene("fxml/menu.fxml");
+        mainInterface = new MainInterface(this);
+        setScene();
         Board.init(7, 7);
         window.show();
     }
 
     // Method used for switch fxml
-     static void setScene(String scene_route) throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource(scene_route));
+     public static void setScene() throws IOException {
+        Parent root = FXMLLoader.load(Main.class.getResource(mainInterface.getScene()));
         Scene scene = new Scene(root);
         var width = window.getWidth();
         var height = window.getHeight();
@@ -49,12 +53,16 @@ public class Main extends Application{
         }
     }
 
-    static void setFullScreen(boolean value){
-        window.setFullScreen(value);
+    public static void setFullScreen(){
+        window.setFullScreen(!window.isFullScreen());
+    }
+
+    public static void setResizable(){
+        window.setResizable(!window.isResizable());
     }
 
     // Method that ends the game
-    static void close(){
+    public static void close(){
         window.close();
         Platform.exit();
         //Servidor.exit();

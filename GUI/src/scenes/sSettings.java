@@ -1,3 +1,5 @@
+package scenes;
+
 import javafx.fxml.FXML;
 
 import java.io.IOException;
@@ -6,16 +8,16 @@ public class sSettings extends sScene {
 
     @Override
     void pressed_return() throws IOException {
-        Main.setScene("fxml/menu.fxml");
+        MainInterface.setScene("fxml/menu.fxml");
     }
 
     @FXML
     void pressed_fullscreen(){
-        Main.setFullScreen(true);
+        MainInterface.setFullScreen();
     }
 
     @FXML
     void pressed_windowed(){
-        Main.setFullScreen(false);
+        MainInterface.setFullScreen();
     }
 }

@@ -1,3 +1,5 @@
+package scenes;
+
 import drawings.DrawBoard;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

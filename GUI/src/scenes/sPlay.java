@@ -1,3 +1,5 @@
+package scenes;
+
 import client.Cliente;
 import client.Commands;
 import javafx.fxml.FXML;
@@ -37,18 +39,18 @@ public class sPlay extends sScene {
     /* Events */
     @Override
     void pressed_return() throws IOException {
-        Main.setScene("fxml/menu.fxml");
+        MainInterface.setScene("fxml/menu.fxml");
     }
     public static void pressed_start() throws IOException {
-        Main.setScene("fxml/game.fxml");
+        MainInterface.setScene("fxml/game.fxml");
     }
     @FXML
     void pressed_create() throws IOException{
         Servidor.init();
         Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
-        Main.setScene("fxml/waiting.fxml");
-        Main.window.setResizable(false);
+        MainInterface.setScene("fxml/game.fxml");
+        MainInterface.setResizable();
         Commands.init().play = this;
     }
     @FXML
@@ -59,8 +61,8 @@ public class sPlay extends sScene {
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
             Cliente.setTurn(false);
-            Main.setScene("fxml/waiting.fxml");
-            Main.window.setResizable(false);
+            MainInterface.setScene("fxml/game.fxml");
+            //MainInterface.window.setResizable(false);
             Commands.send_command("start");
         }
     }

@@ -64,7 +64,8 @@ public class Commands <T>{
      */
     private void analise(String command) {
         if(command.equals("start")){
-            //play.pressed_start();
+                    //play.pressed_start();
+
         }
     }
 

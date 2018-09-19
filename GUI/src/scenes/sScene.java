@@ -1,3 +1,5 @@
+package scenes;
+
 import javafx.fxml.FXML;
 import java.io.IOException;
 

@@ -11,7 +11,7 @@ import lists.Node;
 import logic.DotsInteraction;
 
 /**
- * Class that handles all drawings in the sGame
+ * Class that handles all drawings in the scenes.sGame
  * @author José Acuña
  */
 public class DrawBoard{
