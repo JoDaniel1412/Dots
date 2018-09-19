@@ -75,13 +75,24 @@ public class DotsInteraction {
         }
     }
 
+    public static boolean  try_read(File json){
+        try {
+            DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
+            received_dots(arrayIndex);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     /**
      * Handles the dots received by the server and draws the line
-     * @param json file with the index of the nodes to link
+     * @param arrayIndex list whit the nodes coordinates
      * @throws IOException in case that the json couldn't be read
      */
-    public static void received_dots(File json) throws IOException {
-        DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
+    public static void received_dots(DoubleArray arrayIndex){
+
         var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // Remove non digits
         var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // Remove non digits
 

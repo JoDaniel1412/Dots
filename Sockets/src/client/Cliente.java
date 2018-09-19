@@ -44,7 +44,7 @@ public class Cliente extends Thread {
         File message = new File(entradaDatos.readLine());
         conexionServer.close();
         //System.out.println("Client receive: " + message);
-        DotsInteraction.received_dots(message);
+        analise(message);
     }
 
     /**
@@ -78,6 +78,12 @@ public class Cliente extends Thread {
      */
     public static void exit(){
         cliente.stop();
+    }
+
+    private static void analise(File message){
+        if (!DotsInteraction.try_read(message)){
+            Commands.try_read(message);
+        }
     }
 
     /** Getters and Setters **/
