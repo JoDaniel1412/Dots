@@ -14,7 +14,11 @@ import java.io.IOException;
  */
 public class Dots extends Circle {
 
-    private static Color dark_red = new Color(0.57f, 0.23333f, 0.22f, 1.0f);
+    static Color dark_red = new Color(0.57f, 0.23333f, 0.22f, 1.0f);
+    static Color bone_white = new Color(0.826f, 0.826f, 0.826f, 1.0f);
+    static Color orange_beige = new Color(0.823f, 0.673f, 0.453f, 1.0f);
+    static Color green_leaf = new Color(0.536f, 0.603f, 0.36f, 1.0f);
+    static Color aqua_blue = new Color(0.413f, 0.583f, 0.646f, 1.0f);
     private static Color color = dark_red;
     private static Color color_hover = Color.WHITE;
     public static double radius = 10;
