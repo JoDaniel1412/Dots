@@ -101,11 +101,13 @@ public class SideChecker {
             if (CheckRight(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isBottom_rightState()) {
                     if(CheckRightUp(node1, node2)){
-                        Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);
+                        Blocker.blockRightDiagonals(node2, node1);
                         if (node2.isLeftState() && node1.isTop_leftState()) {
+                            Blocker.blockSquareTriangleLeftDecresent(node2, node1);
                             return true;
                         }
                         if (node1.isLeftState() && node2.isBottom_leftState()) {
+                            Blocker.blockSquareTriangleLeftCresent(node2, node1);
                             return true;
                         }
                         Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);

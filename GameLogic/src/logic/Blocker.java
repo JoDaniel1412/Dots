@@ -71,6 +71,25 @@ public class Blocker {
         BlockZone(3, node1.getLeft(), node2.getLeft(), node2, node1.getRight());
     }
 
+    public static void blockSquareTriangleLeftCresent (Node node1, Node node2){
+        node2.setTop_leftState(true);
+        node1.getRight().setBottom_rightState(true);
+        BlockZone(3, node1, node1.getRight(), node2.getRight(), node2.getLeft());
+    }
 
+    public static void blockSquareTriangleLeftDecresent (Node node1, Node node2){
+        node1.setBottom_leftState(true);
+        node2.getRight().setTop_rightState(true);
+        BlockZone(3, node2, node2.getRight(), node1.getRight(), node1.getLeft());
+    }
+
+
+
+    public static void blockRightDiagonals(Node node1, Node node2){
+        node1.setBottom_rightState(true);
+        node1.getRight().setBottom_leftState(true);
+        node2.setTop_rightState(true);
+        node2.getRight().setTop_leftState(true);
+    }
 
 }
