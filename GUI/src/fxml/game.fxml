@@ -22,7 +22,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="DOTS" GridPane.columnIndex="1" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <Label fx:id="lScoreP1" styleClass="bold-label-25" text="0" />
@@ -43,6 +42,13 @@
                         <Insets right="10.0" />
                      </padding>
                   </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label text="DOTS" />
+                        <Label fx:id="lTime" styleClass="bold-label-25" />
+                     </children>
+                  </HBox>
+                  <Label text="Label" />
                </children>
             </GridPane>
          </top>

@@ -1,5 +1,6 @@
 package client;
 
+import logic.Timer;
 import org.codehaus.jackson.map.ObjectMapper;
 import scenes.sWaiting;
 import java.io.File;
@@ -56,6 +57,10 @@ public class Commands {
     private void analise(String command) throws IOException {
         if(command.equals("start")){
             sWaiting.pressed_start();
+            Timer.init();
+        }
+        if(command.equals("end")){
+            System.out.println("Finish");
         }
     }
 

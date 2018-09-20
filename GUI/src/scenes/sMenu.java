@@ -14,12 +14,12 @@ public class sMenu extends sScene {
     }
 
     @FXML
-    void pressed_play() throws IOException {
+    void pressed_play() {
         MainInterface.setScene("fxml/play.fxml");
     }
 
     @FXML
-    void pressed_settings() throws IOException {
+    void pressed_settings() {
         MainInterface.setScene("fxml/settings.fxml");
     }
 

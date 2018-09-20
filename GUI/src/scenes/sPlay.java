@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import lists.Board;
+import logic.Timer;
 import server.Servidor;
 
 import java.io.IOException;
@@ -87,17 +88,20 @@ public class sPlay extends sScene {
         bGameTime1.getStyleClass().add("button-toggle");
         bGameTime2.getStyleClass().remove("button-toggle");
         bGameTime3.getStyleClass().remove("button-toggle");
+        Timer.setTime_limit(2);
     }
     @FXML
     private void pressed_bGameTime2(){
         bGameTime1.getStyleClass().remove("button-toggle");
         bGameTime2.getStyleClass().add("button-toggle");
         bGameTime3.getStyleClass().remove("button-toggle");
+        Timer.setTime_limit(4);
     }
     @FXML
     private void pressed_bGameTime3(){
         bGameTime1.getStyleClass().remove("button-toggle");
         bGameTime2.getStyleClass().remove("button-toggle");
         bGameTime3.getStyleClass().add("button-toggle");
+        Timer.setTime_limit(6);
     }
 }
