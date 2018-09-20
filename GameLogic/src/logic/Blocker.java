@@ -26,4 +26,18 @@ public class Blocker {
         node2.setBottom_leftState(true);
         node2.getBottom().setTop_leftState(true);
     }
+
+    public static void blockUpLeftDiagonals(Node node1, Node node2){
+        node1.setTop_leftState(true);
+        node1.getTop().setBottom_leftState(true);
+        node2.setTop_rightState(true);
+        node2.getTop().setBottom_rightState(true);
+    }
+
+    public static void blockDownLeftDiagonals(Node node1, Node node2){
+        node1.setBottom_leftState(true);
+        node1.getBottom().setTop_leftState(true);
+        node2.setBottom_rightState(true);
+        node2.getBottom().setTop_rightState(true);
+    }
 }
