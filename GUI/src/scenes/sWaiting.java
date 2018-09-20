@@ -1,5 +1,6 @@
 package scenes;
 
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import server.Servidor;
@@ -12,6 +13,17 @@ public class sWaiting {
     public Label portLabel1;
     @FXML
     public Label portLabel2;
+
+    public static void pressed_start() {
+        AnimationTimer starter = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                MainInterface.setScene("fxml/game.fxml");
+                stop();
+            }
+        };
+        starter.start();
+    }
 
     @FXML
     public void init(){

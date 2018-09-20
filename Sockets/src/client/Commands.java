@@ -1,11 +1,11 @@
 package client;
 
 import org.codehaus.jackson.map.ObjectMapper;
-
+import scenes.sWaiting;
 import java.io.File;
 import java.io.IOException;
 
-public class Commands <T>{
+public class Commands {
 
     /**
      * start
@@ -13,21 +13,12 @@ public class Commands <T>{
      * surrender
      */
     private String command;
-    public T play;
-    private static Commands instance;
     private static ObjectMapper mapper = new ObjectMapper();
 
-    private Commands(){}
+    public Commands(){}
 
     private Commands(String command){
         this.command = command;
-    }
-
-    public static Commands init(){
-        if (instance == null){
-            instance = new Commands();
-        }
-        return instance;
     }
 
     /**
@@ -41,7 +32,7 @@ public class Commands <T>{
             obj.analise(obj.command);
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return false;
         }
     }
@@ -62,10 +53,9 @@ public class Commands <T>{
      * Tells the Game what to do with the message given
      * @param command a specific string
      */
-    private void analise(String command) {
+    private void analise(String command) throws IOException {
         if(command.equals("start")){
-                    //play.pressed_start();
-
+            sWaiting.pressed_start();
         }
     }
 

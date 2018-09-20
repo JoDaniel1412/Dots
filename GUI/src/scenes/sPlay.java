@@ -41,17 +41,13 @@ public class sPlay extends sScene {
     void pressed_return() throws IOException {
         MainInterface.setScene("fxml/menu.fxml");
     }
-    public static void pressed_start() throws IOException {
-        MainInterface.setScene("fxml/game.fxml");
-    }
     @FXML
     void pressed_create() throws IOException{
         Servidor.init();
         Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
-        MainInterface.setScene("fxml/game.fxml");
+        MainInterface.setScene("fxml/waiting.fxml");
         MainInterface.setResizable();
-        Commands.init().play = this;
     }
     @FXML
     void pressed_search() throws IOException, InterruptedException {
@@ -61,8 +57,7 @@ public class sPlay extends sScene {
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
             Cliente.setTurn(false);
-            MainInterface.setScene("fxml/game.fxml");
-            //MainInterface.window.setResizable(false);
+            MainInterface.setScene("fxml/waiting.fxml");
             Commands.send_command("start");
         }
     }

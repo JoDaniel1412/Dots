@@ -89,7 +89,6 @@ public class DotsInteraction {
     /**
      * Handles the dots received by the server and draws the line
      * @param arrayIndex list whit the nodes coordinates
-     * @throws IOException in case that the json couldn't be read
      */
     public static void received_dots(DoubleArray arrayIndex){
 
