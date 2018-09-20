@@ -99,8 +99,7 @@ public class verticalChecker {
         if (node1.getRight() == node2) {
             if (checkUp(node1, node2) && checkDown(node1, node2)) {
                 if (checkUpRight(node1, node2) && checkDownRight(node1, node2) && noRightDiagonals(node1, node2)) {
-                    Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
-                    Blocker.BlockZone(2, node1, node1.getBottom(), node2.getBottom(), node2);
+                    Blocker.BlockZone(4, node2.getTop(), node1.getTop(), node1.getBottom(), node2.getBottom());
                     return true;
                 }
             }
@@ -109,13 +108,16 @@ public class verticalChecker {
             if (checkUp(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isTop_leftState()) {
                     if (checkUpRight(node1, node2)) {
-                        Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
+                        Blocker.BlockUpRightDiagonals(node1, node2);
                         if (node2.isBottomState() && node1.isBottom_rightState()) {
+                            Blocker.BlockZone(3, node1.getTop(), node2.getTop(), node2.getBottom(), node1);
                             return true;
                         }
                         if (node1.isBottomState() && node1.getBottom().isTop_rightState()) {
+                            Blocker.BlockZone(3, node1.getTop(), node2.getTop(), node2, node1.getBottom());
                             return true;
                         }
+                        Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
                         return true;
                     }
                 }
@@ -123,13 +125,16 @@ public class verticalChecker {
             if (checkDown(node1, node2)) {
                 if (!node1.isBottom_rightState() && !node2.isBottom_leftState()) {
                     if (checkDownRight(node1, node2)) {
-                        Blocker.BlockZone(2, node1, node1.getBottom(), node2.getBottom(), node2);
+                        Blocker.blockDownRightDiagonals(node1, node2);
                         if (node2.isTopState() && node1.isTop_rightState()) {
+                            Blocker.BlockZone(1, node2, node2.getTop(), node1);
                             return true;
                         }
                         if (node1.isTopState() && node2.isTop_leftState()) {
+                            Blocker.BlockZone(1, node1, node1.getTop(), node2);
                             return true;
                         }
+                        Blocker.BlockZone(2, node1, node1.getBottom(), node2.getBottom(), node2);
                         return true;
                     }
                 }
@@ -155,11 +160,10 @@ public class verticalChecker {
                     if (checkUpLeft(node1, node2)) {
                         Blocker.BlockZone(2, node2, node2.getTop(), node1.getTop(), node1);
                         if (node2.isBottomState() && node1.isBottom_leftState()) {
-                            Blocker.BlockZone(1, node1, node2,node2.getBottom());
+                            Blocker.BlockZone(1, node1, node2,node2.getTop());
                             return true;
                         }
                         if (node1.isBottomState() && node2.isBottom_rightState()) {
-                            Blocker.BlockZone(1, node2, node1,node1.getTop());
                             return true;
                         }
                         return true;
