@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
 import lists.Board;
 import lists.Node;
 import logic.DotsInteraction;
@@ -40,6 +41,7 @@ public class DrawBoard{
         AnimationTimer drawer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                draw.check_figures();
                 draw.check_lines();
                 draw.set_scores();
                 draw.check_turns();
@@ -58,6 +60,17 @@ public class DrawBoard{
             draw_line(Lines.line);
             draw.draw_board();
             Lines.line = null;
+        }
+    }
+
+    /**
+     * Class that draw a line between two Dots
+     */
+    public void check_figures(){
+        if(Figures.figure != null) {
+            draw_figure(Figures.figure);
+            draw.draw_board();
+            Figures.figure = null;
         }
     }
 
@@ -121,6 +134,15 @@ public class DrawBoard{
     private void draw_line(Line line){
         paneBoard.getChildren().addAll(line);
     }
+
+    /**
+     * Draws a figure in the Anchor Pane
+     * @param polygon a class Line shape
+     */
+    private void draw_figure(Polygon polygon){
+        paneBoard.getChildren().addAll(polygon);
+    }
+
 
 
     /** Getters **/
