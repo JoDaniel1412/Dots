@@ -85,14 +85,17 @@ public class DotsInteraction {
         } catch (IOException e) {
             //e.printStackTrace();
             return false;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        return false;
     }
 
     /**
      * Handles the dots received by the server and draws the line
      * @param arrayIndex list whit the nodes coordinates
      */
-    public static void received_dots(DoubleArray arrayIndex){
+    public static void received_dots(DoubleArray arrayIndex) throws InterruptedException {
 
         var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // Remove non digits
         var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // Remove non digits
