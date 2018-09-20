@@ -2,7 +2,6 @@ package drawings;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
-import lists.DoubleArray;
 import lists.Node;
 import logic.DotsInteraction;
 
@@ -13,7 +12,7 @@ import logic.DotsInteraction;
  */
 public class Figures extends Polygon {
 
-    public static DoubleArray<Polygon> figure; // This will be draw in the Board
+    public static Polygon[] figure; // This will be draw in the Board
     public static Color color1 = DrawBoard.p2Color;
     public static Color color2 = DrawBoard.p1Color;
     public static Color color = color1;
@@ -40,7 +39,7 @@ public class Figures extends Polygon {
                 dot3.xPoss, dot3.yPoss,
                 dot4.xPoss, dot4.yPoss);
 
-        Figures.figure.add(polygon);
+        Figures.figure[0] = polygon;
         DotsInteraction.point_made(2);
     }
     public static synchronized void draw_figure(Node node1, Node node2, Node node3) {
@@ -56,7 +55,7 @@ public class Figures extends Polygon {
                 dot2.xPoss, dot2.yPoss,
                 dot3.xPoss, dot3.yPoss);
 
-        Figures.figure.add(polygon);
+        Figures.figure[1] = polygon;
         DotsInteraction.point_made(1);
     }
 
