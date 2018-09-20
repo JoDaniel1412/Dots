@@ -67,15 +67,10 @@ public class DrawBoard{
      * Class that draw a line between two Dots
      */
     public void check_figures(){
-        if(Figures.figure[0] != null) {
-            draw_figure(Figures.figure[0]);
-            Polygon secondFigure = Figures.figure[1];
-            if(secondFigure != null) {
-                draw_figure(secondFigure);
-            }
-            Figures.figure[0] = null;
-            Figures.figure[1] = null;
+        if(Figures.figure != null) {
+            draw_figure(Figures.figure);
             draw.draw_board();
+            Figures.figure = null;
         }
     }
 
