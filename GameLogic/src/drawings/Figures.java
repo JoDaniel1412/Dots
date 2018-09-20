@@ -21,7 +21,7 @@ public class Figures extends Polygon {
      * @param node1 first pair of coordinates
      * @param node2 second pair of coordinates
      * @param node3 third pair of coordinates
-     * @param node4 fourt pair of coordinates
+     * @param node4 fort pair of coordinates
      */
     public static synchronized void draw_figure(Node node1, Node node2, Node node3, Node node4){
         Dots dot1 = node1.getDot();
