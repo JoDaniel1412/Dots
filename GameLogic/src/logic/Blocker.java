@@ -40,4 +40,28 @@ public class Blocker {
         node2.setBottom_rightState(true);
         node2.getBottom().setTop_rightState(true);
     }
+
+    public static void blockSquareTriangleUpCrescent(Node node1, Node node2){
+        node1.setTop_leftState(true);
+        node2.getTop().setBottom_rightState(true);
+        Blocker.BlockZone(3, node1.getTop(), node1.getBottom(), node2.getBottom(), node2);
+    }
+
+    public static void blockSquareTriangleUpDecrescent(Node node1, Node node2){
+        node1.getTop().setTop_leftState(true);
+        node2.setTop_rightState(true);
+        BlockZone(3, node1, node1.getBottom(), node2.getBottom(), node2.getTop());
+    }
+
+    public static void blockSquareTriangleDownCresent(Node node1, Node node2){
+        node1.getBottom().setTop_leftState(true);
+        node2.setBottom_rightState(true);
+        BlockZone(3, node1, node1.getTop(), node2.getTop(), node2.getBottom());
+    }
+
+    public static void blockSquareTriangleDownDecresent(Node node1, Node node2){
+        node1.setBottom_leftState(true);
+        node2.getBottom().setTop_rightState(true);
+        BlockZone(3, node1.getTop(), node1.getBottom(), node2, node2.getTop());
+    }
 }
