@@ -12,7 +12,7 @@ import logic.DotsInteraction;
  */
 public class Figures extends Polygon {
 
-    public static Polygon[] figure; // This will be draw in the Board
+    public static Polygon[] figure = new Polygon[2]; // This will be draw in the Board
     public static Color color1 = DrawBoard.p2Color;
     public static Color color2 = DrawBoard.p1Color;
     public static Color color = color1;
