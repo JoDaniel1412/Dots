@@ -146,13 +146,18 @@ public class SideChecker {
             if (CheckRight(node1, node2)){
                 if (!node1.isBottom_rightState() && !node2.isTop_rightState()) {
                     if(CheckRightDown(node1, node2)){
+                        Blocker.blockRightDiagonals(node1, node2);
+                        System.out.println(node2.isLeftState());
+                        System.out.println(node1.isTop_leftState());
+                        if (node2.isLeftState() && node1.isBottom_leftState()) {
+                            Blocker.blockSquareTriangleLeftCresent(node1, node2);
+                            return true;
+                        }
+                        if (node1.isLeftState() && node2.isTop_leftState()) {
+                            Blocker.blockSquareTriangleLeftDecresent(node1, node2);
+                            return true;
+                        }
                         Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);
-                        if (node2.isLeftState() && node1.isTop_leftState()) {
-                            return true;
-                        }
-                        if (node1.isLeftState() && node2.isBottom_leftState()) {
-                            return true;
-                        }
                         return true;
                     }
                 }
@@ -163,6 +168,7 @@ public class SideChecker {
                     if(CheckLeftDown(node1, node2)){
                         Blocker.BlockZone(2, node2, node2.getLeft(), node1.getLeft(), node1);
                         if (node2.isRightState() && node1.isTop_rightState()) {
+
                             return true;
                         }
                         if (node1.isRightState() && node2.isBottom_rightState()) {
