@@ -3,6 +3,7 @@ package drawings;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import lists.Node;
+import logic.DotsInteraction;
 
 /**
  * Wrapper class for drawing figures
@@ -39,6 +40,7 @@ public class Figures extends Polygon {
                 dot4.xPoss, dot4.yPoss);
 
         Figures.figure = polygon;
+        DotsInteraction.point_made(2);
     }
     public static synchronized void draw_figure(Node node1, Node node2, Node node3) {
         Dots dot1 = node1.getDot();
@@ -54,6 +56,7 @@ public class Figures extends Polygon {
                 dot3.xPoss, dot3.yPoss);
 
         Figures.figure = polygon;
+        DotsInteraction.point_made(1);
     }
 
 
