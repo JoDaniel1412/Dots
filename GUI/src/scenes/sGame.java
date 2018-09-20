@@ -14,19 +14,21 @@ public class sGame{
     @FXML
     private Label lP2;
     @FXML
-    private Label lScoreP1;
+    public Label lScoreP1;
     @FXML
-    private Label lScoreP2;
+    public Label lScoreP2;
     @FXML
-    private Label lP1Turn;
+    public Label lP1Turn;
     @FXML
-    private Label lP2Turn;
+    public Label lP2Turn;
+    @FXML
+    public Label lClock;
 
     @FXML
     public void draw_board(){
         //lP1.setTextFill(DrawBoard.p1Color);
         //lP2.setTextFill(DrawBoard.p2Color);
-        DrawBoard.init(paneBoard, lScoreP1, lScoreP2, lP1Turn, lP2Turn);
+        DrawBoard.init(this);
     }
 
     /** Getters and Setters **/
@@ -44,5 +46,13 @@ public class sGame{
 
     public void setlScorep2(Label lScoreP2) {
         this.lScoreP2 = lScoreP2;
+    }
+
+    public Label getlClock() {
+        return lClock;
+    }
+
+    public void setlClock(Label lClock) {
+        this.lClock = lClock;
     }
 }

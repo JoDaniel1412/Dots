@@ -27,7 +27,7 @@ public class Timer extends Thread{
      * Gets the deference between the time when the thread started to this moment
      * @return an integer of the time
      */
-    private static int getTimeLapse(){
+    public static int getTimeLapse(){
         return getCurrentTime() - time;
     }
 
@@ -46,8 +46,9 @@ public class Timer extends Thread{
         while (true) {
             try {
                 sleep(1000);
-                if (getTimeLapse() > time_limit){
+                if (getTimeLapse() >= time_limit){
                     Commands.send_command("end");
+                    timer.stop();
                 }
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();

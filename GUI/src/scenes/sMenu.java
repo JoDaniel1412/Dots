@@ -2,6 +2,7 @@ package scenes;
 
 import client.Cliente;
 import javafx.fxml.FXML;
+import logic.Timer;
 import server.Servidor;
 
 import java.io.IOException;
@@ -30,5 +31,6 @@ public class sMenu extends sScene {
         Cliente.setTurn(true);
         MainInterface.setScene("fxml/game.fxml");
         MainInterface.setResizable();
+        Timer.init();
     }
 }

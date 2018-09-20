@@ -9,6 +9,8 @@ import javafx.scene.shape.Line;
 import lists.Board;
 import lists.Node;
 import logic.DotsInteraction;
+import logic.Timer;
+import scenes.sGame;
 
 /**
  * Class that handles all drawings in the scenes.sGame
@@ -24,21 +26,24 @@ public class DrawBoard{
     private Label p2Score;
     private Label p1Turn;
     private Label p2Turn;
+    private Label clock;
 
 
-    public static void init(AnchorPane pane, Label p1Score, Label p2Score, Label p1Turn, Label p2Turn){
+    public static void init(sGame scene){
         draw = new DrawBoard();
-        draw.paneBoard = pane;
-        draw.p1Score = p1Score;
-        draw.p2Score = p2Score;
-        draw.p1Turn = p1Turn;
-        draw.p2Turn = p2Turn;
+        draw.paneBoard = scene.paneBoard;
+        draw.p1Score = scene.lScoreP1;
+        draw.p2Score = scene.lScoreP2;
+        draw.p1Turn = scene.lP1Turn;
+        draw.p2Turn = scene.lP2Turn;
+        draw.clock = scene.lClock;
         AnimationTimer drawer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 draw.check_lines();
                 draw.set_scores();
                 draw.check_turns();
+                draw.check_time();
             }
         };
         draw.draw_board();
@@ -73,6 +78,11 @@ public class DrawBoard{
             p1Turn.setTextFill(Dots.bone_white);
             p2Turn.setTextFill(p2Color);
         }
+    }
+
+    private void check_time(){
+        int time = Timer.getTime_limit() - Timer.getTimeLapse();
+        clock.setText(String.valueOf(time));
     }
 
     /**

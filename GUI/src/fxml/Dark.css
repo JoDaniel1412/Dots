@@ -40,6 +40,10 @@
     -fx-font-weight: bold;
     -fx-font-size: 25;
 }
+.bold-label-little{
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+}
 
 /* Tab */
 .tab{
