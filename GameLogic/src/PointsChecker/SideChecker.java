@@ -108,6 +108,7 @@ public class SideChecker {
                         if (node1.isLeftState() && node2.isBottom_leftState()) {
                             return true;
                         }
+                        Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);
                         return true;
                     }
                 }

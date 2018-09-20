@@ -99,7 +99,7 @@ public class verticalChecker {
         if (node1.getRight() == node2) {
             if (checkUp(node1, node2) && checkDown(node1, node2)) {
                 if (checkUpRight(node1, node2) && checkDownRight(node1, node2) && noRightDiagonals(node1, node2)) {
-                    Blocker.BlockUpRightDiagonals(node1, node2);
+                    Blocker.BlockUpDiagonals(node1, node2);
                     Blocker.blockDownRightDiagonals(node1, node2);
                     Blocker.BlockZone(4, node2.getTop(), node1.getTop(), node1.getBottom(), node2.getBottom());
                     return true;
@@ -110,7 +110,7 @@ public class verticalChecker {
             if (checkUp(node1, node2)) {
                 if (!node1.isTop_rightState() && !node2.isTop_leftState()) {
                     if (checkUpRight(node1, node2)) {
-                        Blocker.BlockUpRightDiagonals(node1, node2);
+                        Blocker.BlockUpDiagonals(node1, node2);
                         if (node2.isBottomState() && node1.isBottom_rightState() && !node2.isBottom_leftState()) {
                             Blocker.blockSquareTriangleDownDecresent(node2, node1);
                             return true;
@@ -153,7 +153,7 @@ public class verticalChecker {
 
             if (checkUp(node1, node2) && checkDown(node1, node2)) {
                 if (checkUpLeft(node1, node2) && checkDownLeft(node1, node2) && noLeftDiagonals(node1, node2)) {
-                    Blocker.blockUpLeftDiagonals(node1, node2);
+                    Blocker.BlockUpDiagonals(node2, node1);
                     Blocker.blockDownLeftDiagonals(node1, node2);
                     Blocker.BlockZone(4, node1.getTop(), node2.getTop(), node2.getBottom(), node1.getBottom());
                     return true;
@@ -164,7 +164,7 @@ public class verticalChecker {
             if (checkUp(node1, node2)) {
                 if (!node1.isTop_leftState() && !node2.isTop_rightState()) {
                     if (checkUpLeft(node1, node2)) {
-                        Blocker.blockUpLeftDiagonals(node1, node2);
+                        Blocker.blockUpLeftDiagonals(node2, node1);
                         if (node2.isBottomState() && node1.isBottom_leftState() && !node2.isBottom_rightState()) {
                             Blocker.blockSquareTriangleDownCresent(node1, node2);
                             return true;

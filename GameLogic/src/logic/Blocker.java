@@ -13,7 +13,7 @@ public class Blocker {
         Figures.draw_figure(node1, node2, node3, node4);
     }
 
-    public static void BlockUpRightDiagonals(Node node1, Node node2){
+    public static void BlockUpDiagonals(Node node1, Node node2){
         node1.setTop_rightState(true);
         node1.getTop().setBottom_rightState(true);
         node2.setTop_leftState(true);
@@ -64,4 +64,13 @@ public class Blocker {
         node2.getBottom().setTop_rightState(true);
         BlockZone(3, node1.getTop(), node1.getBottom(), node2, node2.getTop());
     }
+
+    public static void blockSquareTriangleRightCresent(Node node1, Node node2){
+        node1.setBottom_rightState(true);
+        node2.getRight().setTop_leftState(true);
+        BlockZone(3, node1.getLeft(), node2.getLeft(), node2, node1.getRight());
+    }
+
+
+
 }
