@@ -1,4 +1,4 @@
-package drawings;
+package logic;
 
 import lists.Node;
 
