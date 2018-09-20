@@ -68,9 +68,13 @@ public class DrawBoard{
      */
     public void check_figures(){
         if(Figures.figure != null) {
-            draw_figure(Figures.figure);
+            draw_figure(Figures.figure.getFirst());
+            Polygon secondFigure = Figures.figure.getSecond();
+            if(secondFigure != null) {
+                draw_figure(secondFigure);
+            }
+            Figures.figure.clear();
             draw.draw_board();
-            Figures.figure = null;
         }
     }
 
