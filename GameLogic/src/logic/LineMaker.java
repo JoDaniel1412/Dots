@@ -2,8 +2,16 @@ package logic;
 
 import lists.Node;
 
+/**
+ * @author Fabián Ramírez
+ */
 public class LineMaker {
-
+    /**
+     *Verifica si los dos puntos que selecciona el usuario se pueden unir y realiza la conexión
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return
+     */
     public static boolean Verifier(Node node1, Node node2){
         if (node1.getTop() == node2 && !node1.isTopState()){
             node1.setTopState(true);

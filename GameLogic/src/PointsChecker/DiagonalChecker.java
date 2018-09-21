@@ -2,6 +2,9 @@ package PointsChecker;
 
 import lists.Node;
 
+/**
+ * @author Fabián Ramírez
+ */
 public class DiagonalChecker {
     /**
      *Método princial en caso de que se realice una diagonal hacia arriba

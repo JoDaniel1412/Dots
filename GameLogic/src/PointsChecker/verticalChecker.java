@@ -4,6 +4,9 @@ import lists.Node;
 
 import logic.Blocker;
 
+/**
+ * @author Fabián Ramírez
+ */
 public class verticalChecker {
 
     /**
@@ -27,27 +30,52 @@ public class verticalChecker {
     }
 
     /**
-     *
-     * @param node1
-     * @param node2
-     * @return
+     *  Una vez chequeadas las superiores, revisa la linea superior derecha
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
      */
     private static boolean checkUpRight(Node node1, Node node2) {
         return node1.getTop().isRightState() && node2.getTop().isLeftState();
     }
 
+    /**
+     * Una vez chequeadas las superiores, revisa la linea superior izquierda
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkUpLeft(Node node1, Node node2) {
         return node1.getTop().isLeftState() && node2.getTop().isRightState();
     }
 
+    /**
+     * Una vez chequeadas las inferiores, revisa la linea inferior derecha
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkDownRight(Node node1, Node node2) {
         return node1.getBottom().isRightState() && node2.getBottom().isLeftState();
     }
 
+
+    /**
+     * Una vez chequeadas las inferiores, revisa la linea inferior izquierda
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkDownLeft(Node node1, Node node2) {
         return node1.getBottom().isLeftState() && node2.getBottom().isRightState();
     }
 
+    /**
+     * Revisa posibles triangulos por derecha
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkRightDiagonal(Node node1, Node node2) {
         boolean result = false;
         if (node2.isTopState() && node2.isBottomState()) {
@@ -77,6 +105,12 @@ public class verticalChecker {
         return result;
     }
 
+    /**
+     * Revisa posibles triangulos por izquierda
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkLeftDiagonal(Node node1, Node node2) {
         boolean result = false;
         if (node2.isTopState() && node2.isBottomState()) {
@@ -106,13 +140,32 @@ public class verticalChecker {
         return result;
     }
 
+    /**
+     * Verifica que no hayan diagonales dentro de un posible triangulo por derecha
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean noRightDiagonals(Node node1, Node node2) {
         return (!node1.isTop_rightState() && !node2.isTop_leftState() && !node1.isBottom_rightState() && !node2.isBottom_leftState());
     }
+
+    /**
+     * Verifica que no hayan diagonales dentro de un posible triangulo por izquierda
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean noLeftDiagonals(Node node1, Node node2) {
         return (!node1.isTop_leftState() && !node2.isTop_rightState() && !node1.isBottom_leftState() && !node2.isBottom_rightState());
     }
 
+    /**
+     * Método principal que verifiar cualquier caso en caso de que se realice una linea horizontal
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     public static boolean checkverticals(Node node1, Node node2) {
         if (node1.getRight() == node2) {
             if (checkUp(node1, node2) && checkDown(node1, node2)) {

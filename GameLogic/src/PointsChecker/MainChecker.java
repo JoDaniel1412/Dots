@@ -2,6 +2,9 @@ package PointsChecker;
 
 import lists.Node;
 
+/**
+ * @author Fabián Ramírez
+ */
 public class MainChecker {
     /**
      * Recibe los dos nodos que el usuario seleccionó, y analizando los diferentes casos para verificar si se ha hecho un punto

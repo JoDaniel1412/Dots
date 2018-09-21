@@ -4,6 +4,9 @@ package PointsChecker;
 import lists.Node;
 import logic.Blocker;
 
+/**
+ * @author Fabián Ramírez
+ */
 public class SideChecker {
     /**
      * Revisa si las lineas por derecha están hechas
