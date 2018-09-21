@@ -1,30 +1,77 @@
+
 package PointsChecker;
 
 import lists.Node;
 import logic.Blocker;
 
 public class SideChecker {
-
+    /**
+     * Revisa si las lineas por derecha están hechas
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean value
+     */
     private static boolean CheckRight(Node node1, Node node2) {
         return node1.isRightState() && node2.isRightState();
     }
+
+    /**
+     * Revisa si las lineas por izquierda están hechas
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean CheckLeft(Node node1, Node node2) {
         return node1.isLeftState() && node2.isLeftState();
     }
 
+    /**
+     * Revisa si la linea vertical hacia arriba a la derecha está hecha para cerrar el cuadrado
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean CheckRightUp(Node node1, Node node2){
         return node1.getRight().isTopState() && node2.getRight().isBottomState();
     }
+
+    /**
+     * Revisa si la linea vertical hacia abajo a la derecha está hecha para cerrar el cuadrado
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean CheckRightDown(Node node1, Node node2){
         return node1.getRight().isBottomState() && node2.getRight().isTopState();
     }
+
+    /**
+     * Revisa si la linea vertical hacia arriba a la izquierda está hecha para cerrar el cuadrado
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
+
     private static boolean CheckLeftUp(Node node1, Node node2){
         return node1.getLeft().isTopState() && node2.getLeft().isBottomState();
     }
+
+    /**
+     * Revisa si la linea vertical hacia abajo a la izquierda está hecha para cerrar el cuadrado
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean CheckLeftDown(Node node1, Node node2){
         return node1.getLeft().isBottomState() && node2.getLeft().isTopState();
     }
 
+    /**
+     * Revisa las diagonales superiores luego de una linea horizontal
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkUpDiagonal(Node node1, Node node2) {
         boolean result = false;
         if (node2.isRightState() && node2.isLeftState()) {
@@ -54,6 +101,12 @@ public class SideChecker {
         return result;
     }
 
+    /**
+     * Revisa las diagonales inferiores luego de una linea horizontal
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkDownDiagonal(Node node1, Node node2) {
         boolean result = false;
         if (node2.isRightState() && node2.isLeftState()) {
@@ -83,13 +136,32 @@ public class SideChecker {
         return result;
     }
 
+    /**
+     * Revisa si hay diagonales superiores dentro de un posible cuadrado
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean noDiagonalsUp (Node node1, Node node2){
         return (!node1.isTop_rightState() && !node1.isTop_leftState() && !node2.isBottom_leftState() && !node2.isBottom_rightState());
     }
+
+    /**
+     * Revisa si hay diagonales inferiores dentro de un posible cuadrado
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean noDiagonalsDown (Node node1, Node node2){
         return (!node1.isBottom_rightState() && !node1.isBottom_leftState() && !node2.isTop_leftState() && !node2.isTop_rightState());
     }
 
+    /**
+     * Método principal que revisa todos los casos luego de una linea vertical
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     public static boolean CheckSides(Node node1, Node node2) {
         if (node1.getTop() == node2) {
             if (CheckRight(node1, node2) && CheckLeft(node1, node2)){

@@ -6,14 +6,32 @@ import logic.Blocker;
 
 public class verticalChecker {
 
+    /**
+     * Revisa las lineas superiores de cada nodo estén activas
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkUp(Node node1, Node node2) {
         return node1.isTopState() && node2.isTopState();
     }
 
+    /**
+     * Revisa las lineas inferiores de cada nodo que estén activas
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
     private static boolean checkDown(Node node1, Node node2) {
         return node1.isBottomState() && node2.isBottomState();
     }
 
+    /**
+     *
+     * @param node1
+     * @param node2
+     * @return
+     */
     private static boolean checkUpRight(Node node1, Node node2) {
         return node1.getTop().isRightState() && node2.getTop().isLeftState();
     }
