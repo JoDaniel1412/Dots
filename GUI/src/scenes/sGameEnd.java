@@ -2,6 +2,7 @@ package scenes;
 
 import client.Commands;
 import drawings.Dots;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -9,6 +10,8 @@ import java.io.IOException;
 
 public class sGameEnd extends sScene {
 
+    public static int p1Score = 0;
+    public static int p2Score = 0;
     @FXML
     private Label lMessageDisplay;
 
@@ -25,7 +28,20 @@ public class sGameEnd extends sScene {
 
     }
 
-    public void game_end(int p1Score, int p2Score){
+    public static void game_end(){
+        AnimationTimer scene = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                MainInterface.setScene("fxml/game_end.fxml");
+
+                stop();
+            }
+        };
+        scene.start();
+    }
+
+    @FXML
+    void setlMessageDisplay(){
         if(p1Score > p2Score){
             lMessageDisplay.setText("You Win!");
             lMessageDisplay.setTextFill(Dots.green_leaf);
@@ -36,7 +52,6 @@ public class sGameEnd extends sScene {
         }
         else {
             lMessageDisplay.setText("Draw");
-            lMessageDisplay.setTextFill(Dots.bone_white);
         }
     }
 }

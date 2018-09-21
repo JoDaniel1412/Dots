@@ -1,8 +1,11 @@
 package client;
 
+import logic.DotsInteraction;
 import logic.Timer;
 import org.codehaus.jackson.map.ObjectMapper;
+import scenes.sGameEnd;
 import scenes.sWaiting;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -60,7 +63,9 @@ public class Commands {
             Timer.init();
         }
         if(command.equals("end")){
-            System.out.println("Finish");
+            sGameEnd.p1Score = DotsInteraction.getP1Score();
+            sGameEnd.p2Score = DotsInteraction.getP2Score();
+            sGameEnd.game_end();
         }
     }
 
