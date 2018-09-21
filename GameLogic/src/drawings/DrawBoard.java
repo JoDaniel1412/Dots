@@ -41,8 +41,8 @@ public class DrawBoard{
         AnimationTimer drawer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                draw.check_figures();
                 draw.check_lines();
+                draw.check_figures();
                 draw.set_scores();
                 draw.check_turns();
                 draw.check_time();

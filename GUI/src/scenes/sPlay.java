@@ -39,7 +39,7 @@ public class sPlay extends sScene {
 
     /* Events */
     @Override
-    void pressed_return() throws IOException {
+    void pressed_return() {
         MainInterface.setScene("fxml/menu.fxml");
     }
     @FXML

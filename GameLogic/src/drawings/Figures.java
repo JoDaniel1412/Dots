@@ -13,8 +13,8 @@ import logic.DotsInteraction;
 public class Figures extends Polygon {
 
     public static Polygon figure; // This will be draw in the Board
-    public static Color color1 = DrawBoard.p2Color;
-    public static Color color2 = DrawBoard.p1Color;
+    public static Color color1 = DrawBoard.p2Color.deriveColor(0.8, 0.8, 0.8, 1);
+    public static Color color2 = DrawBoard.p1Color.deriveColor(0.8, 0.8, 0.8, 1);
     public static Color color = color1;
 
     /**
