@@ -48,6 +48,7 @@ public class sGameEnd extends sScene {
         scene.start();
     }
 
+    @FXML
     void setlMessageDisplay(){
         if(p1Score > p2Score){
             lMessageDisplay.setText("You Win!");
