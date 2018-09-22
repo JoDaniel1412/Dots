@@ -25,15 +25,15 @@ public class Node<T>{
      * Estado de los punteros
      */
     //Pointers State
-    private boolean nextState;
-    private boolean rightState;
-    private boolean leftState;
-    private boolean topState;
-    private boolean bottomState;
-    private boolean top_rightState;
-    private boolean top_leftState;
-    private boolean bottom_rightState;
-    private boolean bottom_leftState;
+    private boolean nextState = false;
+    private boolean rightState = false;
+    private boolean leftState = false;
+    private boolean topState = false;
+    private boolean bottomState = false;
+    private boolean top_rightState = false;
+    private boolean top_leftState = false;
+    private boolean bottom_rightState = false;
+    private boolean bottom_leftState = false;
 
     /**
      * Quien realizó la linea
@@ -59,15 +59,6 @@ public class Node<T>{
 
     // @Overload
     public Node(){
-        this.nextState = false;
-        this.rightState = false;
-        this.leftState = false;
-        this.topState = false;
-        this.bottomState = false;
-        this.top_rightState = false;
-        this.top_leftState = false;
-        this.bottom_rightState = false;
-        this.bottom_leftState = false;
     }
 
 
