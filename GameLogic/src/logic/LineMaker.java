@@ -47,11 +47,11 @@ public class LineMaker {
         node2.setLineTopRight(true);
     }
 
-    private static void makeBottonRight (Node node1, Node node2){
+    private static void makeBottomRight(Node node1, Node node2){
         node1.setBottom_rightState(true);
         node2.setTop_leftState(true);
-        node1.setLineBottomLeft(true);
-        node2.setLineTopRight(true);
+        node1.setLineBottomRight(true);
+        node2.setLineTopLeft(true);
     }
     /**
      *Verifica si los dos puntos que selecciona el usuario se pueden unir y realiza la conexión
@@ -80,16 +80,16 @@ public class LineMaker {
             makeTopLeft(node1, node2);
             return true;
         }
-        if (node1.getTop_right() == node2 && !node1.isTop_rightState() && !node2.getBottom().isTop_leftState()){
+        if (node1.getTop_right() == node2 && !node1.isTop_rightState()){
             makeTopRight(node1, node2);
             return true;
         }
-        if (node1.getBottom_left() == node2 && !node1.isBottom_leftState() && !node1.getLeft().isBottom_rightState()){
+        if (node1.getBottom_left() == node2 && !node1.isBottom_leftState()){
             makeBottomLeft(node1, node2);
             return true;
         }
-        if (node1.getBottom_right() == node2 && !node1.isBottom_rightState() && node1.getRight().isBottom_leftState()){
-            makeBottonRight(node1, node2);
+        if (node1.getBottom_right() == node2 && !node1.isBottom_rightState()){
+            makeBottomRight(node1, node2);
             return true;
         }
         return false;
