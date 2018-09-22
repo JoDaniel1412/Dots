@@ -2,9 +2,17 @@ package PointsChecker;
 
 import lists.Node;
 
+/**
+ * @author Fabián Ramírez
+ */
 public class MainChecker {
-
-    public static boolean DotsReceiver(Node node1, Node node2) throws InterruptedException {
+    /**
+     * Recibe los dos nodos que el usuario seleccionó, y analizando los diferentes casos para verificar si se ha hecho un punto
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @return boolean
+     */
+    public static boolean DotsReceiver(Node node1, Node node2){
         if ((node1.getRight() == node2) || (node1.getLeft() == node2)){
             return verticalChecker.checkverticals(node1, node2);
         }

@@ -1,6 +1,9 @@
 package lists;
 
-
+/**
+ * Lista simple con comportamiento de cola
+ * @param <T>
+ */
 
 public class Queue <T>{
     private SimpleList <T> list;

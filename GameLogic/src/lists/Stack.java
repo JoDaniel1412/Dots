@@ -1,5 +1,9 @@
 package lists;
 
+/**
+ * Lista simple con comportamiento de pila
+ * @param <T>
+ */
 public class Stack <T>{
     private SimpleList<T> innerList;
     public Stack (){

@@ -7,6 +7,9 @@ public class Node<T>{
     private T value = null;
     private Dots dot;
 
+    /**
+     * Punteros
+     */
     // Pointers
     Node next = null;
     Node right = null;
@@ -18,6 +21,9 @@ public class Node<T>{
     Node bottom_right;
     Node bottom_left;
 
+    /**
+     * Estado de los punteros
+     */
     //Pointers State
     private boolean nextState;
     private boolean rightState;
@@ -29,6 +35,9 @@ public class Node<T>{
     private boolean bottom_rightState;
     private boolean bottom_leftState;
 
+    /**
+     * Quien realizó la linea
+     */
     //Who made the line
     private int topPlayer;
     private int bottomPlayer;

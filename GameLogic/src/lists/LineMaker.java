@@ -2,8 +2,18 @@ package lists;
 
 import PointsCheckerNew.MainChecker;
 
+/**
+ * @author Fabián Ramírez
+ */
 public class LineMaker {
 
+    /**
+     * Verifica si los puntos se pueden conectar entre sí
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @param player Almacena el jugador que hizo la linea
+     * @return
+     */
     private static boolean Verifier(Node node1, Node node2, int player){
         if (node1.getTop() == node2 && !node1.isTopState()){
             node1.setTopState(true);
@@ -65,6 +75,12 @@ public class LineMaker {
     }
 
 
+    /**
+     * Recibe los nodos provenientes del cliente
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     * @param player Almacena el jugador que hizo la linea
+     */
     public static void ReceiveDots (Node node1, Node node2, int player){
         if (Verifier(node1, node2, player)) {
             if (MainChecker.DotsReceiver(node1, node2)) ;

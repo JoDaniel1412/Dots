@@ -2,6 +2,10 @@ package lists;
 
 import lists.Node;
 
+/**
+ * @author Fabián Ramírez
+ * @param <T>
+ */
 public class SimpleList<T> {
     private Node<T> first;
     private int large;
@@ -11,6 +15,10 @@ public class SimpleList<T> {
         this.large = 0;
     }
 
+    /**
+     * Agrega el elemento al final de la lista
+     * @param value elemento a agregar
+     */
     public void addAtEnd(T value){
         if(this.isEmpty()){
             this.first = new Node<>(value);
@@ -25,6 +33,11 @@ public class SimpleList<T> {
             this.large += 1;
         }
     }
+
+    /**
+     * Agrega elemento al inicio de la lista
+     * @param value elemento a agregar
+     */
     public void addAtBeginning (T value){
         if(this.isEmpty()){
             this.first = new Node<>(value);
@@ -37,27 +50,48 @@ public class SimpleList<T> {
         }
     }
 
+    /**
+     * Verifica si la lista está vacía
+     * @return boolean
+     */
     public boolean isEmpty(){
         Node next = this.getFirst();
         return next == null;
     }
 
+    /**
+     * Obtiene el primer elemento de la lista
+     * @return primer elemento de la lista
+     */
     public Node<T> getFirst() {
         return first;
     }
 
+    /**
+     * Imprime el largo de la lista
+     */
     public void showLarge() {
         System.out.println(this.getLarge());
     }
 
+    /**
+     * Obtiene el largo de la lista
+     * @return int que significa el largo de la lista
+     */
     public int getLarge() {
         return large;
     }
 
+    /**
+     * Limpia la lista por completo
+     */
     public void clearOut(){
         this.first = null;
     }
 
+    /**
+     * Imprime los elementos de la lista
+     */
     public void showList(){
         Node temporal = this.first;
         while (temporal != null){
@@ -66,6 +100,10 @@ public class SimpleList<T> {
         }
     }
 
+    /**
+     * Elimina un elemento en la posición que se le indique
+     * @param index posición de elemento a eliminar
+     */
     public void delete(int index){
         if (index < this.getLarge()){
             int i = 0;
@@ -91,6 +129,12 @@ public class SimpleList<T> {
             System.out.println("List out of index");
         }
     }
+
+    /**
+     * Obtiene el elemento que se encuentra en un determinado índice
+     * @param i posición de elemento a obtener
+     * @return un elemento de la lista
+     */
     public Node<T> getByIndex(int i){
         int j = 0;
         Node temp = this.getFirst();
