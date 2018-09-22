@@ -165,4 +165,10 @@ public class Blocker {
         node2.getRight().setTop_leftState(true);
     }
 
+    public static void blockLeftDiagonals(Node node1, Node node2){
+        node1.setBottom_leftState(true);
+        node1.getLeft().setBottom_rightState(true);
+        node2.setTop_leftState(true);
+        node2.getLeft().setTop_rightState(true);
+    }
 }
