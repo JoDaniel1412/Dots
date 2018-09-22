@@ -33,22 +33,22 @@ public class LineMaker {
             node2.setRightState(true);
             return true;
         }
-        if (node1.getTop_left() == node2 && !node1.isTop_leftState()){
+        if (node1.getTop_left() == node2 && !node1.isTop_leftState() && !node2.getBottom().isTop_rightState()){
             node1.setTop_leftState(true);
             node2.setBottom_rightState(true);
             return true;
         }
-        if (node1.getTop_right() == node2 && !node1.isTop_rightState()){
+        if (node1.getTop_right() == node2 && !node1.isTop_rightState() && !node2.getBottom().isTop_leftState()){
             node1.setTop_rightState(true);
             node2.setBottom_leftState(true);
             return true;
         }
-        if (node1.getBottom_left() == node2 && !node1.isBottom_leftState()){
+        if (node1.getBottom_left() == node2 && !node1.isBottom_leftState() && !node1.getLeft().isBottom_rightState()){
             node1.setBottom_leftState(true);
             node2.setTop_rightState(true);
             return true;
         }
-        if (node1.getBottom_right() == node2 && !node1.isBottom_rightState()){
+        if (node1.getBottom_right() == node2 && !node1.isBottom_rightState() && node1.getRight().isBottom_leftState()){
             node1.setBottom_rightState(true);
             node2.setTop_leftState(true);
             return true;
