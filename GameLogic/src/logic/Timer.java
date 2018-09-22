@@ -10,8 +10,7 @@ public class Timer extends Thread{
 
     private static Thread timer;
     private static int time;
-    private static int time_limit = 10;
-
+    private static int time_limit = 2;
     private Timer(String msg){ super(msg);}
 
     /**

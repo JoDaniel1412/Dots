@@ -1,10 +1,12 @@
 package scenes;
 
+import client.Cliente;
 import client.Commands;
 import drawings.Dots;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import server.Servidor;
 
 import java.io.IOException;
 
@@ -16,9 +18,16 @@ public class sGameEnd extends sScene {
     private Label lMessageDisplay;
 
     @Override
-    void pressed_return() {
+    void pressed_return() throws IOException {
         MainInterface.setScene("fxml/menu.fxml");
         MainInterface.setResizable();
+        close();
+        System.out.println(Servidor.State);
+    }
+
+    @Override
+    void doOnLoad() {
+        setlMessageDisplay();
     }
 
     @FXML
@@ -33,14 +42,12 @@ public class sGameEnd extends sScene {
             @Override
             public void handle(long now) {
                 MainInterface.setScene("fxml/game_end.fxml");
-
                 stop();
             }
         };
         scene.start();
     }
 
-    @FXML
     void setlMessageDisplay(){
         if(p1Score > p2Score){
             lMessageDisplay.setText("You Win!");
@@ -53,5 +60,10 @@ public class sGameEnd extends sScene {
         else {
             lMessageDisplay.setText("Draw");
         }
+    }
+
+    private void close() throws IOException{
+        Cliente.exit();
+        Servidor.exit();
     }
 }

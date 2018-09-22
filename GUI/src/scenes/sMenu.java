@@ -14,6 +14,11 @@ public class sMenu extends sScene {
         MainInterface.close();
     }
 
+    @Override
+    void doOnLoad() {
+        System.out.println("action");
+    }
+
     @FXML
     void pressed_play() {
         MainInterface.setScene("fxml/play.fxml");

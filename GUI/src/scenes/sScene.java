@@ -2,13 +2,17 @@ package scenes;
 
 import javafx.fxml.FXML;
 
+import java.io.IOException;
+
 public abstract class sScene {
 
     private static int width = 700;
     private static int height = 700;
 
     @FXML
-    abstract void pressed_return();
+    abstract void pressed_return() throws IOException;
+
+    abstract void doOnLoad();
 
     public static int getWidth() {
         return width;

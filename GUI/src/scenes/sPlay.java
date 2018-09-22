@@ -42,6 +42,12 @@ public class sPlay extends sScene {
     void pressed_return() {
         MainInterface.setScene("fxml/menu.fxml");
     }
+
+    @Override
+    void doOnLoad() {
+
+    }
+
     @FXML
     void pressed_create() throws IOException{
         Servidor.init();
@@ -89,20 +95,20 @@ public class sPlay extends sScene {
         bGameTime1.getStyleClass().add("button-toggle");
         bGameTime2.getStyleClass().remove("button-toggle");
         bGameTime3.getStyleClass().remove("button-toggle");
-        Timer.setTime_limit(2);
+        Timer.setTime_limit(120);
     }
     @FXML
     private void pressed_bGameTime2(){
         bGameTime1.getStyleClass().remove("button-toggle");
         bGameTime2.getStyleClass().add("button-toggle");
         bGameTime3.getStyleClass().remove("button-toggle");
-        Timer.setTime_limit(4);
+        Timer.setTime_limit(240);
     }
     @FXML
     private void pressed_bGameTime3(){
         bGameTime1.getStyleClass().remove("button-toggle");
         bGameTime2.getStyleClass().remove("button-toggle");
         bGameTime3.getStyleClass().add("button-toggle");
-        Timer.setTime_limit(6);
+        Timer.setTime_limit(360);
     }
 }
