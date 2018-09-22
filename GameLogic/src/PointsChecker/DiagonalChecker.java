@@ -8,19 +8,30 @@ import logic.Blocker;
  */
 public class DiagonalChecker {
     /**
+     * Bloquea las diagonales crecientes
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almanena el nodo final
+     */
+    private static void blockCresent(Node node1, Node node2){
+        node1.getBottom().setTop_rightState(true);
+        node2.getTop().setBottom_leftState(true);
+    }
+
+    /**
+     * Bloquea las diagonales decrecientes
+     * @param node1 Almacena el nodo inicial
+     * @param node2 Almacena el nodo final
+     */
+    private static void blockDecresent(Node node1, Node node2){
+        node2.getBottom().setTop_leftState(true);
+        node1.getTop().setBottom_rightState(true);
+    }
+    /**
      *Método princial en caso de que se realice una diagonal hacia arriba
      * @param node1 Almacena el nodo inicial
      * @param node2 Almacena el nodo final
      * @return boolean
      */
-    public static void blockCresent(Node node1, Node node2){
-        node1.getBottom().setTop_rightState(true);
-        node2.getTop().setBottom_leftState(true);
-    }
-    public static void blockDecresent(Node node1, Node node2){
-        node2.getBottom().setTop_leftState(true);
-        node1.getTop().setBottom_rightState(true);
-    }
     public static boolean CheckUpDiagonal(Node node1, Node node2) {
         if (node1.getTop_right() == node2) {
             if (node1.isTopState() && node2.isLeftState()) {
