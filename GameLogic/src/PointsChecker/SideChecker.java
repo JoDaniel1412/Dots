@@ -4,9 +4,6 @@ package PointsChecker;
 import lists.Node;
 import logic.Blocker;
 
-import javax.swing.*;
-import java.util.concurrent.BlockingQueue;
-
 /**
  * @author Fabián Ramírez
  */
@@ -144,32 +141,43 @@ public class SideChecker {
      * @return boolean
      */
     private static boolean checkDownDiagonal(Node node1, Node node2) {
-        boolean result = false;
         if (node2.isRightState() && node2.isLeftState()) {
-            if (node1.isBottom_rightState() && node1.isBottom_leftState()){ //puntos dobles
-                System.out.println("Doble 1");
-                result = true;
+            if (node1.isLineBottomRight() && node1.isLineBottomLeft()){ //puntos dobles
+                Blocker.blockRightDiagonals(node1, node2);
+                Blocker.blockLeftDiagonals(node1, node2);
+                Blocker.BlockZone(2, node1, node2.getLeft(), node2.getRight());
+                return true;
             }
         }
         if (node1.isRightState() && node1.isLeftState()) {
-            if (node2.isTop_rightState() && node2.isTop_leftState()){  // puntos dobles
-                System.out.println("Doble 2");
-                result = true;
+            if (node2.isTop_rightState() && node2.isLineTopLeft()){  // puntos dobles
+                Blocker.blockRightDiagonals(node1, node2);
+                Blocker.blockLeftDiagonals(node1, node2);
+                Blocker.BlockZone(2, node2, node1.getLeft(), node1.getRight());
+                return true;
             }
         }
-        if (node2.isRightState() && node1.isBottom_rightState() ) {
-            result = true;
+        if (node2.isRightState() && node1.isLineBottomRight()) {
+            Blocker.blockRightDiagonals(node1, node2);
+            Blocker.BlockZone(1,node1, node2, node2.getRight());
+            return true;
         }
-        if (node2.isLeftState() && node1.isBottom_leftState()) {
-            result = true;
+        if (node2.isLeftState() && node1.isLineBottomLeft()) {
+            Blocker.blockLeftDiagonals(node1, node2);
+            Blocker.BlockZone(1, node1, node2, node2.getLeft());
+            return true;
         }
-        if (node1.isRightState() && node2.isTop_rightState()) {
-            result = true;
+        if (node1.isRightState() && node2.isLineTopRight()) {
+            Blocker.blockRightDiagonals(node1, node2);
+            Blocker.BlockZone(1, node2, node1, node1.getRight());
+            return true;
         }
-        if (node1.isLeftState() && node2.isTop_rightState()) {
-            result = true;
+        if (node1.isLeftState() && node2.isLineTopLeft()) {
+            Blocker.blockLeftDiagonals(node1, node2);
+            Blocker.BlockZone(1, node2, node1, node1.getLeft());
+            return true;
         }
-        return result;
+        return false;
     }
 
     /**
@@ -282,24 +290,46 @@ public class SideChecker {
         }
 
         if (node1.getBottom() == node2){
+
+
             if (CheckRight(node1, node2) && CheckLeft(node1, node2) && noDiagonalsDown(node1, node2)){
-                if (CheckLeftDown(node1, node2) && CheckRightDown(node1, node2) && noDiagonalsDown(node1, node2)){
+                if (CheckLeftDown(node1, node2) && CheckRightDown(node1, node2)){
+                    Blocker.blockLeftDiagonals(node1, node2);
+                    Blocker.blockRightDiagonals(node1, node2);
+                    Blocker.BlockZone(4, node1.getLeft(), node1.getRight(), node2.getRight(), node2.getLeft());
                     return true;
                 }
             }
 
+            if (node1.isRightState() && node2.isLeftState()){
+                if (node1.isLineBottomLeft() && node2.isLineTopRight()){
+                    Blocker.blockLeftDiagonals(node1, node2);
+                    Blocker.blockRightDiagonals(node1, node2);
+                    Blocker.BlockZone(2, node1, node1.getRight(), node2, node2.getLeft());
+                    return true;
+                }
+            }
+
+            if (node1.isLeftState() && node2.isRightState()){
+                if (node1.isLineBottomRight() && node2.isLineTopLeft()){
+                    Blocker.blockLeftDiagonals(node1, node2);
+                    Blocker.blockRightDiagonals(node1, node2);
+                    Blocker.BlockZone(2, node1, node1.getLeft(), node2, node2.getRight());
+                    return true;
+                }
+            }
             if (CheckRight(node1, node2)){
                 if (!node1.isBottom_rightState() && !node2.isTop_rightState()) {
                     if(CheckRightDown(node1, node2)){
                         Blocker.blockRightDiagonals(node1, node2);
-                        System.out.println(node2.isLeftState());
-                        System.out.println(node1.isTop_leftState());
-                        if (node2.isLeftState() && node1.isBottom_leftState()) {
-                            Blocker.blockSquareTriangleLeftCresent(node1, node2);
+                        if (node2.isLeftState() && node1.isLineBottomLeft()) {
+                            Blocker.blockLeftDiagonals(node1, node2);
+                            Blocker.BlockZone(3, node1, node1.getRight(), node2.getRight(), node2.getLeft());
                             return true;
                         }
-                        if (node1.isLeftState() && node2.isTop_leftState()) {
-                            Blocker.blockSquareTriangleLeftDecresent(node1, node2);
+                        if (node1.isLeftState() && node2.isLineTopLeft()) {
+                            Blocker.blockLeftDiagonals(node1, node2);
+                            Blocker.BlockZone(3, node2, node2.getRight(), node1.getRight(), node1.getLeft());
                             return true;
                         }
                         Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);
@@ -311,14 +341,18 @@ public class SideChecker {
             if (CheckLeft(node1, node2)){
                 if (!node1.isBottom_leftState() && !node2.isTop_leftState()) {
                     if(CheckLeftDown(node1, node2)){
-                        Blocker.BlockZone(2, node2, node2.getLeft(), node1.getLeft(), node1);
-                        if (node2.isRightState() && node1.isTop_rightState()) {
-
+                        Blocker.blockUpLeftDiagonals(node1, node2);
+                        if (node2.isRightState() && node1.isLineBottomRight()) {
+                            Blocker.blockRightDiagonals(node1, node2);
+                            Blocker.BlockZone(3, node1, node1.getLeft(), node2.getLeft(), node2.getRight());
                             return true;
                         }
                         if (node1.isRightState() && node2.isBottom_rightState()) {
+                            Blocker.blockRightDiagonals(node1, node2);
+                            Blocker.BlockZone(3, node2, node2.getLeft(), node1.getLeft(), node1.getRight());
                             return true;
                         }
+                        Blocker.BlockZone(2, node2, node2.getLeft(), node1.getLeft(), node1);
                         return true;
                     }
                 }
