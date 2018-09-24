@@ -25,9 +25,7 @@ public class sGame{
     public Label lClock;
 
     @FXML
-    public void draw_board(){
-        //lP1.setTextFill(DrawBoard.p1Color);
-        //lP2.setTextFill(DrawBoard.p2Color);
+    public void initialize() {
         DrawBoard.init(this);
     }
 

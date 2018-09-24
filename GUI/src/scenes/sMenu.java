@@ -35,7 +35,7 @@ public class sMenu extends sScene {
         Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
         MainInterface.setScene("fxml/game.fxml");
-        MainInterface.setResizable();
+        //MainInterface.setResizable();
         Timer.init();
     }
 }

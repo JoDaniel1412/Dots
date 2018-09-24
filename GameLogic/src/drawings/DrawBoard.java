@@ -23,6 +23,8 @@ public class DrawBoard{
     public static Color p1Color = Dots.aqua_blue;
     public static Color p2Color = Dots.green_leaf;
     private AnchorPane paneBoard;
+    private double paneWidth;
+    private double paneHeight;
     private Label p1Score;
     private Label p2Score;
     private Label p1Turn;
@@ -33,6 +35,8 @@ public class DrawBoard{
     public static void init(sGame scene){
         draw = new DrawBoard();
         draw.paneBoard = scene.paneBoard;
+        draw.paneWidth = draw.paneBoard.getPrefWidth();
+        draw.paneHeight = draw.paneBoard.getPrefHeight();
         draw.p1Score = scene.lScoreP1;
         draw.p2Score = scene.lScoreP2;
         draw.p1Turn = scene.lP1Turn;
@@ -64,9 +68,9 @@ public class DrawBoard{
     }
 
     /**
-     * Class that draw a line between two Dots
+     * Class that draw a figures
      */
-    public void check_figures(){
+    private void check_figures(){
         if(Figures.figure != null) {
             draw_figure(Figures.figure);
             draw.draw_board();
@@ -79,6 +83,9 @@ public class DrawBoard{
         p2Score.setText(String.valueOf(DotsInteraction.getP2Score()));
     }
 
+    /**
+     * Switch draw colors on player's turn
+     */
     private void check_turns(){
         if(Cliente.isTurn()){
             p1Turn.setOpacity(1.0);
@@ -93,6 +100,9 @@ public class DrawBoard{
         }
     }
 
+    /**
+     * Checks if the time limit has been pass
+     */
     private void check_time(){
         int time = Timer.getTime_limit() - Timer.getTimeLapse();
         clock.setText(String.valueOf(time));
@@ -106,8 +116,8 @@ public class DrawBoard{
         Node tmp;
         var rows = board.getRows();
         var columns = board.getColumns();
-        double xOffset = getPaneBoardWidth() / (columns + 1);
-        double yOffset = getPaneBoardHeight() / (rows + 1);
+        double xOffset = paneWidth / (columns + 1);
+        double yOffset = paneHeight / (rows + 1);
         int i = 0, j = 0;
 
         var yPoss = yOffset;

@@ -27,7 +27,7 @@ public class sGameEnd extends sScene {
 
     @Override
     void doOnLoad() {
-        setlMessageDisplay();
+        setLabelMessageDisplay();
     }
 
     @FXML
@@ -35,6 +35,10 @@ public class sGameEnd extends sScene {
         MainInterface.setScene("fxml/waiting.fxml");
         Commands.send_command("start");
 
+    }
+    @FXML
+    public void initialize() {
+        setLabelMessageDisplay();
     }
 
     public static void game_end(){
@@ -48,8 +52,7 @@ public class sGameEnd extends sScene {
         scene.start();
     }
 
-    @FXML
-    void setlMessageDisplay(){
+    private void setLabelMessageDisplay(){
         if(p1Score > p2Score){
             lMessageDisplay.setText("You Win!");
             lMessageDisplay.setTextFill(Dots.green_leaf);
