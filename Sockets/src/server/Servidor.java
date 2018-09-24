@@ -12,6 +12,7 @@ import java.net.UnknownHostException;
  * @author José Acuña
  */
 public class Servidor extends Thread {
+    public static Object State;
     private File message;
     private static ServerSocket servidorI;
     private static ServerSocket servidorO;

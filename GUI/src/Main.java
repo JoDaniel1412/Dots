@@ -10,6 +10,8 @@ import scenes.MainInterface;
 import scenes.sScene;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 
 public class Main extends Application {
@@ -45,12 +47,15 @@ public class Main extends Application {
         var fullscreen = window.isFullScreen();
         window.setScene(scene);
 
+        //doLoad();
+
         // Sets the new scenes dimensions based on last one
-        if (fullscreen) window.setFullScreen(true);
-        else {
-            window.setWidth(width);
-            window.setHeight(height);
-        }
+         if (fullscreen) window.setFullScreen(true);
+         else {
+             window.setWidth(width);
+             window.setHeight(height);
+         }
+
     }
 
     public static void setFullScreen(){
@@ -62,10 +67,20 @@ public class Main extends Application {
     }
 
     // Method that ends the game
-    public static void close(){
+    public static void close() throws IOException{
         window.close();
         Platform.exit();
-        //Servidor.exit();
-        //Cliente.exit();
+    }
+    private static void doLoad(){
+        Method doOnLoad;
+        Object obj = window.getScene();
+        System.out.println(obj);
+
+        try {
+            doOnLoad = obj.getClass().getMethod("doOnLoad");
+            doOnLoad.invoke(doOnLoad, (Object[]) null);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 }
