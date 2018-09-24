@@ -150,11 +150,13 @@ public class SideChecker {
             }
         }
         if (node1.isRightState() && node1.isLeftState()) {
-            if (node2.isTop_rightState() && node2.isLineTopLeft()){  // puntos dobles
-                Blocker.blockRightDiagonals(node1, node2);
-                Blocker.blockLeftDiagonals(node1, node2);
-                Blocker.BlockZone(2, node2, node1.getLeft(), node1.getRight());
-                return true;
+            if (!node1.isLineBottomLeft() && !node1.isLineBottomRight()) {
+                if (node2.isLineTopRight() && node2.isLineTopLeft()){  // puntos dobles
+                    Blocker.blockRightDiagonals(node1, node2);
+                    Blocker.blockLeftDiagonals(node1, node2);
+                    Blocker.BlockZone(2, node2, node1.getLeft(), node1.getRight());
+                    return true;
+                }
             }
         }
         if (node2.isRightState() && node1.isLineBottomRight()) {
