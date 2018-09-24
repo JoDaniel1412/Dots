@@ -17,15 +17,18 @@ public class Lista{
 
 
     public void addList(String valor){
-        this.size += 1;
         if(first == null) {
+            this.size += 1;
             first = new Nodo(valor);
         }else{
             Nodo temp = this.first;
-            while (temp.next != null){
-                temp = temp.next;
+            if(!temp.getValor().equals(valor)) {
+                this.size += 1;
+                while (temp.next != null) {
+                    temp = temp.next;
+                }
+                temp.next = new Nodo(valor);
             }
-            temp.next = new Nodo(valor);
         }
     }
 
