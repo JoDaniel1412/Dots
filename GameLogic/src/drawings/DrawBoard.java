@@ -79,8 +79,8 @@ public class DrawBoard{
     }
 
     private void set_scores(){
-        p1Score.setText(String.valueOf(DotsInteraction.getP1Score()));
-        p2Score.setText(String.valueOf(DotsInteraction.getP2Score()));
+        p1Score.setText(java.lang.String.valueOf(DotsInteraction.getP1Score()));
+        p2Score.setText(java.lang.String.valueOf(DotsInteraction.getP2Score()));
     }
 
     /**
@@ -105,7 +105,7 @@ public class DrawBoard{
      */
     private void check_time(){
         int time = Timer.getTime_limit() - Timer.getTimeLapse();
-        clock.setText(String.valueOf(time));
+        clock.setText(java.lang.String.valueOf(time));
     }
 
     /**

@@ -16,12 +16,12 @@ public class Commands {
      * exit
      * surrender
      */
-    private String command;
+    private java.lang.String command;
     private static ObjectMapper mapper = new ObjectMapper();
 
     public Commands(){}
 
-    private Commands(String command){
+    private Commands(java.lang.String command){
         this.command = command;
     }
 
@@ -47,7 +47,7 @@ public class Commands {
      * @throws IOException in case the mapper fail
      * @throws InterruptedException in case it couldn't send the message to the server
      */
-    public static void send_command(String message) throws IOException, InterruptedException {
+    public static void send_command(java.lang.String message) throws IOException, InterruptedException {
         File json = new File("Sockets/command_send.json");
         mapper.writeValue(json, new Commands(message));
         Cliente.enviarInfo(json);
@@ -57,7 +57,7 @@ public class Commands {
      * Tells the Game what to do with the message given
      * @param command a specific string
      */
-    private void analise(String command) throws IOException {
+    private void analise(java.lang.String command) throws IOException {
         if(command.equals("start")){
             sWaiting.pressed_start();
             Timer.init();
@@ -70,11 +70,11 @@ public class Commands {
     }
 
     /** Getters and Setters **/
-    public String getCommand() {
+    public java.lang.String getCommand() {
         return command;
     }
 
-    public void setCommand(String command) {
+    public void setCommand(java.lang.String command) {
         this.command = command;
     }
 }

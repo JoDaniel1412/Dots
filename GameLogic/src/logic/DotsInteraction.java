@@ -106,11 +106,11 @@ public class DotsInteraction {
         var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // Remove non digits
         var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // Remove non digits
 
-        int first_dot_row = Integer.parseInt(String.valueOf(first_dot.charAt(0))); // First Node Index
-        int first_dot_column = Integer.parseInt(String.valueOf(first_dot.charAt(1))); // First Node Index
+        int first_dot_row = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(0))); // First Node Index
+        int first_dot_column = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(1))); // First Node Index
 
-        int second_dot_row = Integer.parseInt(String.valueOf(second_dot.charAt(0))); // Second Node Index
-        int second_dot_column = Integer.parseInt(String.valueOf(second_dot.charAt(1))); // Second Node Index
+        int second_dot_row = Integer.parseInt(java.lang.String.valueOf(second_dot.charAt(0))); // Second Node Index
+        int second_dot_column = Integer.parseInt(java.lang.String.valueOf(second_dot.charAt(1))); // Second Node Index
 
         // Search for the Dot coordinates
         Board board = Board.getInstance();

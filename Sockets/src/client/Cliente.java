@@ -11,13 +11,13 @@ import java.net.Socket;
  */
 public class Cliente extends Thread {
 
-    private static String ip;
+    private static java.lang.String ip;
     private static int portI;
     private static int portO;
     private static Thread cliente;
     private static boolean turn;
 
-    private Cliente(String msg) {
+    private Cliente(java.lang.String msg) {
         super(msg);
     }
 
@@ -27,7 +27,7 @@ public class Cliente extends Thread {
      * @param portI puerto que entra al servidor y salida del cliente
      * @param portO pueto de salida del servidor y entrada del cliente
      */
-    public static void init(String ip, int portI, int portO){
+    public static void init(java.lang.String ip, int portI, int portO){
         cliente = new Cliente("client");
         ((Cliente) cliente).setIp(ip);
         ((Cliente) cliente).setPortI(portO);
@@ -92,7 +92,7 @@ public class Cliente extends Thread {
     }
 
     /** Getters and Setters **/
-    private void setIp(String ip){
+    private void setIp(java.lang.String ip){
         Cliente.ip = ip;
     }
 
