@@ -38,14 +38,12 @@ public class DotsInteraction {
         try {
             DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
             received_dots(arrayIndex);
+            System.out.println("Json received");
             return true;
-        } catch (IOException e) {
-            //e.printStackTrace();
-            return false;
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     /**
