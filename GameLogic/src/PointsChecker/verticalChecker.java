@@ -149,13 +149,11 @@ public class verticalChecker {
             }
         }
         if (node1.isBottomState() && node1.isTopState()) {
-            if (!node1.isLineBottomLeft() && node1.isLineTopLeft()) {
-                if (node2.isLineTopRight() && node2.isLineBottomRight()) {  // puntos dobles
-                    Blocker.blockUpLeftDiagonals(node1, node2);
-                    Blocker.blockDownLeftDiagonals(node1, node2);
-                    Blocker.BlockZone(2, node2, node1.getBottom(), node1.getTop());
-                    return true;
-                }
+            if (node2.isLineTopRight() && node2.isLineBottomRight()) {  // puntos dobles
+                Blocker.blockUpLeftDiagonals(node1, node2);
+                Blocker.blockDownLeftDiagonals(node1, node2);
+                Blocker.BlockZone(2, node2, node1.getBottom(), node1.getTop());
+                return true;
             }
         }
         if (node1.isBottomState() && node2.isTopState()){
