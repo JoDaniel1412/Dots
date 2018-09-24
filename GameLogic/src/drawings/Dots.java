@@ -1,6 +1,6 @@
 package drawings;
 
-import client.Cliente;
+import client.String;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import lists.Node;
@@ -79,7 +79,7 @@ public class Dots extends Circle {
      */
     private void pressed_dot() throws IOException, InterruptedException {
         //Sound.play("file:resources/sounds/hit.wav");
-        if(Cliente.isTurn()) {
+        if(String.isTurn()) {
             DotsInteraction.dot_pressed(node, this);
         }
     }

@@ -1,7 +1,7 @@
 package logic;
 
 import PointsChecker.MainChecker;
-import client.Cliente;
+import client.String;
 import drawings.Dots;
 import drawings.DrawBoard;
 import drawings.Figures;
@@ -83,8 +83,8 @@ public class DotsInteraction {
                 // Makes a json and sends it to the Server
                 DoubleArray<DoubleArray> nodesIndex = new DoubleArray<>(firstNode, secondNode);
                 mapper.writeValue(json, nodesIndex);
-                Cliente.enviarInfo(json);
-                Cliente.setTurn(false);
+                String.enviarInfo(json);
+                String.setTurn(false);
                 line_repeater = 0;
 
                 clear_arrays();
@@ -105,11 +105,11 @@ public class DotsInteraction {
         var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // Remove non digits
         var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // Remove non digits
 
-        int first_dot_row = Integer.parseInt(String.valueOf(first_dot.charAt(0))); // First Node Index
-        int first_dot_column = Integer.parseInt(String.valueOf(first_dot.charAt(1))); // First Node Index
+        int first_dot_row = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(0))); // First Node Index
+        int first_dot_column = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(1))); // First Node Index
 
-        int second_dot_row = Integer.parseInt(String.valueOf(second_dot.charAt(0))); // Second Node Index
-        int second_dot_column = Integer.parseInt(String.valueOf(second_dot.charAt(1))); // Second Node Index
+        int second_dot_row = Integer.parseInt(java.lang.String.valueOf(second_dot.charAt(0))); // Second Node Index
+        int second_dot_column = Integer.parseInt(java.lang.String.valueOf(second_dot.charAt(1))); // Second Node Index
 
         // Search for the Dot coordinates
         Board board = Board.getInstance();
@@ -130,7 +130,7 @@ public class DotsInteraction {
             Lines.color = Lines.color2;
             Figures.color = Figures.color2;
             Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
-            Cliente.setTurn(true);
+            String.setTurn(true);
         } else {
             line_repeater = 1;
         }

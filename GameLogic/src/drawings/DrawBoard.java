@@ -1,6 +1,6 @@
 package drawings;
 
-import client.Cliente;
+import client.String;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -79,15 +79,15 @@ public class DrawBoard{
     }
 
     private void set_scores(){
-        p1Score.setText(String.valueOf(DotsInteraction.getP1Score()));
-        p2Score.setText(String.valueOf(DotsInteraction.getP2Score()));
+        p1Score.setText(java.lang.String.valueOf(DotsInteraction.getP1Score()));
+        p2Score.setText(java.lang.String.valueOf(DotsInteraction.getP2Score()));
     }
 
     /**
      * Switch draw colors on player's turn
      */
     private void check_turns(){
-        if(Cliente.isTurn()){
+        if(String.isTurn()){
             p1Turn.setOpacity(1.0);
             p2Turn.setOpacity(0.3);
             p1Turn.setTextFill(p1Color);
@@ -105,7 +105,7 @@ public class DrawBoard{
      */
     private void check_time(){
         int time = Timer.getTime_limit() - Timer.getTimeLapse();
-        clock.setText(String.valueOf(time));
+        clock.setText(java.lang.String.valueOf(time));
     }
 
     /**

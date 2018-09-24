@@ -1,6 +1,6 @@
 package scenes;
 
-import client.Cliente;
+import client.String;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -31,15 +31,15 @@ public class sWaiting extends sScene{
     @FXML
     public void initialize(){
         ipLabel.setText(Servidor.ipAdress);
-        portLabel1.setText(String.valueOf(Servidor.portI));
-        portLabel2.setText(String.valueOf(Servidor.portO));
+        portLabel1.setText(java.lang.String.valueOf(Servidor.portI));
+        portLabel2.setText(java.lang.String.valueOf(Servidor.portO));
     }
 
     @Override
     void pressed_return() throws IOException {
         MainInterface.setScene("fxml/play.fxml");
         MainInterface.setResizable();
-        Cliente.exit();
+        String.exit();
         Servidor.exit();
     }
 
