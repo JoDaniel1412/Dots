@@ -25,28 +25,26 @@ public class Node<T>{
      * Estado de los punteros
      */
     //Pointers State
-    private boolean nextState;
-    private boolean rightState;
-    private boolean leftState;
-    private boolean topState;
-    private boolean bottomState;
-    private boolean top_rightState;
-    private boolean top_leftState;
-    private boolean bottom_rightState;
-    private boolean bottom_leftState;
+    private boolean nextState = false;
+    private boolean rightState = false;
+    private boolean leftState = false;
+    private boolean topState = false;
+    private boolean bottomState = false;
+    private boolean top_rightState = false;
+    private boolean top_leftState = false;
+    private boolean bottom_rightState = false;
+    private boolean bottom_leftState = false;
+
 
     /**
-     * Quien realizó la linea
+     * Almacena las lineas diagonales que se han realizado
      */
-    //Who made the line
-    private int topPlayer;
-    private int bottomPlayer;
-    private int rightPlayer;
-    private int leftPlayer;
-    private int topRightPlayer;
-    private int bottomRightPlayer;
-    private int bottomLeftPlayer;
-    private int topLeftPlayer;
+    private boolean LineTopRight = false;
+    private boolean LineBottomRight = false;
+    private boolean LineBottomLeft = false;
+    private boolean LineTopLeft = false;
+
+
 
 
     /**
@@ -59,15 +57,6 @@ public class Node<T>{
 
     // @Overload
     public Node(){
-        this.nextState = false;
-        this.rightState = false;
-        this.leftState = false;
-        this.topState = false;
-        this.bottomState = false;
-        this.top_rightState = false;
-        this.top_leftState = false;
-        this.bottom_rightState = false;
-        this.bottom_leftState = false;
     }
 
 
@@ -220,69 +209,6 @@ public class Node<T>{
         this.bottom_leftState = bottom_left;
     }
 
-    public int getTopPlayer() {
-        return topPlayer;
-    }
-
-    public void setTopPlayer(int topPlayer) {
-        this.topPlayer = topPlayer;
-    }
-
-    public int getBottomPlayer() {
-        return bottomPlayer;
-    }
-
-    public void setBottomPlayer(int bottomPlayer) {
-        this.bottomPlayer = bottomPlayer;
-    }
-
-    public int getRightPlayer() {
-        return rightPlayer;
-    }
-
-    public void setRightPlayer(int rightPlayer) {
-        this.rightPlayer = rightPlayer;
-    }
-
-    public int getLeftPlayer() {
-        return leftPlayer;
-    }
-
-    public void setLeftPlayer(int leftPlayer) {
-        this.leftPlayer = leftPlayer;
-    }
-
-    public int getTopRightPlayer() {
-        return topRightPlayer;
-    }
-
-    public void setTopRightPlayer(int topRightPlayer) {
-        this.topRightPlayer = topRightPlayer;
-    }
-
-    public int getBottomRightPlayer() {
-        return bottomRightPlayer;
-    }
-
-    public void setBottomRightPlayer(int bottomRightPlayer) {
-        this.bottomRightPlayer = bottomRightPlayer;
-    }
-
-    public int getTopLeftPlayer() {
-        return topLeftPlayer;
-    }
-
-    public void setTopLeftPlayer(int topLeftPlayer) {
-        this.topLeftPlayer = topLeftPlayer;
-    }
-
-    public int getBottomLeftPlayer() {
-        return bottomLeftPlayer;
-    }
-
-    public void setBottomLeftPlayer(int bottomLeftPlayer) {
-        this.bottomLeftPlayer = bottomLeftPlayer;
-    }
 
     public Dots getDot(){
         return dot;
@@ -290,5 +216,37 @@ public class Node<T>{
 
     public void setDot(Dots dot){
         this.dot = dot;
+    }
+
+    public boolean isLineTopRight() {
+        return LineTopRight;
+    }
+
+    public void setLineTopRight(boolean lineTopRight) {
+        LineTopRight = lineTopRight;
+    }
+
+    public boolean isLineBottomRight() {
+        return LineBottomRight;
+    }
+
+    public void setLineBottomRight(boolean lineBottomRight) {
+        LineBottomRight = lineBottomRight;
+    }
+
+    public boolean isLineTopLeft() {
+        return LineTopLeft;
+    }
+
+    public void setLineTopLeft(boolean lineTopLeft) {
+        LineTopLeft = lineTopLeft;
+    }
+
+    public boolean isLineBottomLeft() {
+        return LineBottomLeft;
+    }
+
+    public void setLineBottomLeft(boolean lineBottomLeft) {
+        LineBottomLeft = lineBottomLeft;
     }
 }
