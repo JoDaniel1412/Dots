@@ -14,7 +14,7 @@ import java.net.UnknownHostException;
 public class Servidor extends Thread {
     public static Object State;
     private File message;
-    private static ServerSocket servidorI;
+    public static ServerSocket servidorI;
     private static ServerSocket servidorO;
     public static String ipAdress;
     public static int portI = 8888;
@@ -62,6 +62,7 @@ public class Servidor extends Thread {
     public void read() {
         try {
             Socket cliente = servidorI.accept();
+            System.out.println(cliente.getLocalAddress());
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
             message = new File(entrada.readLine());
             cliente.close();

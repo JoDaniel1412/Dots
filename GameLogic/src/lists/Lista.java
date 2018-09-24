@@ -1,7 +1,10 @@
-/**package lista;
+package lists;
+
+
+import client.Cliente;
 
 public class Lista{
-    Node first = null;
+    Nodo first = null;
     int size = 0;
 
     public Lista(){
@@ -13,22 +16,22 @@ public class Lista{
     }
 
 
-    public void addList(ServerConecction valor){
+    public void addList(Cliente valor){
         this.size += 1;
         if(first == null) {
-            first = new Node(valor);
+            first = new Nodo(Cliente valor);
         }else{
-            Node temp = this.first;
+            Nodo temp = this.first;
             while (temp.next != null){
                 temp = temp.next;
             }
-            temp.next = new Node(valor);
+            temp.next = new Nodo(Cliente valor);
         }
     }
 
-    public ServerConecction get_index(int i){
+    public Cliente get_index(int i){
         int cont = 0;
-        Node pivot = this.first;
+        Nodo pivot = this.first;
         while (cont < i){
             cont += 1;
             pivot = pivot.next;
@@ -36,4 +39,4 @@ public class Lista{
         return pivot.getValor();
 
     }
-}**/
+}
