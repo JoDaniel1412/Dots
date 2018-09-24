@@ -10,6 +10,7 @@ import lists.Board;
 import lists.DoubleArray;
 import lists.Node;
 import org.codehaus.jackson.map.ObjectMapper;
+import sound.Sound;
 
 import java.io.File;
 import java.io.IOException;
@@ -141,6 +142,7 @@ public class DotsInteraction {
      * @param points int amount of points
      */
     public static void point_made(int points){
+        Sound.play("resources/sounds/points.wav", 0);
         DotsInteraction.points += points;
     }
 

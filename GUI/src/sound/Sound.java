@@ -8,7 +8,8 @@ import java.net.MalformedURLException;
 public class Sound extends Thread{
 
     private Clip clip;
-    private static Thread audio;
+    private static int loops = 0;
+    public static Thread audio;
 
     private Sound(String fileName) {
         //El try primero crea un file el cual ya sabe que tiene que ser una ruta String y los catch son todos los posibles casos de error. Tiene que ser wav
@@ -48,15 +49,16 @@ public class Sound extends Thread{
      * Reproduces a sound file
      * @param file direction of the file in resources/sounds/..
      */
-    public static void play(String file){
+    public static void play(String file, int loops){
         audio = new Sound(file);
+        Sound.loops = loops;
         audio.start();
     }
 
     @Override
     public void run() {
         while (true){
-            clip.loop(0);
+            clip.loop(loops);
         }
     }
 }

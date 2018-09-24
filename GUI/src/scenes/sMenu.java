@@ -4,6 +4,7 @@ import client.Cliente;
 import javafx.fxml.FXML;
 import logic.Timer;
 import server.Servidor;
+import sound.Sound;
 
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ public class sMenu extends sScene {
 
     @Override
     protected void initialize() throws IOException {
-
+        Sound.play("resources/sounds/warframe_ost.wav", 1);
     }
 
     @FXML
