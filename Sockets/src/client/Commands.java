@@ -50,7 +50,7 @@ public class Commands {
     public static void send_command(java.lang.String message) throws IOException, InterruptedException {
         File json = new File("Sockets/command_send.json");
         mapper.writeValue(json, new Commands(message));
-        String.enviarInfo(json);
+        Cliente.enviarInfo(json);
     }
 
     /**

@@ -12,7 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Sound {
     private Clip clip;
     public Sound(String fileName) {
-        //El try primero crea un file el cual ya sabe que tiene que ser una ruta String y los catch son todos los posibles casos de error. Tiene que ser wav
+        //El try primero crea un file el cual ya sabe que tiene que ser una ruta Cliente y los catch son todos los posibles casos de error. Tiene que ser wav
         try {
             File file = new File(fileName);
             if (file.exists()) {

@@ -1,6 +1,8 @@
 package lists;
 
 
+import java.net.InetAddress;
+
 public class Lista{
     Nodo first = null;
     int size = 0;
@@ -14,7 +16,7 @@ public class Lista{
     }
 
 
-    public void addList(java.lang.String valor){
+    public void addList(String valor){
         this.size += 1;
         if(first == null) {
             first = new Nodo(valor);

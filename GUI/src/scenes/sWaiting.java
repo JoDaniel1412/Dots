@@ -1,6 +1,6 @@
 package scenes;
 
-import client.String;
+import client.Cliente;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -39,7 +39,7 @@ public class sWaiting extends sScene{
     void pressed_return() throws IOException {
         MainInterface.setScene("fxml/play.fxml");
         MainInterface.setResizable();
-        String.exit();
+        Cliente.exit();
         Servidor.exit();
     }
 

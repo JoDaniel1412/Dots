@@ -9,7 +9,7 @@ import java.net.Socket;
  * @author Jesus Sandoval Morales
  * @author José Acuña
  */
-public class String extends Thread {
+public class Cliente extends Thread {
 
     private static java.lang.String ip;
     private static int portI;
@@ -17,7 +17,7 @@ public class String extends Thread {
     private static Thread cliente;
     private static boolean turn;
 
-    private String(java.lang.String msg) {
+    private Cliente(java.lang.String msg) {
         super(msg);
     }
 
@@ -28,10 +28,10 @@ public class String extends Thread {
      * @param portO pueto de salida del servidor y entrada del cliente
      */
     public static void init(java.lang.String ip, int portI, int portO){
-        cliente = new String("client");
-        ((String) cliente).setIp(ip);
-        ((String) cliente).setPortI(portO);
-        ((String) cliente).setPortO(portI);
+        cliente = new Cliente("client");
+        ((Cliente) cliente).setIp(ip);
+        ((Cliente) cliente).setPortI(portO);
+        ((Cliente) cliente).setPortO(portI);
         cliente.start();
     }
     /**
@@ -67,7 +67,7 @@ public class String extends Thread {
         while (true) {
             try {
                 sleep(1000);
-                String.solicitarInfo();
+                Cliente.solicitarInfo();
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
@@ -91,15 +91,15 @@ public class String extends Thread {
 
     /** Getters and Setters **/
     private void setIp(java.lang.String ip){
-        String.ip = ip;
+        Cliente.ip = ip;
     }
 
     private void setPortI(int port){
-        String.portI = port;
+        Cliente.portI = port;
     }
 
     private void setPortO(int port){
-        String.portO = port;
+        Cliente.portO = port;
     }
 
     public static boolean isTurn() {
@@ -107,6 +107,6 @@ public class String extends Thread {
     }
 
     public static void setTurn(boolean turn) {
-        String.turn = turn;
+        Cliente.turn = turn;
     }
 }

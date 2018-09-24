@@ -5,12 +5,12 @@ public class Nodo {
     String valor;
     Nodo next;
 
-    public Nodo(java.lang.String valor) {
+    public Nodo(String valor) {
         this.valor = valor;
         this.next = null;
     }
 
-    public java.lang.String getValor() {
+    public String getValor() {
         return this.valor;
     }
 

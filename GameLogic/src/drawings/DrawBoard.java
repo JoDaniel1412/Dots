@@ -1,6 +1,6 @@
 package drawings;
 
-import client.String;
+import client.Cliente;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -87,7 +87,7 @@ public class DrawBoard{
      * Switch draw colors on player's turn
      */
     private void check_turns(){
-        if(String.isTurn()){
+        if(Cliente.isTurn()){
             p1Turn.setOpacity(1.0);
             p2Turn.setOpacity(0.3);
             p1Turn.setTextFill(p1Color);

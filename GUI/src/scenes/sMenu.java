@@ -1,6 +1,6 @@
 package scenes;
 
-import client.String;
+import client.Cliente;
 import javafx.fxml.FXML;
 import logic.Timer;
 import server.Servidor;
@@ -32,8 +32,8 @@ public class sMenu extends sScene {
     @FXML
     void pressed_devTest() throws IOException {
         Servidor.init();
-        String.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
-        String.setTurn(true);
+        Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
+        Cliente.setTurn(true);
         MainInterface.setScene("fxml/game.fxml");
         //MainInterface.setResizable();
         Timer.init();

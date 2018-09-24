@@ -1,6 +1,6 @@
 package scenes;
 
-import client.String;
+import client.Cliente;
 import client.Commands;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,8 +51,8 @@ public class sPlay extends sScene {
     @FXML
     void pressed_create() throws IOException{
         Servidor.init();
-        String.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
-        String.setTurn(true);
+        Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
+        Cliente.setTurn(true);
         MainInterface.setScene("fxml/waiting.fxml");
         MainInterface.setResizable();
     }
@@ -62,8 +62,8 @@ public class sPlay extends sScene {
         java.lang.String port1 = ePort1.getText();
         java.lang.String port2 = ePort2.getText();
         if (ip != null && port1 != null && port2 != null) {
-            String.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
-            String.setTurn(false);
+            Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
+            Cliente.setTurn(false);
             MainInterface.setResizable();
             MainInterface.setScene("fxml/waiting.fxml");
             Commands.send_command("start");

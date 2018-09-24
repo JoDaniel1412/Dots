@@ -1,6 +1,6 @@
 package scenes;
 
-import client.String;
+import client.Cliente;
 import client.Commands;
 import drawings.Dots;
 import javafx.animation.AnimationTimer;
@@ -67,7 +67,7 @@ public class sGameEnd extends sScene {
     }
 
     private void close() throws IOException{
-        String.exit();
+        Cliente.exit();
         Servidor.exit();
     }
 }

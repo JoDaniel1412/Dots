@@ -1,7 +1,7 @@
 package logic;
 
 import PointsChecker.MainChecker;
-import client.String;
+import client.Cliente;
 import drawings.Dots;
 import drawings.DrawBoard;
 import drawings.Figures;
@@ -83,8 +83,8 @@ public class DotsInteraction {
                 // Makes a json and sends it to the Server
                 DoubleArray<DoubleArray> nodesIndex = new DoubleArray<>(firstNode, secondNode);
                 mapper.writeValue(json, nodesIndex);
-                String.enviarInfo(json);
-                String.setTurn(false);
+                Cliente.enviarInfo(json);
+                Cliente.setTurn(false);
                 line_repeater = 0;
 
                 clear_arrays();
@@ -130,7 +130,7 @@ public class DotsInteraction {
             Lines.color = Lines.color2;
             Figures.color = Figures.color2;
             Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
-            String.setTurn(true);
+            Cliente.setTurn(true);
         } else {
             line_repeater = 1;
         }
