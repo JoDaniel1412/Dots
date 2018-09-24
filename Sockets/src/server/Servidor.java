@@ -56,6 +56,7 @@ public class Servidor extends Thread {
             //System.out.println("Server send: " + message);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 
