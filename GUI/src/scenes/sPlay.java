@@ -2,6 +2,7 @@ package scenes;
 
 import client.Cliente;
 import client.Commands;
+import client.GameSettings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -29,6 +30,7 @@ public class sPlay extends sScene {
     @FXML
     private Button bGameTime3;
 
+    /* Text Fields to connect to Server */
     @FXML
     private TextField eIpAddress;
     @FXML
@@ -48,14 +50,31 @@ public class sPlay extends sScene {
 
     }
 
+    /**
+     * Creates a new game initializing the Server and Client
+     * @throws IOException if Server couldn't being initiated
+     * @throws InterruptedException if couldn't send the GameSettings
+     */
     @FXML
-    void pressed_create() throws IOException{
+    void pressed_create() throws IOException, InterruptedException {
+        // Setups the Sockets
         Servidor.init();
         Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
+
+        int rows = Board.getInstance().getRows();
+        int columns = Board.getInstance().getColumns();
+        int time = Timer.getTime_limit();
+        GameSettings.send_settings(rows, columns, time);
         MainInterface.setScene("fxml/waiting.fxml");
         MainInterface.setResizable();
     }
+
+    /**
+     * Joins to a game initializing the client
+     * @throws IOException if fails sending command to Server
+     * @throws InterruptedException if fails sending command to Server
+     */
     @FXML
     void pressed_search() throws IOException, InterruptedException {
         String ip = eIpAddress.getText();
@@ -64,11 +83,13 @@ public class sPlay extends sScene {
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
             Cliente.setTurn(false);
+            Cliente.solicitarInfo();
             MainInterface.setResizable();
             MainInterface.setScene("fxml/waiting.fxml");
             Commands.send_command("start");
         }
     }
+
     @FXML
     private void pressed_bBoardSize1(){
         bBoardSize1.getStyleClass().add("button-toggle");

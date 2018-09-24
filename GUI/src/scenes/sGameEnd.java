@@ -58,6 +58,7 @@ public class sGameEnd extends sScene {
         }
         else {
             lMessageDisplay.setText("Draw");
+            lMessageDisplay.setTextFill(Dots.bone_white);
         }
     }
 

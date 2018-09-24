@@ -47,7 +47,7 @@ public class GameSettings {
      * @throws IOException in case the mapper fail
      * @throws InterruptedException in case it couldn't send the message to the server
      */
-    public static void send_command(int rows, int columns, int time) throws IOException, InterruptedException {
+    public static void send_settings(int rows, int columns, int time) throws IOException, InterruptedException {
         File json = new File("Sockets/game_settings_send.json");
         mapper.writeValue(json, new GameSettings(rows, columns, time));
         Cliente.enviarInfo(json);
@@ -62,5 +62,30 @@ public class GameSettings {
     private void analise(int rows, int columns, int time) throws IOException {
         Board.getInstance().setBoardSize(rows, columns);
         Timer.setTime_limit(time);
+    }
+
+    /** Getters and Setters **/
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public void setColumns(int columns) {
+        this.columns = columns;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 }
