@@ -25,7 +25,7 @@ public class sGame{
     public Label lClock;
 
     @FXML
-    public void initialize() {
+    protected void initialize() {
         DrawBoard.init(this);
     }
 

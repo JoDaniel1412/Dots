@@ -43,6 +43,11 @@ public class sPlay extends sScene {
         MainInterface.setScene("fxml/menu.fxml");
     }
 
+    @Override
+    protected void initialize() throws IOException {
+
+    }
+
     @FXML
     void pressed_create() throws IOException{
         Servidor.init();

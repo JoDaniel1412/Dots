@@ -14,6 +14,11 @@ public class sMenu extends sScene {
         MainInterface.close();
     }
 
+    @Override
+    protected void initialize() throws IOException {
+
+    }
+
     @FXML
     void pressed_play() {
         MainInterface.setScene("fxml/play.fxml");

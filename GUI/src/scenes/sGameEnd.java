@@ -32,7 +32,7 @@ public class sGameEnd extends sScene {
 
     }
     @FXML
-    public void initialize() {
+    protected void initialize() {
         setLabelMessageDisplay();
     }
 
