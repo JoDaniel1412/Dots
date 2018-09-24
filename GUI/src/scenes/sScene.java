@@ -12,8 +12,6 @@ public abstract class sScene {
     @FXML
     abstract void pressed_return() throws IOException;
 
-    abstract void doOnLoad();
-
     public static int getWidth() {
         return width;
     }

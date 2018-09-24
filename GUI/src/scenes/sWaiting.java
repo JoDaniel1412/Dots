@@ -42,9 +42,4 @@ public class sWaiting extends sScene{
         Cliente.exit();
         Servidor.exit();
     }
-
-    @Override
-    void doOnLoad() {
-
-    }
 }

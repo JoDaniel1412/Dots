@@ -9,11 +9,6 @@ public class sSettings extends sScene {
         MainInterface.setScene("fxml/menu.fxml");
     }
 
-    @Override
-    void doOnLoad() {
-
-    }
-
     @FXML
     void pressed_fullscreen(){
         MainInterface.setFullScreen();
