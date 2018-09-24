@@ -46,11 +46,12 @@ public class Main extends Application {
         window.setScene(scene);
 
         // Sets the new scenes dimensions based on last one
-        if (fullscreen) window.setFullScreen(true);
-        else {
-            window.setWidth(width);
-            window.setHeight(height);
-        }
+         if (fullscreen) window.setFullScreen(true);
+         else {
+             window.setWidth(width);
+             window.setHeight(height);
+         }
+
     }
 
     public static void setFullScreen(){
@@ -62,10 +63,8 @@ public class Main extends Application {
     }
 
     // Method that ends the game
-    public static void close(){
+    public static void close() throws IOException{
         window.close();
         Platform.exit();
-        //Servidor.exit();
-        //Cliente.exit();
     }
 }

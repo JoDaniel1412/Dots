@@ -39,9 +39,15 @@ public class sPlay extends sScene {
 
     /* Events */
     @Override
-    void pressed_return() throws IOException {
+    void pressed_return() {
         MainInterface.setScene("fxml/menu.fxml");
     }
+
+    @Override
+    void doOnLoad() {
+
+    }
+
     @FXML
     void pressed_create() throws IOException{
         Servidor.init();
@@ -52,9 +58,9 @@ public class sPlay extends sScene {
     }
     @FXML
     void pressed_search() throws IOException, InterruptedException {
-        String ip = eIpAddress.getText();
-        String port1 = ePort1.getText();
-        String port2 = ePort2.getText();
+        java.lang.String ip = eIpAddress.getText();
+        java.lang.String port1 = ePort1.getText();
+        java.lang.String port2 = ePort2.getText();
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
             Cliente.setTurn(false);
@@ -89,20 +95,20 @@ public class sPlay extends sScene {
         bGameTime1.getStyleClass().add("button-toggle");
         bGameTime2.getStyleClass().remove("button-toggle");
         bGameTime3.getStyleClass().remove("button-toggle");
-        Timer.setTime_limit(2);
+        Timer.setTime_limit(120);
     }
     @FXML
     private void pressed_bGameTime2(){
         bGameTime1.getStyleClass().remove("button-toggle");
         bGameTime2.getStyleClass().add("button-toggle");
         bGameTime3.getStyleClass().remove("button-toggle");
-        Timer.setTime_limit(4);
+        Timer.setTime_limit(240);
     }
     @FXML
     private void pressed_bGameTime3(){
         bGameTime1.getStyleClass().remove("button-toggle");
         bGameTime2.getStyleClass().remove("button-toggle");
         bGameTime3.getStyleClass().add("button-toggle");
-        Timer.setTime_limit(6);
+        Timer.setTime_limit(360);
     }
 }

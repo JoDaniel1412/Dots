@@ -4,6 +4,7 @@ import PointsChecker.MainChecker;
 import client.Cliente;
 import drawings.Dots;
 import drawings.DrawBoard;
+import drawings.Figures;
 import drawings.Lines;
 import lists.Board;
 import lists.DoubleArray;
@@ -28,6 +29,22 @@ public class DotsInteraction {
     private static int p2Score = 0;
     private static int points = 0;
 
+    /**
+     * Deserialize the Index received by the Server
+     * @param json file to deserialize
+     * @return a boolean if the file could be read
+     */
+    public static boolean  try_read(File json){
+        try {
+            DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
+            received_dots(arrayIndex);
+            System.out.println("Json received");
+            return true;
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     /**
      * Method that handles the dots pressed by the player, verification and scores
@@ -59,6 +76,7 @@ public class DotsInteraction {
                 var firstDot = dotsDoubleArray.getFirst();
                 var secondDot = dotsDoubleArray.getSecond();
                 Lines.color = Lines.color1;
+                Figures.color = Figures.color1;
                 Lines.draw_line(firstDot.xPoss, firstDot.yPoss, secondDot.xPoss, secondDot.yPoss);
                 DrawBoard.draw.check_lines();
 
@@ -77,19 +95,6 @@ public class DotsInteraction {
         }
     }
 
-    public static boolean  try_read(File json){
-        try {
-            DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
-            received_dots(arrayIndex);
-            return true;
-        } catch (IOException e) {
-            //e.printStackTrace();
-            return false;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
     /**
      * Handles the dots received by the server and draws the line
@@ -100,11 +105,11 @@ public class DotsInteraction {
         var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // Remove non digits
         var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // Remove non digits
 
-        int first_dot_row = Integer.parseInt(String.valueOf(first_dot.charAt(0))); // First Node Index
-        int first_dot_column = Integer.parseInt(String.valueOf(first_dot.charAt(1))); // First Node Index
+        int first_dot_row = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(0))); // First Node Index
+        int first_dot_column = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(1))); // First Node Index
 
-        int second_dot_row = Integer.parseInt(String.valueOf(second_dot.charAt(0))); // Second Node Index
-        int second_dot_column = Integer.parseInt(String.valueOf(second_dot.charAt(1))); // Second Node Index
+        int second_dot_row = Integer.parseInt(java.lang.String.valueOf(second_dot.charAt(0))); // Second Node Index
+        int second_dot_column = Integer.parseInt(java.lang.String.valueOf(second_dot.charAt(1))); // Second Node Index
 
         // Search for the Dot coordinates
         Board board = Board.getInstance();
@@ -123,6 +128,7 @@ public class DotsInteraction {
         }
         if (line_repeater == 1) {  // Draws the line in the pane
             Lines.color = Lines.color2;
+            Figures.color = Figures.color2;
             Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
             Cliente.setTurn(true);
         } else {

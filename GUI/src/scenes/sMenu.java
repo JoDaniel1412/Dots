@@ -14,6 +14,11 @@ public class sMenu extends sScene {
         MainInterface.close();
     }
 
+    @Override
+    void doOnLoad() {
+        System.out.println("action");
+    }
+
     @FXML
     void pressed_play() {
         MainInterface.setScene("fxml/play.fxml");
@@ -30,7 +35,7 @@ public class sMenu extends sScene {
         Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
         MainInterface.setScene("fxml/game.fxml");
-        MainInterface.setResizable();
+        //MainInterface.setResizable();
         Timer.init();
     }
 }

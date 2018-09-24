@@ -1,5 +1,7 @@
 package server;
 
+import lists.Lista;
+
 import java.io.*;
 import java.net.Inet4Address;
 import java.net.ServerSocket;
@@ -12,7 +14,9 @@ import java.net.UnknownHostException;
  * @author José Acuña
  */
 public class Servidor extends Thread {
+    public static Object State;
     private File message;
+    private Lista cola= new Lista();
     private static ServerSocket servidorI;
     private static ServerSocket servidorO;
     public static String ipAdress;
@@ -52,6 +56,7 @@ public class Servidor extends Thread {
             //System.out.println("Server send: " + message);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 
@@ -61,6 +66,8 @@ public class Servidor extends Thread {
     public void read() {
         try {
             Socket cliente = servidorI.accept();
+            cola.addList(cliente.getInetAddress().toString());
+            System.out.println(cola.get_size());
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
             message = new File(entrada.readLine());
             cliente.close();

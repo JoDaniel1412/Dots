@@ -11,7 +11,6 @@ public class Timer extends Thread{
     private static Thread timer;
     private static int time;
     private static int time_limit = 240;
-
     private Timer(String msg){ super(msg);}
 
     /**
