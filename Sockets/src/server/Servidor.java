@@ -65,7 +65,7 @@ public class Servidor extends Thread {
     public void read() {
         try {
             Socket cliente = servidorI.accept();
-            cola.addList(cliente.getInetAddress());
+            cola.addList(cliente.getInetAddress().toString());
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
             message = new File(entrada.readLine());
             cliente.close();
