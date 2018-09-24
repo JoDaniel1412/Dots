@@ -66,7 +66,7 @@ public class Cliente extends Thread {
     public void run(){
         while (true) {
             try {
-                sleep(1000);
+                sleep(500);
                 Cliente.solicitarInfo();
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();

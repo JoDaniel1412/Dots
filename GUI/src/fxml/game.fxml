@@ -26,8 +26,7 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <Label fx:id="lScoreP1" styleClass="bold-label-25" text="0" />
-                        <Label fx:id="lP1" styleClass="bold-label-25" text="P1" />
-                        <Label fx:id="lP1Turn" styleClass="bold-label-25" text="Turn" />
+                        <Label fx:id="lP1Turn" styleClass="bold-label-25" text="Your Turn" />
                      </children>
                      <GridPane.margin>
                         <Insets left="10.0" />
@@ -35,8 +34,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
                      <children>
-                        <Label fx:id="lP2Turn" styleClass="bold-label-25" text="Turn" />
-                        <Label fx:id="lP2" styleClass="bold-label-25" text="P2" />
+                        <Label fx:id="lP2Turn" styleClass="bold-label-25" text="Their Turn" />
                         <Label fx:id="lScoreP2" styleClass="bold-label-25" text="0" />
                      </children>
                      <padding>

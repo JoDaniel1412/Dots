@@ -1,17 +1,16 @@
 package sound;
 
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
-public class Sound {
+public class Sound extends Thread{
+
     private Clip clip;
-    public Sound(String fileName) {
+    private static Thread audio;
+
+    private Sound(String fileName) {
         //El try primero crea un file el cual ya sabe que tiene que ser una ruta String y los catch son todos los posibles casos de error. Tiene que ser wav
         try {
             File file = new File(fileName);
@@ -44,14 +43,20 @@ public class Sound {
 
         // Metodo para reproducir normal, pra reproducir en loop y para pausar la musica
     }
-    public void play(){
-        //clip.setFramePosition(0);  // Must always rewind!
-        clip.start();
+
+    /**
+     * Reproduces a sound file
+     * @param file direction of the file in resources/sounds/..
+     */
+    public static void play(String file){
+        audio = new Sound(file);
+        audio.start();
     }
-    public void loop(){
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
-    }
-    public void stop(){
-        clip.stop();
+
+    @Override
+    public void run() {
+        while (true){
+            clip.loop(0);
+        }
     }
 }
