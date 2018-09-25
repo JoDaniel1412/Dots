@@ -39,10 +39,9 @@ public class DotsInteraction {
         try {
             DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
             received_dots(arrayIndex);
-            System.out.println("Json message received");
             return true;
         } catch (IOException | InterruptedException e) {
-            System.out.println("Json message error");
+            System.out.println("Couldn't read dotsIndex.json");
             return false;
         }
     }

@@ -16,10 +16,10 @@ import java.net.UnknownHostException;
 public class Servidor extends Thread {
     public static Object State;
     private File message;
-    private Lista cola= new Lista();
+    private Lista cola = new Lista();
     private static ServerSocket servidorI;
     private static ServerSocket servidorO;
-    public static String ipAdress;
+    public static String ipAddress;
     public static int portI = 8888;
     public static int portO = 9999;
     private static Thread servidor;
@@ -46,17 +46,27 @@ public class Servidor extends Thread {
 
     /**
      * Metodo que envia la informacion a los clientes
+     * @param ipAddress
      */
-    public void write() {
+    public boolean write(String ipAddress) {
         try {
             Socket cliente = servidorO.accept();
+            String ip = cliente.getInetAddress().toString();
+            if(!ip.equals(ipAddress) && !ipAddress.equals("none")){
+                return false;
+            }
+            if(cola.get_size() == 1 && ip.equals(cola.get_index(0))){
+                return false;
+            }
+            cola.addList(ip);
             PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
             salida.println(message);
             cliente.close();
-            //System.out.println("Server send: " + message);
+            System.out.println("Server send: " + message);
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
-
+            return false;
         }
     }
 
@@ -66,8 +76,6 @@ public class Servidor extends Thread {
     public void read() {
         try {
             Socket cliente = servidorI.accept();
-            cola.addList(cliente.getInetAddress().toString());
-            System.out.println(cola.get_size());
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
             message = new File(entrada.readLine());
             cliente.close();
@@ -79,10 +87,10 @@ public class Servidor extends Thread {
 
     public void run(){
         while (true) {
+            setFirstClients();
             read();
-            write();
-            write();
-
+            write(cola.get_index(0));
+            write(cola.get_index(1));
         }
     }
 
@@ -93,7 +101,14 @@ public class Servidor extends Thread {
     }
 
     private void setIpAdress() throws UnknownHostException {
-         ipAdress = Inet4Address.getLocalHost().getHostAddress();
+         ipAddress = Inet4Address.getLocalHost().getHostAddress();
+    }
+
+    private void setFirstClients(){
+        if (cola.get_size() == 0){
+            write("none");
+            while (!write("none"));
+        }
     }
 }
 

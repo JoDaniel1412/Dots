@@ -33,10 +33,17 @@ public class GameSettings {
             GameSettings obj = mapper.readValue(json, GameSettings.class);
             obj.analise(obj.rows, obj.columns, obj.time);
             return true;
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             System.out.println("Couldn't read game_settings.json");
             return false;
         }
+    }
+
+    public static void sendGameSettings() throws IOException, InterruptedException {
+        int rows = Board.getInstance().getRows();
+        int columns = Board.getInstance().getColumns();
+        int time = Timer.getTime_limit();
+        GameSettings.send_settings(rows, columns, time);
     }
 
     /**
@@ -47,7 +54,7 @@ public class GameSettings {
      * @throws IOException in case the mapper fail
      * @throws InterruptedException in case it couldn't send the message to the server
      */
-    public static void send_settings(int rows, int columns, int time) throws IOException, InterruptedException {
+    private static void send_settings(int rows, int columns, int time) throws IOException, InterruptedException {
         File json = new File("Sockets/game_settings_send.json");
         mapper.writeValue(json, new GameSettings(rows, columns, time));
         Cliente.enviarInfo(json);
@@ -59,9 +66,11 @@ public class GameSettings {
      * @param columns size of the Board
      * @param time game duration
      */
-    private void analise(int rows, int columns, int time) throws IOException {
+    private void analise(int rows, int columns, int time) throws IOException, InterruptedException {
         Board.getInstance().setBoardSize(rows, columns);
         Timer.setTime_limit(time);
+        Commands.send_command("start");
+        System.out.println("Setup");
     }
 
     /** Getters and Setters **/

@@ -16,7 +16,7 @@ public class Commands {
      * exit
      * surrender
      */
-    private java.lang.String command;
+    private String command;
     private static ObjectMapper mapper = new ObjectMapper();
 
     public Commands(){}
@@ -36,7 +36,7 @@ public class Commands {
             obj.analise(obj.command);
             return true;
         } catch (IOException e) {
-            //e.printStackTrace();
+            System.out.println("Couldn't read commands.json");
             return false;
         }
     }

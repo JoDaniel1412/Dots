@@ -1,8 +1,6 @@
 package lists;
 
 
-import java.net.InetAddress;
-
 public class Lista{
     Nodo first = null;
     int size = 0;
@@ -23,10 +21,13 @@ public class Lista{
         }else{
             Nodo temp = this.first;
             if(!temp.getValor().equals(valor)) {
-                this.size += 1;
                 while (temp.next != null) {
                     temp = temp.next;
+                    if (temp.getValor().equals(valor)) {
+                        return;
+                    }
                 }
+                this.size += 1;
                 temp.next = new Nodo(valor);
             }
         }

@@ -30,7 +30,7 @@ public class sWaiting extends sScene{
 
     @FXML
     protected void initialize(){
-        ipLabel.setText(Servidor.ipAdress);
+        ipLabel.setText(Servidor.ipAddress);
         portLabel1.setText(java.lang.String.valueOf(Servidor.portI));
         portLabel2.setText(java.lang.String.valueOf(Servidor.portO));
     }

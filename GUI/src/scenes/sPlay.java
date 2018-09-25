@@ -1,8 +1,6 @@
 package scenes;
 
 import client.Cliente;
-import client.Commands;
-import client.GameSettings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -59,13 +57,8 @@ public class sPlay extends sScene {
     void pressed_create() throws IOException, InterruptedException {
         // Setups the Sockets
         Servidor.init();
-        Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
+        Cliente.init(Servidor.ipAddress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
-
-        int rows = Board.getInstance().getRows();
-        int columns = Board.getInstance().getColumns();
-        int time = Timer.getTime_limit();
-        GameSettings.send_settings(rows, columns, time);
         MainInterface.setScene("fxml/waiting.fxml");
         MainInterface.setResizable();
     }
@@ -83,10 +76,8 @@ public class sPlay extends sScene {
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
             Cliente.setTurn(false);
-            Cliente.solicitarInfo();
             MainInterface.setResizable();
             MainInterface.setScene("fxml/waiting.fxml");
-            Commands.send_command("start");
         }
     }
 
