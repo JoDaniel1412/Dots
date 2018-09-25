@@ -11,17 +11,12 @@ import java.io.IOException;
 
 public class Commands {
 
-    /**
-     * start
-     * exit
-     * surrender
-     */
     private String command;
     private static ObjectMapper mapper = new ObjectMapper();
 
     public Commands(){}
 
-    private Commands(java.lang.String command){
+    private Commands(String command){
         this.command = command;
     }
 
@@ -47,7 +42,7 @@ public class Commands {
      * @throws IOException in case the mapper fail
      * @throws InterruptedException in case it couldn't send the message to the server
      */
-    public static void send_command(java.lang.String message) throws IOException, InterruptedException {
+    public static void send_command(String message) throws IOException, InterruptedException {
         File json = new File("Sockets/command_send.json");
         mapper.writeValue(json, new Commands(message));
         Cliente.enviarInfo(json);
@@ -57,10 +52,12 @@ public class Commands {
      * Tells the Game what to do with the message given
      * @param command a specific string
      */
-    private void analise(java.lang.String command) throws IOException {
+    private void analise(String command) {
         if(command.equals("start")){
-            sWaiting.pressed_start();
-            Timer.init();
+            if (!sWaiting.isGame_started()) {
+                sWaiting.pressed_start();
+                Timer.init();
+            }
         }
         if(command.equals("end")){
             sGameEnd.p1Score = DotsInteraction.getP1Score();
@@ -70,11 +67,11 @@ public class Commands {
     }
 
     /** Getters and Setters **/
-    public java.lang.String getCommand() {
+    public String getCommand() {
         return command;
     }
 
-    public void setCommand(java.lang.String command) {
+    public void setCommand(String command) {
         this.command = command;
     }
 }

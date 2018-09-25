@@ -1,6 +1,7 @@
 package scenes;
 
 import client.Cliente;
+import client.GameSettings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -51,12 +52,11 @@ public class sPlay extends sScene {
     /**
      * Creates a new game initializing the Server and Client
      * @throws IOException if Server couldn't being initiated
-     * @throws InterruptedException if couldn't send the GameSettings
      */
     @FXML
-    void pressed_create() throws IOException, InterruptedException {
+    void pressed_create() throws IOException {
         // Setups the Sockets
-        Servidor.init();
+        Servidor.init(GameSettings.setGameSettings());
         Cliente.init(Servidor.ipAddress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
         MainInterface.setScene("fxml/waiting.fxml");
@@ -65,11 +65,9 @@ public class sPlay extends sScene {
 
     /**
      * Joins to a game initializing the client
-     * @throws IOException if fails sending command to Server
-     * @throws InterruptedException if fails sending command to Server
      */
     @FXML
-    void pressed_search() throws IOException, InterruptedException {
+    void pressed_search() {
         java.lang.String ip = eIpAddress.getText();
         java.lang.String port1 = ePort1.getText();
         java.lang.String port2 = ePort2.getText();

@@ -17,6 +17,8 @@ public class GameSettings {
     private int time;
     private static ObjectMapper mapper = new ObjectMapper();
 
+    public GameSettings(){}
+
     private GameSettings(int rows, int columns, int time) {
         this.rows = rows;
         this.columns = columns;
@@ -30,7 +32,9 @@ public class GameSettings {
      */
     static boolean try_read(File json) {
         try {
+            System.out.println("try map");
             GameSettings obj = mapper.readValue(json, GameSettings.class);
+            System.out.println("mapped");
             obj.analise(obj.rows, obj.columns, obj.time);
             return true;
         } catch (IOException | InterruptedException e) {
@@ -39,25 +43,30 @@ public class GameSettings {
         }
     }
 
-    public static void sendGameSettings() throws IOException, InterruptedException {
+    /**
+     * Gets the Game Settings in a json format
+     * @return a json File
+     * @throws IOException in case the mapper fail
+     */
+    public static File setGameSettings() throws IOException {
         int rows = Board.getInstance().getRows();
         int columns = Board.getInstance().getColumns();
         int time = Timer.getTime_limit();
-        GameSettings.send_settings(rows, columns, time);
+        return GameSettings.map_settings(rows, columns, time);
     }
 
     /**
-     * Sends a command to the server
+     * Makes a json file with the game settings
      * @param rows size of the Board
      * @param columns size of the Board
      * @param time game duration
+     * @return a File in json format
      * @throws IOException in case the mapper fail
-     * @throws InterruptedException in case it couldn't send the message to the server
      */
-    private static void send_settings(int rows, int columns, int time) throws IOException, InterruptedException {
+    private static File map_settings(int rows, int columns, int time) throws IOException {
         File json = new File("Sockets/game_settings_send.json");
         mapper.writeValue(json, new GameSettings(rows, columns, time));
-        Cliente.enviarInfo(json);
+        return json;
     }
 
     /**
@@ -70,7 +79,6 @@ public class GameSettings {
         Board.getInstance().setBoardSize(rows, columns);
         Timer.setTime_limit(time);
         Commands.send_command("start");
-        System.out.println("Setup");
     }
 
     /** Getters and Setters **/

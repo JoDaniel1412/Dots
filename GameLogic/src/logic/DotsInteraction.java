@@ -41,7 +41,7 @@ public class DotsInteraction {
             received_dots(arrayIndex);
             return true;
         } catch (IOException | InterruptedException e) {
-            System.out.println("Couldn't read dotsIndex.json");
+            System.out.println("Couldn't read dots_index.json");
             return false;
         }
     }

@@ -17,12 +17,15 @@ public class sWaiting extends sScene{
     @FXML
     public Label portLabel2;
 
+    private static boolean game_started = false;
+
     public static void pressed_start() {
         AnimationTimer starter = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 MainInterface.setScene("fxml/game.fxml");
                 stop();
+                game_started = true;
             }
         };
         starter.start();
@@ -41,5 +44,9 @@ public class sWaiting extends sScene{
         MainInterface.setResizable();
         Cliente.exit();
         Servidor.exit();
+    }
+
+    public static boolean isGame_started() {
+        return game_started;
     }
 }

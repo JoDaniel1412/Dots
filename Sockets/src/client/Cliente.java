@@ -52,7 +52,6 @@ public class Cliente extends Thread {
      * @param message archivo Json a enviar
      */
     public static void enviarInfo(File message) throws InterruptedException, IOException {
-        sleep(100);
         Socket conexionServer = new Socket(ip, portO);
         PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
         salida.println(message);
@@ -81,7 +80,13 @@ public class Cliente extends Thread {
     }
 
     private static void analise(File message){
-        if (!DotsInteraction.try_read(message)){
+        if(message.toString().equals("null")){
+            System.out.println("Waiting to start the game...");
+        }
+        else if(message.toString().equals("none")){
+            System.out.println("Server reject");
+        }
+        else if (!DotsInteraction.try_read(message)){
             if(!Commands.try_read(message)){
                 if(!GameSettings.try_read(message)) {
                     System.out.println("Couldn't read any json");
