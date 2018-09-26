@@ -5,7 +5,6 @@ import client.GameSettings;
 import javafx.fxml.FXML;
 import logic.Timer;
 import server.Servidor;
-import sound.Sound;
 
 import java.io.IOException;
 
@@ -17,9 +16,7 @@ public class sMenu extends sScene {
     }
 
     @Override
-    protected void initialize() throws IOException {
-        Sound.play("resources/sounds/chill_day.wav", 1);
-    }
+    protected void initialize() throws IOException { }
 
     @FXML
     void pressed_play() {
