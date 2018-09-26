@@ -2,7 +2,7 @@ package lists;
 
 /**
  * @author José Acuña
- * @version 1.1
+ * @version 1.2
  * @since 29-08-2018
  */
 public class Board {
@@ -28,6 +28,13 @@ public class Board {
     public static synchronized Board init(int rows, int columns){
         if (instance == null) instance = new Board(rows,columns);
         return instance;
+    }
+
+    /**
+     * Resets the Board to a new one
+     */
+    public final void reset(){
+        head = make_columns();
     }
 
     /**

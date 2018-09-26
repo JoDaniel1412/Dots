@@ -1,5 +1,6 @@
 package client;
 
+import lists.Board;
 import logic.DotsInteraction;
 import logic.Timer;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -60,6 +61,7 @@ public class Commands {
         if(command.equals("end")){
             sGameEnd.p1Score = DotsInteraction.getP1Score();
             sGameEnd.p2Score = DotsInteraction.getP2Score();
+            Board.getInstance().reset();
             sGameEnd.game_end();
         }
     }
