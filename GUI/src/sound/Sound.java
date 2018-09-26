@@ -12,7 +12,7 @@ public class Sound extends Thread{
     public static Thread audio;
 
     private Sound(String fileName) {
-        //El try primero crea un file el cual ya sabe que tiene que ser una ruta String y los catch son todos los posibles casos de error. Tiene que ser wav
+        //El try primero crea un File el cual ya sabe que tiene que ser una ruta String y los catch son todos los posibles casos de error. Tiene que ser wav
         try {
             File file = new File(fileName);
             if (file.exists()) {
@@ -22,24 +22,24 @@ public class Sound extends Thread{
                 clip.open(sound);
             }
             else {
-                throw new RuntimeException("Sound: El archivo deseado no fue encontrado " + fileName);
+                System.out.println("Sound: El archivo deseado no fue encontrado " + fileName);
             }
         }
         catch (MalformedURLException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Sound: URL corrupto: " + e);
+            //e.printStackTrace();
+            System.out.println("Sound: URL corrupto: " + e);
         }
         catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Sound: El tipo de archivo es invalido o no soportado: " + e);
+            //e.printStackTrace();
+            System.out.println("Sound: El tipo de archivo es invalido o no soportado: " + e);
         }
         catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Sound: error de entrada o salida en el sonido: " + e);
+            //e.printStackTrace();
+            System.out.println("Sound: error de entrada o salida en el sonido: " + e);
         }
         catch (LineUnavailableException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Sound: Linea no valida: " + e);
+            //e.printStackTrace();
+            System.out.println("Sound: Linea no valida: " + e);
         }
 
         // Metodo para reproducir normal, pra reproducir en loop y para pausar la musica
