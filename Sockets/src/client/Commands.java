@@ -44,7 +44,7 @@ public class Commands {
      * @throws InterruptedException in case it couldn't send the message to the server
      */
     public static void send_command(String message) throws IOException, InterruptedException {
-        File json = new File("Sockets/command_send.json");
+        File json = new File("Sockets/json/command_send.json");
         mapper.writeValue(json, new Commands(message));
         Cliente.enviarInfo(json);
     }

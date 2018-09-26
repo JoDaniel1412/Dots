@@ -62,7 +62,7 @@ public class GameSettings {
      * @throws IOException in case the mapper fail
      */
     private static File map_settings(int rows, int columns, int time) throws IOException {
-        File json = new File("Sockets/game_settings_send.json");
+        File json = new File("Sockets/json/game_settings_send.json");
         mapper.writeValue(json, new GameSettings(rows, columns, time));
         return json;
     }
