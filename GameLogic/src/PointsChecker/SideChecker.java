@@ -207,15 +207,23 @@ public class SideChecker {
         return (!node1.isLineBottomLeft() && !node2.isLineTopLeft());
     }
 
-    private static boolean checkParalelDecresent (Node node1, Node node2){
+    private static boolean checkParallelDecrement(Node node1, Node node2){
         if (node1.isLineTopLeft() && node2.isLineTopLeft()){
             Blocker.blockLeftDiagonals(node1, node2);
             Blocker.blockLeftDiagonals(node1.getTop(), node1);
-            Blocker.BlockZone(2, node1, node2, node1.getLeft(), node1.getLeft().getTop());
             return true;
         }
         return false;
     }
+    private static boolean checkParallelCrement (Node node1, Node node2){
+        if (node1.isLineBottomLeft() && node2.isLineBottomLeft()){
+            Blocker.blockLeftDiagonals(node1, node2);
+            Blocker.blockLeftDiagonals(node2, node2.getBottom());
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Método principal que revisa todos los casos luego de una linea vertical
      * @param node1 Almacena el nodo inicial
@@ -252,16 +260,44 @@ public class SideChecker {
                     return true;
                 }
             }
+            if (node2.getLeft().isTopState() && node1.getRight().isBottomState()){
+                if (SideChecker.checkParallelDecrement(node2, node1) &&
+                        SideChecker.checkParallelDecrement(node1.getRight(), node1.getRight().getBottom())){
+                    Blocker.BlockZone(4, node2.getTop_left(), node1.getTop_left(), node1.getBottom_right(), node2.getBottom_right());
+                    return true;
+                }
+            }
             if (node2.getLeft().isTopState()){
-                if (SideChecker.checkParalelDecresent(node2, node1)){
+                if (SideChecker.checkParallelDecrement(node2, node1)){
+                    Blocker.BlockZone(2, node2, node2.getTop_left(), node1.getTop_left(), node1);
                     return true;
                 }
             }
             if (node1.getRight().isBottomState()){
-                if (SideChecker.checkParalelDecresent(node1.getRight(), node1.getRight().getBottom())) {
+                if (SideChecker.checkParallelDecrement(node1.getRight(), node1.getRight().getBottom())) {
+                    Blocker.BlockZone(2, node1, node1.getBottom_right(), node2.getBottom_right(), node2);
                     return true;
                 }
+            }
 
+            if (node1.getLeft().isBottomState() && node2.getRight().isTopState()) {
+                if (checkParallelCrement(node2.getTop_right(), node2.getRight()) && checkParallelCrement(node2, node1)){
+                    Blocker.BlockZone(4, node2.getTop_right(), node2.getRight(), node1.getBottom_left(), node1.getLeft());
+                    return true;
+                }
+            }
+
+            if (node1.getLeft().isBottomState()){
+                if (checkParallelCrement(node2, node1)){
+                    Blocker.BlockZone(2, node1, node2, node2.getBottom_left(), node1.getBottom_left());
+                    return true;
+                }
+            }
+            if (node2.getRight().isTopState()){
+                if (checkParallelCrement(node2.getTop_right(), node2.getRight())){
+                    Blocker.BlockZone(2, node1, node2, node2.getTop_right(), node2.getRight());
+                    return false;
+                }
             }
 
             if (CheckRight(node1, node2)) {
@@ -277,6 +313,9 @@ public class SideChecker {
                             Blocker.blockSquareTriangleLeftCresent(node2, node1);
                             Blocker.BlockZone(3, node2, node2.getRight(), node1.getRight(), node1.getLeft());
                             return true;
+                        }
+                        if (node2.getRight().isTopState() && checkParallelCrement(node2.getTop_right(), node2.getRight())){
+
                         }
                         Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);
                         return true;
