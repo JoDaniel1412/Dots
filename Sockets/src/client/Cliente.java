@@ -27,7 +27,7 @@ public class Cliente extends Thread {
      * @param portI puerto que entra al servidor y salida del cliente
      * @param portO pueto de salida del servidor y entrada del cliente
      */
-    public static void init(java.lang.String ip, int portI, int portO){
+    public static void init(String ip, int portI, int portO){
         cliente = new Cliente("client");
         ((Cliente) cliente).setIp(ip);
         ((Cliente) cliente).setPortI(portO);
@@ -41,7 +41,7 @@ public class Cliente extends Thread {
         sleep(100);
         Socket conexionServer = new Socket(ip, portI);
         BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
-        File message = new File(entradaDatos.readLine());
+        String message = entradaDatos.readLine();
         conexionServer.close();
         System.out.println("Client receive: " + message);
         analise(message);
@@ -51,7 +51,7 @@ public class Cliente extends Thread {
      * Metodo que envia la informacion al servidor para que este la analice
      * @param message archivo Json a enviar
      */
-    public static void enviarInfo(File message) throws InterruptedException, IOException {
+    public static void enviarInfo(String message) throws InterruptedException, IOException {
         Socket conexionServer = new Socket(ip, portO);
         PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
         salida.println(message);
@@ -79,17 +79,17 @@ public class Cliente extends Thread {
         cliente.stop();
     }
 
-    private static void analise(File message){
-        if(message.toString().equals("null")){
-            //System.out.println("Waiting to start the game...");
+    private static void analise(String message){
+        if(message.equals("null")){
+            System.out.println("Waiting to start the game...");
         }
-        else if(message.toString().equals("none")){
-           // System.out.println("Server reject");
+        else if(message.equals("none")){
+            System.out.println("Server reject");
         }
         else if (!DotsInteraction.try_read(message)){
             if(!Commands.try_read(message)){
                 if(!GameSettings.try_read(message)) {
-                   // System.out.println("Couldn't read any json");
+                    System.out.println("Couldn't read any json");
                 }
             }
         }

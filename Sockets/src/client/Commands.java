@@ -7,7 +7,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 import scenes.sGameEnd;
 import scenes.sWaiting;
 
-import java.io.File;
 import java.io.IOException;
 
 public class Commands {
@@ -26,13 +25,13 @@ public class Commands {
      * @param json file to transform in Commands object
      * @return boolean if the decode is successful
      */
-    static boolean try_read(File json) {
+    static boolean try_read(String json) {
         try {
             Commands obj = mapper.readValue(json, Commands.class);
+            System.out.println("Read commands.json");
             obj.analise(obj.command);
             return true;
         } catch (IOException e) {
-            System.out.println("Couldn't read commands.json");
             return false;
         }
     }
@@ -44,8 +43,7 @@ public class Commands {
      * @throws InterruptedException in case it couldn't send the message to the server
      */
     public static void send_command(String message) throws IOException, InterruptedException {
-        File json = new File("Sockets/json/command_send.json");
-        mapper.writeValue(json, new Commands(message));
+        String json = mapper.writeValueAsString(new Commands(message));
         Cliente.enviarInfo(json);
     }
 

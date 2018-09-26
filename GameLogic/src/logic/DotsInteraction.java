@@ -11,7 +11,6 @@ import lists.DoubleArray;
 import lists.Node;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -23,23 +22,22 @@ public class DotsInteraction {
     private static DoubleArray<Node> doubleArray = new DoubleArray<>();
     private static DoubleArray<Dots> dotsDoubleArray = new DoubleArray<>();
     private static ObjectMapper mapper = new ObjectMapper();
-    private static File json = new File("Sockets/json/message_send.json");
     private static int p1Score = 0;
     private static int p2Score = 0;
     private static int points = 0;
 
     /**
      * Deserialize the Index received by the Server
-     * @param json file to deserialize
      * @return a boolean if the file could be read
+     * @param json
      */
-    public static boolean  try_read(File json){
+    public static boolean  try_read(String json){
         try {
             DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
+            System.out.println("Read dots_index.json");
             received_dots(arrayIndex);
             return true;
         } catch (IOException | InterruptedException e) {
-            System.out.println("Couldn't read dots_index.json");
             return false;
         }
     }
@@ -75,7 +73,7 @@ public class DotsInteraction {
 
                 // Makes a json and sends it to the Server
                 DoubleArray<DoubleArray> nodesIndex = new DoubleArray<>(firstNode, secondNode);
-                mapper.writeValue(json, nodesIndex);
+                String json = mapper.writeValueAsString(nodesIndex);
                 Cliente.enviarInfo(json);
                 Cliente.setTurn(false);
 
