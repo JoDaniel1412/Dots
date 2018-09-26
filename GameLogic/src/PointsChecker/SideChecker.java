@@ -207,6 +207,15 @@ public class SideChecker {
         return (!node1.isLineBottomLeft() && !node2.isLineTopLeft());
     }
 
+    private static boolean checkParalelDecresent (Node node1, Node node2){
+        if (node1.isLineTopLeft() && node2.isLineTopLeft()){
+            Blocker.blockLeftDiagonals(node1, node2);
+            Blocker.blockLeftDiagonals(node1.getTop(), node1);
+            Blocker.BlockZone(2, node1, node2, node1.getLeft(), node1.getLeft().getTop());
+            return true;
+        }
+        return false;
+    }
     /**
      * Método principal que revisa todos los casos luego de una linea vertical
      * @param node1 Almacena el nodo inicial
@@ -242,6 +251,17 @@ public class SideChecker {
                     Blocker.BlockZone(3, node2, node2.getLeft(), node1, node1.getRight());
                     return true;
                 }
+            }
+            if (node2.getLeft().isTopState()){
+                if (SideChecker.checkParalelDecresent(node2, node1)){
+                    return true;
+                }
+            }
+            if (node1.getRight().isBottomState()){
+                if (SideChecker.checkParalelDecresent(node1.getRight(), node1.getRight().getBottom())) {
+                    return true;
+                }
+
             }
 
             if (CheckRight(node1, node2)) {

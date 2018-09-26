@@ -111,7 +111,7 @@ public class Servidor extends Thread{
 
             last_ip = ip;
             count_down();
-            System.out.println("Server send: " + message);
+            //System.out.println("Server send: " + message);
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -140,7 +140,7 @@ public class Servidor extends Thread{
             message = new File(entrada.readLine());
             cliente.close();
             counter = 0;
-            System.out.println("Server receive: " + message);
+            //System.out.println("Server receive: " + message);
         } catch (IOException e) {
             e.printStackTrace();
         }

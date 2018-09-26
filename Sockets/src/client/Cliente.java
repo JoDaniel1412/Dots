@@ -81,15 +81,15 @@ public class Cliente extends Thread {
 
     private static void analise(File message){
         if(message.toString().equals("null")){
-            System.out.println("Waiting to start the game...");
+            //System.out.println("Waiting to start the game...");
         }
         else if(message.toString().equals("none")){
-            System.out.println("Server reject");
+           // System.out.println("Server reject");
         }
         else if (!DotsInteraction.try_read(message)){
             if(!Commands.try_read(message)){
                 if(!GameSettings.try_read(message)) {
-                    System.out.println("Couldn't read any json");
+                   // System.out.println("Couldn't read any json");
                 }
             }
         }
