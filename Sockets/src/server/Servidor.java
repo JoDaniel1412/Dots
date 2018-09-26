@@ -14,14 +14,18 @@ import java.net.UnknownHostException;
  * @author José Acuña
  */
 public class Servidor {
+
     public static Object State;
+    public static String ipAddress;
+    public static int portI = 8888;
+    public static int portO = 9999;
     private File message;
     private Lista cola = new Lista();
     private static ServerSocket servidorI;
     private static ServerSocket servidorO;
-    public static String ipAddress;
-    public static int portI = 8888;
-    public static int portO = 9999;
+    private String last_ip;
+    private char counter = 0;
+
 
     /**
      * Crea los puertos de entrada y salida de informacion del servidor
@@ -43,7 +47,6 @@ public class Servidor {
         Thread w = new Thread(() -> {
             while (true){
                 setFirstClients();
-                System.out.println(cola.get_size());
                 write();
             }
         });
@@ -63,6 +66,7 @@ public class Servidor {
      */
     public boolean write() {
         try {
+            if (message == null){ return false; }
             Socket cliente = servidorO.accept();
             String ip = cliente.getInetAddress().toString();
             PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
@@ -76,8 +80,8 @@ public class Servidor {
                 return false;
             }
 
-            // Send message to the others that aren't the first two
-            if(cola.get_size() >= 2 && (!ip.equals(cola.get_index(0)) && !ip.equals(cola.get_index(1)))){
+            // Send message to the others that aren't the first two or is the last one who ask for it
+            if((cola.get_size() >= 2 && (!ip.equals(cola.get_index(0)) && !ip.equals(cola.get_index(1)))) || (ip.equals(last_ip))){
                 salida.println("none");
                 cliente.close();
                 return false;
@@ -85,11 +89,25 @@ public class Servidor {
 
             salida.println(message);
             cliente.close();
+
+            last_ip = ip;
+            count_down();
             System.out.println("Server send: " + message);
             return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    /**
+     *
+     */
+    private void count_down() {
+        counter++;
+        if (counter == 2){
+            message = null;
+            counter = 0;
         }
     }
 
