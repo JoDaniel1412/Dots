@@ -54,10 +54,8 @@ public class Commands {
      */
     private void analise(String command) {
         if(command.equals("start")){
-            if (!sWaiting.isGame_started()) {
-                sWaiting.pressed_start();
-                Timer.init();
-            }
+            sWaiting.pressed_start();
+            Timer.init();
         }
         if(command.equals("end")){
             sGameEnd.p1Score = DotsInteraction.getP1Score();

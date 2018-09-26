@@ -13,18 +13,18 @@ import java.net.UnknownHostException;
  * @author Jesus Sandoval Morales
  * @author José Acuña
  */
-public class Servidor {
+public class Servidor extends Thread{
 
     public static Object State;
     public static String ipAddress;
     public static int portI = 8888;
     public static int portO = 9999;
-    private File message;
-    private Lista cola = new Lista();
+    private static File message;
+    private static Lista cola = new Lista();
     private static ServerSocket servidorI;
     private static ServerSocket servidorO;
-    private String last_ip;
-    private char counter = 0;
+    private static String last_ip;
+    private static int counter = 0;
 
 
     /**
@@ -39,7 +39,13 @@ public class Servidor {
 
         // Runs a thread to read
         Thread r = new Thread(() -> {
-            while (true){read();}
+            while (true){
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                read();}
         });
         r.start();
 
@@ -47,6 +53,11 @@ public class Servidor {
         Thread w = new Thread(() -> {
             while (true){
                 setFirstClients();
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 write();
             }
         });
@@ -63,6 +74,7 @@ public class Servidor {
 
     /**
      * Metodo que envia la informacion a los clientes
+     * @return boolean if the message has been send
      */
     public boolean write() {
         try {
@@ -70,18 +82,25 @@ public class Servidor {
             Socket cliente = servidorO.accept();
             String ip = cliente.getInetAddress().toString();
             PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
-            System.out.println(ip + " try to connect");
+            System.out.println(ip + " added to the queue");
             cola.addList(ip);
 
-            // Adds the first to clients ips to the queue
-            if(cola.get_size() == 0 || (cola.get_size() == 1 && ip.equals(cola.get_index(0)))){
+            // Adds the first client ip to the queue
+            if(cola.get_size() == 1){
                 salida.println("null");
                 cliente.close();
                 return false;
             }
 
-            // Send message to the others that aren't the first two or is the last one who ask for it
-            if((cola.get_size() >= 2 && (!ip.equals(cola.get_index(0)) && !ip.equals(cola.get_index(1)))) || (ip.equals(last_ip))){
+            // Send message to the others that aren't the first two
+            if((cola.get_size() >= 2 && (!ip.equals(cola.get_index(0)) && !ip.equals(cola.get_index(1))))){
+                salida.println("none");
+                cliente.close();
+                return false;
+            }
+
+            // Checks if the last client who received info is different to this one
+            if (ip.equals(last_ip)){
                 salida.println("none");
                 cliente.close();
                 return false;
@@ -120,6 +139,7 @@ public class Servidor {
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
             message = new File(entrada.readLine());
             cliente.close();
+            counter = 0;
             System.out.println("Server receive: " + message);
         } catch (IOException e) {
             e.printStackTrace();
@@ -138,7 +158,9 @@ public class Servidor {
     private void setFirstClients(){
         if (cola.get_size() == 0){
             write();
+            counter = 0;
             while (!write());
+            counter = 0;
         }
     }
 }

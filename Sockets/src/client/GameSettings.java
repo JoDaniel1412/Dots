@@ -32,9 +32,7 @@ public class GameSettings {
      */
     static boolean try_read(File json) {
         try {
-            System.out.println("try map");
             GameSettings obj = mapper.readValue(json, GameSettings.class);
-            System.out.println("mapped");
             obj.analise(obj.rows, obj.columns, obj.time);
             return true;
         } catch (IOException | InterruptedException e) {
