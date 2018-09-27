@@ -215,6 +215,25 @@ public class verticalChecker {
         return (!node1.isTop_leftState() && !node2.isTop_rightState() && !node1.isBottom_leftState() && !node2.isBottom_rightState());
     }
 
+    private static boolean checkCresentParallelogram (Node node1, Node node2){
+        if (node1.isLineTopRight() && node2.isLineTopRight()){
+            Blocker.BlockUpDiagonals(node1, node2);
+            Blocker.BlockUpDiagonals(node2, node2.getRight());
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean checkDecresentParallelogram (Node node1, Node node2){
+        if (node1.isLineTopLeft() && node2.isLineTopLeft()){
+            Blocker.BlockUpDiagonals(node1.getLeft(), node1);
+            Blocker.BlockUpDiagonals(node1, node2);
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * Método principal que verifiar cualquier caso en caso de que se realice una linea horizontal
      * @param node1 Almacena el nodo inicial
@@ -231,6 +250,22 @@ public class verticalChecker {
                     return true;
                 }
             }
+
+            if (node1.getTop().isLeftState() && node2.getBottom().isRightState()){
+                if (checkDecresentParallelogram(node1, node2) && checkDecresentParallelogram(node2.getBottom(), node2.getBottom_right())){
+                    Blocker.BlockZone(4, node1.getTop_left(), node1.getTop(), node2.getBottom_right(), node2.getBottom());
+                    return true;
+                }
+            }
+
+            if (node1.getBottom().isLeftState() && node2.getTop().isRightState()){
+                if (checkCresentParallelogram(node1, node2) && checkCresentParallelogram(node1.getBottom_left(), node1.getBottom())){
+                    Blocker.BlockZone(4, node2.getTop(), node2.getTop_right(), node1.getBottom(), node1.getBottom_left());
+                    return true;
+                }
+            }
+
+
 
 
             if (checkUp(node1, node2)) {
