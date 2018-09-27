@@ -32,7 +32,6 @@ public class Commands {
             obj.analise(obj.command);
             return true;
         } catch (IOException e) {
-            //System.out.println("Couldn't read commands.json");
             return false;
         }
     }

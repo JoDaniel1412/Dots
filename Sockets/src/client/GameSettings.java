@@ -36,7 +36,6 @@ public class GameSettings {
             obj.analise(obj.rows, obj.columns, obj.time);
             return true;
         } catch (IOException | InterruptedException e) {
-            //System.out.println("Couldn't read game_settings.json");
             return false;
         }
     }

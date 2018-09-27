@@ -35,11 +35,9 @@ public class DotsInteraction {
         try {
             DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
             System.out.println("Read dots_index.json");
-            System.out.println(arrayIndex.getFirst().toString() + arrayIndex.getSecond().toString());
             received_dots(arrayIndex);
             return true;
         } catch (IOException | InterruptedException e) {
-            //System.out.println("Couldn't read dots_index.json");
             return false;
         }
     }
@@ -103,7 +101,6 @@ public class DotsInteraction {
 
         var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // Remove non digits
         var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // Remove non digits
-        System.out.println(first_dot + second_dot);
 
         int first_dot_row = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(0))); // First Node Index
         int first_dot_column = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(1))); // First Node Index
