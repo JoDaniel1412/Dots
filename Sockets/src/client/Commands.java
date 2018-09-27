@@ -29,10 +29,11 @@ public class Commands {
     static boolean try_read(File json) {
         try {
             Commands obj = mapper.readValue(json, Commands.class);
+            System.out.println("Read commands.json");
             obj.analise(obj.command);
             return true;
         } catch (IOException e) {
-            System.out.println("Couldn't read commands.json");
+            //System.out.println("Couldn't read commands.json");
             return false;
         }
     }

@@ -33,10 +33,11 @@ public class GameSettings {
     static boolean try_read(File json) {
         try {
             GameSettings obj = mapper.readValue(json, GameSettings.class);
+            System.out.println("Read game_settings.json");
             obj.analise(obj.rows, obj.columns, obj.time);
             return true;
         } catch (IOException | InterruptedException e) {
-            System.out.println("Couldn't read game_settings.json");
+            //System.out.println("Couldn't read game_settings.json");
             return false;
         }
     }

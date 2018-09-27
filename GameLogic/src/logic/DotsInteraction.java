@@ -36,10 +36,11 @@ public class DotsInteraction {
     public static boolean  try_read(File json){
         try {
             DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
+            System.out.println("Read dots_index.json");
             received_dots(arrayIndex);
             return true;
         } catch (IOException | InterruptedException e) {
-            System.out.println("Couldn't read dots_index.json");
+            //System.out.println("Couldn't read dots_index.json");
             return false;
         }
     }
