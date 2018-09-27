@@ -23,7 +23,7 @@ public class DotsInteraction {
     private static DoubleArray<Node> doubleArray = new DoubleArray<>();
     private static DoubleArray<Dots> dotsDoubleArray = new DoubleArray<>();
     private static ObjectMapper mapper = new ObjectMapper();
-    private static File json = new File("Sockets/message_send.json");
+    private static File json = new File("Sockets/json/message_send.json");
     private static short line_repeater = 1;
     private static int p1Score = 0;
     private static int p2Score = 0;
@@ -142,6 +142,7 @@ public class DotsInteraction {
     public static void point_made(int points){
         //Sound.play("resources/sounds/points.wav", 0);
         DotsInteraction.points += points;
+        //private static File json = new File("Sockets/json/message_send.json");
     }
 
     /**
