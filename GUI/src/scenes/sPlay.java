@@ -60,7 +60,7 @@ public class sPlay extends sScene {
         Cliente.init(Servidor.ipAddress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
         MainInterface.setScene("fxml/waiting.fxml");
-        MainInterface.setResizable();
+        //zMainInterface.setResizable();
     }
 
     /**

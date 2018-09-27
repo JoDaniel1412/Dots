@@ -81,6 +81,7 @@ public class DotsInteraction {
                 if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){  // Verify if point was make
                     p1Score += points;
                     points = 0;
+                    System.out.println("2");
                     Cliente.setTurn(true);
                 }
 
@@ -119,6 +120,7 @@ public class DotsInteraction {
 
         if (LineMaker.Verifier(first_node, second_node)) {  // Verify if nodes are consecutive
             switch_colors();
+            System.out.println("1");
             Cliente.setTurn(true);
 
             Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);

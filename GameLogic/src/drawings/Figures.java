@@ -63,6 +63,7 @@ public class Figures extends Polygon {
     }
 
 
+
     private static void play_sound(int points){
         if (points == 1){
             Sound.play("resources/sounds/point_one.wav", 0);
