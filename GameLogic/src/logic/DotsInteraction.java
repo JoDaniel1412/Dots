@@ -24,7 +24,6 @@ public class DotsInteraction {
     private static DoubleArray<Dots> dotsDoubleArray = new DoubleArray<>();
     private static ObjectMapper mapper = new ObjectMapper();
     private static File json = new File("Sockets/json/message_send.json");
-    private static short line_repeater = 1;
     private static int p1Score = 0;
     private static int p2Score = 0;
     private static int points = 0;
@@ -61,10 +60,6 @@ public class DotsInteraction {
         if(doubleArray.getSecond() != null) {  // Run logic when second dot is selected
 
             if (LineMaker.Verifier(doubleArray.getFirst(), doubleArray.getSecond())) {  // Verify if nodes are consecutive
-                if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){  // Verify if point was make
-                    p1Score += points;
-                    points = 0;
-                }
 
                 // Search for the node index
                 Board board = Board.getInstance();
@@ -74,8 +69,7 @@ public class DotsInteraction {
                 // Draws the line in local
                 var firstDot = dotsDoubleArray.getFirst();
                 var secondDot = dotsDoubleArray.getSecond();
-                Lines.color = Lines.color1;
-                Figures.color = Figures.color1;
+                switch_colors();
                 Lines.draw_line(firstDot.xPoss, firstDot.yPoss, secondDot.xPoss, secondDot.yPoss);
                 DrawBoard.draw.check_lines();
 
@@ -84,7 +78,13 @@ public class DotsInteraction {
                 mapper.writeValue(json, nodesIndex);
                 Cliente.enviarInfo(json);
                 Cliente.setTurn(false);
-                line_repeater = 0;
+
+                // Made consecutive points
+                if (MainChecker.DotsReceiver(doubleArray.getFirst(), doubleArray.getSecond())){  // Verify if point was make
+                    p1Score += points;
+                    points = 0;
+                    Cliente.setTurn(true);
+                }
 
                 clear_arrays();
             }else {
@@ -120,19 +120,17 @@ public class DotsInteraction {
         Node second_node = second_dot_coordinate.getNode();
 
         if (LineMaker.Verifier(first_node, second_node)) {  // Verify if nodes are consecutive
+            switch_colors();
+            Cliente.setTurn(true);
+
             if (MainChecker.DotsReceiver(first_node, second_node)) {  // Verify if point was make by the other player
                 p2Score += points;
                 points = 0;
+                Cliente.setTurn(false);
             }
         }
-        if (line_repeater == 1) {  // Draws the line in the pane
-            Lines.color = Lines.color2;
-            Figures.color = Figures.color2;
-            Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
-            Cliente.setTurn(true);
-        } else {
-            line_repeater = 1;
-        }
+
+        Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
     }
 
     /**
@@ -142,7 +140,6 @@ public class DotsInteraction {
     public static void point_made(int points){
         //Sound.play("resources/sounds/points.wav", 0);
         DotsInteraction.points += points;
-        //private static File json = new File("Sockets/json/message_send.json");
     }
 
     /**
@@ -157,6 +154,16 @@ public class DotsInteraction {
         }
         doubleArray.clear();
         dotsDoubleArray.clear();
+    }
+
+    private static void switch_colors(){
+        if (Cliente.isTurn()){
+            Lines.color = Lines.color1;
+            Figures.color = Figures.color1;
+        } else {
+            Lines.color = Lines.color2;
+            Figures.color = Figures.color2;
+        }
     }
 
     /** Getters **/
