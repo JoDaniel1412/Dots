@@ -7,7 +7,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 import scenes.sGameEnd;
 import scenes.sWaiting;
 
-import java.io.File;
 import java.io.IOException;
 
 public class Commands {
@@ -45,8 +44,8 @@ public class Commands {
      * @throws InterruptedException in case it couldn't send the message to the server
      */
     public static void send_command(String message) throws IOException, InterruptedException {
-        File json = new File("Sockets/json/command_send.json");
-        Cliente.enviarInfo(message);
+        String json = mapper.writeValueAsString(new Commands(message));
+        Cliente.enviarInfo(json);
     }
 
     /**
