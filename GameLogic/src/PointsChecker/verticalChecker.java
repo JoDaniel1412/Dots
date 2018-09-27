@@ -264,6 +264,30 @@ public class verticalChecker {
                     return true;
                 }
             }
+            if (node1.getBottom().isLeftState()){
+                if (checkCresentParallelogram(node1.getBottom_left(), node1.getBottom())){
+                    Blocker.BlockZone(2,node1, node2, node2.getBottom_left(), node1.getBottom_left());
+                    return true;
+                }
+            }
+            if (node2.getTop().isRightState()){
+                if (checkCresentParallelogram(node1.getBottom_left(), node1.getBottom())){
+                    Blocker.BlockZone(2, node1, node2, node2.getTop_right(), node2.getTop());
+                    return true;
+                }
+            }
+            if (node1.getTop().isLeftState()){
+                if (checkCresentParallelogram(node1, node2)){
+                    Blocker.BlockZone(2, node1, node2, node1.getTop(), node1.getTop_left());
+                    return true;
+                }
+            }
+            if (node2.getBottom().isRightState()){
+                if (checkDecresentParallelogram(node2.getBottom(), node2.getBottom_right())){
+                    Blocker.BlockZone(2, node1, node2, node2.getBottom_right(), node2.getBottom());
+                    return true;
+                }
+            }
 
 
 
@@ -309,6 +333,9 @@ public class verticalChecker {
 
         }
         if (node1.getLeft() == node2) {
+
+
+
 
             if (checkUp(node1, node2) && checkDown(node1, node2)) {
                 if (checkUpLeft(node1, node2) && checkDownLeft(node1, node2) && noLeftDiagonals(node1, node2)) {
