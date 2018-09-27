@@ -123,14 +123,14 @@ public class DotsInteraction {
             switch_colors();
             Cliente.setTurn(true);
 
+            Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
+
             if (MainChecker.DotsReceiver(first_node, second_node)) {  // Verify if point was make by the other player
                 p2Score += points;
                 points = 0;
                 Cliente.setTurn(false);
             }
         }
-
-        Lines.draw_line(first_dot_coordinate.xPoss, first_dot_coordinate.yPoss, second_dot_coordinate.xPoss, second_dot_coordinate.yPoss);
     }
 
     /**

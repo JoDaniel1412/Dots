@@ -24,7 +24,7 @@ public class Figures extends Polygon {
      * @param node3 third pair of coordinates
      * @param node4 fort pair of coordinates
      */
-    public static synchronized void draw_figure(Node node1, Node node2, Node node3, Node node4){
+    public static synchronized void draw_figure(int points, Node node1, Node node2, Node node3, Node node4){
         Dots dot1 = node1.getDot();
         Dots dot2 = node2.getDot();
         Dots dot3 = node3.getDot();
@@ -40,9 +40,9 @@ public class Figures extends Polygon {
                 dot4.xPoss, dot4.yPoss);
 
         Figures.figure = polygon;
-        DotsInteraction.point_made(2);
+        DotsInteraction.point_made(points);
     }
-    public static synchronized void draw_figure(Node node1, Node node2, Node node3) {
+    public static synchronized void draw_figure(int points, Node node1, Node node2, Node node3) {
         Dots dot1 = node1.getDot();
         Dots dot2 = node2.getDot();
         Dots dot3 = node3.getDot();
@@ -56,7 +56,7 @@ public class Figures extends Polygon {
                 dot3.xPoss, dot3.yPoss);
 
         Figures.figure = polygon;
-        DotsInteraction.point_made(1);
+        DotsInteraction.point_made(points);
     }
 
 
