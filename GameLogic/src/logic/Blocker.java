@@ -2,6 +2,7 @@ package logic;
 
 import drawings.Figures;
 import lists.Node;
+import sound.Sound;
 
 public class Blocker {
     /**
@@ -13,6 +14,7 @@ public class Blocker {
      */
     public static void BlockZone (int points, Node node1, Node node2, Node node3){
         Figures.draw_figure(node1, node2, node3);
+        Sound.play("resources/sounds/one_points.wav", 1);
     }
 
     /**
