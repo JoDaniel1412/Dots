@@ -1,7 +1,6 @@
 package PointsChecker;
 
 import lists.Node;
-
 import logic.Blocker;
 
 /**
@@ -150,7 +149,7 @@ public class verticalChecker {
             }
         }
         if (node1.isBottomState() && node1.isTopState()) {
-            if (node2.isTop_rightState() && node2.isBottom_rightState()) {  // puntos dobles
+            if (node2.isLineTopRight() && node2.isLineBottomRight()) {  // puntos dobles
                 Blocker.blockUpLeftDiagonals(node1, node2);
                 Blocker.blockDownLeftDiagonals(node1, node2);
                 Blocker.BlockZone(2, node2, node1.getBottom(), node1.getTop());

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import lists.Board;
 import scenes.MainInterface;
 import scenes.sScene;
+import sound.Sound;
 
 import java.io.IOException;
 
@@ -33,7 +34,17 @@ public class Main extends Application {
         mainInterface = new MainInterface(this);
         setScene();
         Board.init(7, 7);
+        Sound.play("resources/sounds/chill_day.wav", 1);
         window.show();
+
+        // Event that closes the program
+        window.setOnCloseRequest(event -> {
+            try {
+                close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     // Method used for switch fxml
@@ -66,5 +77,6 @@ public class Main extends Application {
     public static void close() throws IOException{
         window.close();
         Platform.exit();
+        System.exit(0);
     }
 }

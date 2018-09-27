@@ -25,11 +25,6 @@ public class sGameEnd extends sScene {
         System.out.println(Servidor.State);
     }
 
-    @Override
-    void doOnLoad() {
-        setLabelMessageDisplay();
-    }
-
     @FXML
     void pressed_next_game() throws IOException, InterruptedException {
         MainInterface.setScene("fxml/waiting.fxml");
@@ -37,7 +32,7 @@ public class sGameEnd extends sScene {
 
     }
     @FXML
-    public void initialize() {
+    protected void initialize() {
         setLabelMessageDisplay();
     }
 
@@ -63,6 +58,7 @@ public class sGameEnd extends sScene {
         }
         else {
             lMessageDisplay.setText("Draw");
+            lMessageDisplay.setTextFill(Dots.bone_white);
         }
     }
 

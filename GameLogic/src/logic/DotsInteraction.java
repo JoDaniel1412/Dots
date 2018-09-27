@@ -38,10 +38,9 @@ public class DotsInteraction {
         try {
             DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
             received_dots(arrayIndex);
-            System.out.println("Json received");
             return true;
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Couldn't read dots_index.json");
             return false;
         }
     }
@@ -141,6 +140,7 @@ public class DotsInteraction {
      * @param points int amount of points
      */
     public static void point_made(int points){
+        //Sound.play("resources/sounds/points.wav", 0);
         DotsInteraction.points += points;
     }
 

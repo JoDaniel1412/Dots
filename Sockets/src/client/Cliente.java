@@ -43,7 +43,7 @@ public class Cliente extends Thread {
         BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
         File message = new File(entradaDatos.readLine());
         conexionServer.close();
-        //System.out.println("Client receive: " + message);
+        System.out.println("Client receive: " + message);
         analise(message);
     }
 
@@ -52,12 +52,11 @@ public class Cliente extends Thread {
      * @param message archivo Json a enviar
      */
     public static void enviarInfo(File message) throws InterruptedException, IOException {
-        sleep(100);
         Socket conexionServer = new Socket(ip, portO);
         PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
         salida.println(message);
         conexionServer.close();
-        //System.out.println("Client send: " + message);
+        System.out.println("Client send: " + message);
     }
 
     /**
@@ -66,7 +65,6 @@ public class Cliente extends Thread {
     public void run(){
         while (true) {
             try {
-                sleep(1000);
                 Cliente.solicitarInfo();
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
@@ -82,9 +80,17 @@ public class Cliente extends Thread {
     }
 
     private static void analise(File message){
-        if (!DotsInteraction.try_read(message)){
+        if(message.toString().equals("null")){
+            System.out.println("Waiting to start the game...");
+        }
+        else if(message.toString().equals("none")){
+            System.out.println("Server reject");
+        }
+        else if (!DotsInteraction.try_read(message)){
             if(!Commands.try_read(message)){
-                System.out.println("Couldn't read Json");
+                if(!GameSettings.try_read(message)) {
+                    System.out.println("Couldn't read any json");
+                }
             }
         }
     }

@@ -17,20 +17,23 @@ public class sWaiting extends sScene{
     @FXML
     public Label portLabel2;
 
+    private static boolean game_started = false;
+
     public static void pressed_start() {
         AnimationTimer starter = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 MainInterface.setScene("fxml/game.fxml");
                 stop();
+                game_started = true;
             }
         };
         starter.start();
     }
 
     @FXML
-    public void initialize(){
-        ipLabel.setText(Servidor.ipAdress);
+    protected void initialize(){
+        ipLabel.setText(Servidor.ipAddress);
         portLabel1.setText(java.lang.String.valueOf(Servidor.portI));
         portLabel2.setText(java.lang.String.valueOf(Servidor.portO));
     }
@@ -43,8 +46,7 @@ public class sWaiting extends sScene{
         Servidor.exit();
     }
 
-    @Override
-    void doOnLoad() {
-
+    public static boolean isGame_started() {
+        return game_started;
     }
 }

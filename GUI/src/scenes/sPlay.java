@@ -1,7 +1,7 @@
 package scenes;
 
 import client.Cliente;
-import client.Commands;
+import client.GameSettings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -29,6 +29,7 @@ public class sPlay extends sScene {
     @FXML
     private Button bGameTime3;
 
+    /* Text Fields to connect to Server */
     @FXML
     private TextField eIpAddress;
     @FXML
@@ -44,20 +45,29 @@ public class sPlay extends sScene {
     }
 
     @Override
-    void doOnLoad() {
+    protected void initialize() throws IOException {
 
     }
 
+    /**
+     * Creates a new game initializing the Server and Client
+     * @throws IOException if Server couldn't being initiated
+     */
     @FXML
-    void pressed_create() throws IOException{
-        Servidor.init();
-        Cliente.init(Servidor.ipAdress, Servidor.portI, Servidor.portO);
+    void pressed_create() throws IOException {
+        // Setups the Sockets
+        Servidor.init(GameSettings.setGameSettings());
+        Cliente.init(Servidor.ipAddress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
         MainInterface.setScene("fxml/waiting.fxml");
         MainInterface.setResizable();
     }
+
+    /**
+     * Joins to a game initializing the client
+     */
     @FXML
-    void pressed_search() throws IOException, InterruptedException {
+    void pressed_search() {
         java.lang.String ip = eIpAddress.getText();
         java.lang.String port1 = ePort1.getText();
         java.lang.String port2 = ePort2.getText();
@@ -66,9 +76,9 @@ public class sPlay extends sScene {
             Cliente.setTurn(false);
             MainInterface.setResizable();
             MainInterface.setScene("fxml/waiting.fxml");
-            Commands.send_command("start");
         }
     }
+
     @FXML
     private void pressed_bBoardSize1(){
         bBoardSize1.getStyleClass().add("button-toggle");

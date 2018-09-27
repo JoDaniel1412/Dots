@@ -2,6 +2,8 @@ package scenes;
 
 import javafx.fxml.FXML;
 
+import java.io.IOException;
+
 public class sSettings extends sScene {
 
     @Override
@@ -10,7 +12,7 @@ public class sSettings extends sScene {
     }
 
     @Override
-    void doOnLoad() {
+    protected void initialize() throws IOException {
 
     }
 
