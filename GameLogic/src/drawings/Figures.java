@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import lists.Node;
 import logic.DotsInteraction;
+import sound.Sound;
 
 /**
  * Wrapper class for drawing figures
@@ -41,6 +42,7 @@ public class Figures extends Polygon {
 
         Figures.figure = polygon;
         DotsInteraction.point_made(points);
+        play_sound(points);
     }
     public static synchronized void draw_figure(int points, Node node1, Node node2, Node node3) {
         Dots dot1 = node1.getDot();
@@ -57,8 +59,24 @@ public class Figures extends Polygon {
 
         Figures.figure = polygon;
         DotsInteraction.point_made(points);
+        play_sound(points);
     }
 
+
+    private static void play_sound(int points){
+        if (points == 1){
+            Sound.play("resources/sounds/point_one.wav", 0);
+        }
+        if (points == 2){
+            Sound.play("resources/sounds/point_two.wav", 0);
+        }
+        if (points == 3){
+            Sound.play("resources/sounds/point_three.wav", 0);
+        }
+        if (points == 4){
+            Sound.play("resources/sounds/point_four.wav", 0);
+        }
+    }
 
     public void setColor1(){
         color = color1;
