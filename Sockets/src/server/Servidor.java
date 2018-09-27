@@ -41,7 +41,7 @@ public class Servidor extends Thread{
         Thread r = new Thread(() -> {
             while (true){
                 try {
-                    sleep(100);
+                    sleep(400);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -54,7 +54,7 @@ public class Servidor extends Thread{
             while (true){
                 setFirstClients();
                 try {
-                    sleep(100);
+                    sleep(400);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

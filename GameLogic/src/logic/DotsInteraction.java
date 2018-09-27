@@ -23,18 +23,17 @@ public class DotsInteraction {
     private static DoubleArray<Node> doubleArray = new DoubleArray<>();
     private static DoubleArray<Dots> dotsDoubleArray = new DoubleArray<>();
     private static ObjectMapper mapper = new ObjectMapper();
-    private static File json = new File("Sockets/json/message_send.json");
     private static int p1Score = 0;
     private static int p2Score = 0;
     private static int points = 0;
 
     /**
      * Deserialize the Index received by the Server
-     * @param json file to deserialize
      * @return a boolean if the file could be read
      */
-    public static boolean  try_read(File json){
+    public static boolean  try_read(){
         try {
+            File json = new File("Sockets/json/message_received.json");
             DoubleArray arrayIndex = mapper.readValue(json, DoubleArray.class);
             System.out.println("Read dots_index.json");
             received_dots(arrayIndex);
@@ -76,6 +75,7 @@ public class DotsInteraction {
 
                 // Makes a json and sends it to the Server
                 DoubleArray<DoubleArray> nodesIndex = new DoubleArray<>(firstNode, secondNode);
+                File json = new File("Sockets/json/message_send.json");
                 mapper.writeValue(json, nodesIndex);
                 Cliente.enviarInfo(json);
                 Cliente.setTurn(false);
@@ -104,6 +104,7 @@ public class DotsInteraction {
 
         var first_dot = arrayIndex.getFirst().toString().replaceAll("\\D+",""); // Remove non digits
         var second_dot = arrayIndex.getSecond().toString().replaceAll("\\D+",""); // Remove non digits
+        System.out.println(first_dot + second_dot);
 
         int first_dot_row = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(0))); // First Node Index
         int first_dot_column = Integer.parseInt(java.lang.String.valueOf(first_dot.charAt(1))); // First Node Index
