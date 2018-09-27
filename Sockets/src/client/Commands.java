@@ -26,7 +26,7 @@ public class Commands {
      * @param json file to transform in Commands object
      * @return boolean if the decode is successful
      */
-    static boolean try_read(File json) {
+    static boolean try_read(String json) {
         try {
             Commands obj = mapper.readValue(json, Commands.class);
             System.out.println("Read commands.json");
@@ -46,8 +46,7 @@ public class Commands {
      */
     public static void send_command(String message) throws IOException, InterruptedException {
         File json = new File("Sockets/json/command_send.json");
-        mapper.writeValue(json, new Commands(message));
-        Cliente.enviarInfo(json);
+        Cliente.enviarInfo(message);
     }
 
     /**
