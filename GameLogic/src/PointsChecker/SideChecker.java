@@ -314,9 +314,6 @@ public class SideChecker {
                             Blocker.BlockZone(3, node2, node2.getRight(), node1.getRight(), node1.getLeft());
                             return true;
                         }
-                        if (node2.getRight().isTopState() && checkParallelCrement(node2.getTop_right(), node2.getRight())){
-
-                        }
                         Blocker.BlockZone(2, node2, node2.getRight(), node1.getRight(), node1);
                         return true;
                     }
