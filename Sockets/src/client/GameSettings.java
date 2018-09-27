@@ -4,7 +4,6 @@ import lists.Board;
 import logic.Timer;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -30,13 +29,13 @@ public class GameSettings {
      * @param json file to transform in GameSettings object
      * @return boolean if the decode is successful
      */
-    static boolean try_read(File json) {
+    static boolean try_read(String json) {
         try {
             GameSettings obj = mapper.readValue(json, GameSettings.class);
+            System.out.println("Read game_settings.json");
             obj.analise(obj.rows, obj.columns, obj.time);
             return true;
         } catch (IOException | InterruptedException e) {
-            System.out.println("Couldn't read game_settings.json");
             return false;
         }
     }
@@ -46,7 +45,7 @@ public class GameSettings {
      * @return a json File
      * @throws IOException in case the mapper fail
      */
-    public static File setGameSettings() throws IOException {
+    public static String setGameSettings() throws IOException {
         int rows = Board.getInstance().getRows();
         int columns = Board.getInstance().getColumns();
         int time = Timer.getTime_limit();
@@ -61,10 +60,8 @@ public class GameSettings {
      * @return a File in json format
      * @throws IOException in case the mapper fail
      */
-    private static File map_settings(int rows, int columns, int time) throws IOException {
-        File json = new File("Sockets/json/game_settings_send.json");
-        mapper.writeValue(json, new GameSettings(rows, columns, time));
-        return json;
+    private static String map_settings(int rows, int columns, int time) throws IOException {
+        return mapper.writeValueAsString(new GameSettings(rows, columns, time));
     }
 
     /**

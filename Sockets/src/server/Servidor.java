@@ -19,7 +19,7 @@ public class Servidor extends Thread{
     public static String ipAddress;
     public static int portI = 8888;
     public static int portO = 9999;
-    private static File message;
+    private static String message;
     private static Lista cola = new Lista();
     private static ServerSocket servidorI;
     private static ServerSocket servidorO;
@@ -30,8 +30,9 @@ public class Servidor extends Thread{
     /**
      * Crea los puertos de entrada y salida de informacion del servidor
      * @throws IOException en case de que los puertos esten ocupados
+     * @param game_settings
      */
-    private Servidor(File game_settings) throws IOException {
+    private Servidor(String game_settings) throws IOException {
         servidorO = new ServerSocket(portO);
         servidorI = new ServerSocket(portI);
         message = game_settings;
@@ -68,7 +69,7 @@ public class Servidor extends Thread{
      * Clase que inicia el servidor y lo pone a escuchar y enviar
      * @throws IOException en caso de que los puertos esten ocupados
      */
-    public static void init(File game_settings) throws IOException {
+    public static void init(String game_settings) throws IOException {
         new Servidor(game_settings);
     }
 
@@ -137,7 +138,7 @@ public class Servidor extends Thread{
         try {
             Socket cliente = servidorI.accept();
             BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
-            message = new File(entrada.readLine());
+            message = entrada.readLine();
             cliente.close();
             counter = 0;
             System.out.println("Server receive: " + message);
