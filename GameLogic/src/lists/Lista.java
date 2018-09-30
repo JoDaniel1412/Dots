@@ -43,4 +43,9 @@ public class Lista{
         return pivot.getValor();
 
     }
+
+    public void delete_second(){
+        first.next = first.next.next;
+        size--;
+    }
 }

@@ -20,6 +20,7 @@ public class Servidor extends Thread{
     public static int portI = 8888;
     public static int portO = 9999;
     private static String message;
+    private static String saved_settings;
     private static Lista cola = new Lista();
     private static ServerSocket servidorI;
     private static ServerSocket servidorO;
@@ -32,12 +33,13 @@ public class Servidor extends Thread{
     /**
      * Crea los puertos de entrada y salida de informacion del servidor
      * @throws IOException en case de que los puertos esten ocupados
-     * @param game_settings
+     * @param game_settings host game settings
      */
     private Servidor(String game_settings) throws IOException {
         servidorO = new ServerSocket(portO);
         servidorI = new ServerSocket(portI);
         message = game_settings;
+        saved_settings = game_settings;
         setIpAdress();
 
         // Runs a thread to read
@@ -122,16 +124,6 @@ public class Servidor extends Thread{
         }
     }
 
-    /**
-     *
-     */
-    private void count_down() {
-        counter++;
-        if (counter == 2){
-            message = null;
-            counter = 0;
-        }
-    }
 
     /**
      * Metodo que lee que le envio el cliente
@@ -156,8 +148,21 @@ public class Servidor extends Thread{
         out.stop();
     }
 
+    public static void reset(){
+        message = saved_settings;
+        cola.delete_second();
+    }
+
     private void setIpAdress() throws UnknownHostException {
          ipAddress = Inet4Address.getLocalHost().getHostAddress();
+    }
+
+    private void count_down() {
+        counter++;
+        if (counter == 2){
+            message = null;
+            counter = 0;
+        }
     }
 
     private void setFirstClients(){
