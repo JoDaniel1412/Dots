@@ -25,6 +25,8 @@ public class Servidor extends Thread{
     private static ServerSocket servidorO;
     private static String last_ip;
     private static int counter = 0;
+    private static Thread in;
+    private static Thread out;
 
 
     /**
@@ -39,7 +41,7 @@ public class Servidor extends Thread{
         setIpAdress();
 
         // Runs a thread to read
-        Thread r = new Thread(() -> {
+        in = new Thread(() -> {
             while (true){
                 try {
                     sleep(100);
@@ -48,10 +50,10 @@ public class Servidor extends Thread{
                 }
                 read();}
         });
-        r.start();
+        in.start();
 
         // Runs a thread to write
-        Thread w = new Thread(() -> {
+        out = new Thread(() -> {
             while (true){
                 setFirstClients();
                 try {
@@ -62,7 +64,7 @@ public class Servidor extends Thread{
                 write();
             }
         });
-        w.start();
+        out.start();
     }
 
     /**
@@ -150,6 +152,8 @@ public class Servidor extends Thread{
     public static void exit() throws IOException {
         servidorO.close();
         servidorI.close();
+        in.stop();
+        out.stop();
     }
 
     private void setIpAdress() throws UnknownHostException {
