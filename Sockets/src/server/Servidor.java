@@ -142,6 +142,9 @@ public class Servidor extends Thread{
     }
 
     public static void exit() throws IOException {
+        if (servidorO == null){
+            return;
+        }
         servidorO.close();
         servidorI.close();
         in.stop();

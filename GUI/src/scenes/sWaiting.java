@@ -41,7 +41,7 @@ public class sWaiting extends sScene{
     @Override
     void pressed_return() throws IOException {
         MainInterface.setScene("fxml/play.fxml");
-        MainInterface.setResizable();
+        //MainInterface.setResizable();
         Cliente.exit();
         Servidor.exit();
     }

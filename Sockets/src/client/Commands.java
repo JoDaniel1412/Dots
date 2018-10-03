@@ -6,6 +6,7 @@ import logic.Timer;
 import org.codehaus.jackson.map.ObjectMapper;
 import scenes.sGameEnd;
 import scenes.sWaiting;
+import server.Servidor;
 
 import java.io.IOException;
 
@@ -51,7 +52,7 @@ public class Commands {
      * Tells the Game what to do with the message given
      * @param command a specific string
      */
-    private void analise(String command) {
+    private void analise(String command) throws IOException{
         if(command.equals("start")){
             sWaiting.pressed_start();
             Timer.init();
@@ -61,6 +62,15 @@ public class Commands {
             sGameEnd.p2Score = DotsInteraction.getP2Score();
             Board.getInstance().reset();
             sGameEnd.game_end();
+        }
+        if(command.equals("F6")){
+            sGameEnd.p1Score = DotsInteraction.getP1Score()+999;
+            Board.getInstance().reset();
+            sGameEnd.game_end();
+            Cliente.exit();
+            Servidor.exit();
+            Board.getInstance().reset();
+            DotsInteraction.reset_point();
         }
     }
 

@@ -60,7 +60,7 @@ public class sPlay extends sScene {
         Cliente.init(Servidor.ipAddress, Servidor.portI, Servidor.portO);
         Cliente.setTurn(true);
         MainInterface.setScene("fxml/waiting.fxml");
-        //zMainInterface.setResizable();
+        //MainInterface.setResizable();
     }
 
     /**
@@ -74,7 +74,7 @@ public class sPlay extends sScene {
         if (ip != null && port1 != null && port2 != null) {
             Cliente.init(ip, Integer.parseInt(port1), Integer.parseInt(port2));
             Cliente.setTurn(false);
-            MainInterface.setResizable();
+            //MainInterface.setResizable();
             MainInterface.setScene("fxml/waiting.fxml");
         }
     }

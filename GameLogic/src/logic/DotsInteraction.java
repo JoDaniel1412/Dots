@@ -26,6 +26,11 @@ public class DotsInteraction {
     private static int p2Score = 0;
     private static int points = 0;
 
+    public static void reset_point(){
+        p1Score = 0;
+        p2Score = 0;
+    }
+
     /**
      * Deserialize the Index received by the Server
      * @return a boolean if the file could be read
@@ -166,12 +171,20 @@ public class DotsInteraction {
         }
     }
 
-    /** Getters **/
+    /** Getters and Setters**/
     public static int getP1Score() {
         return p1Score;
     }
 
+    public static void setP1Score(int points) {
+        p1Score = points;
+    }
+
     public static int getP2Score() {
         return p2Score;
+    }
+
+    public static void setP2Score(int points) {
+        p2Score = points;
     }
 }

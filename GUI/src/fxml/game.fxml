@@ -70,6 +70,9 @@
                </children>
             </VBox>
          </center>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#pressed_return" scaleX="0.5" scaleY="0.5" text="Surrender" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

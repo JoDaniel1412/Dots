@@ -1,11 +1,15 @@
 package scenes;
 
+import client.Commands;
 import drawings.DrawBoard;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import logic.DotsInteraction;
 
-public class sGame{
+import java.io.IOException;
+
+public class sGame extends sScene{
 
     @FXML
     public AnchorPane paneBoard;
@@ -24,9 +28,21 @@ public class sGame{
     @FXML
     public Label lClock;
 
+    @Override
+    void pressed_return() throws IOException {
+        DotsInteraction.setP1Score(-9999999);
+        DotsInteraction.setP2Score(99999);
+        try {
+            Commands.send_command("F6");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     protected void initialize() {
         DrawBoard.init(this);
+        DotsInteraction.reset_point();
     }
 
     /** Getters and Setters **/
