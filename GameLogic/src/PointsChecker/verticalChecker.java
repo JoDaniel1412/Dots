@@ -15,7 +15,10 @@ public class verticalChecker {
      * @return boolean
      */
     private static boolean checkUp(Node node1, Node node2) {
-        return node1.isTopState() && node2.isTopState();
+        if (node1.getTop() != null && node2.getTop() != null) {
+            return node1.isTopState() && node2.isTopState();
+        }
+        return false;
     }
 
     /**
@@ -25,7 +28,10 @@ public class verticalChecker {
      * @return boolean
      */
     private static boolean checkDown(Node node1, Node node2) {
-        return node1.isBottomState() && node2.isBottomState();
+        if (node1.getBottom() != null && node2.getBottom() != null) {
+            return node1.isBottomState() && node2.isBottomState();
+        }
+        return false;
     }
 
     /**
@@ -251,38 +257,42 @@ public class verticalChecker {
                 }
             }
 
-            if (node1.getTop().isLeftState() && node2.getBottom().isRightState()){
-                if (checkDecresentParallelogram(node1, node2) && checkDecresentParallelogram(node2.getBottom(), node2.getBottom_right())){
-                    Blocker.BlockZone(4, node1.getTop_left(), node1.getTop(), node2.getBottom_right(), node2.getBottom());
-                    return true;
+            if (node1.getTop() != null && node2.getBottom() != null) {
+                if (node1.getTop().isLeftState() && node2.getBottom().isRightState()){
+                    if (checkDecresentParallelogram(node1, node2) && checkDecresentParallelogram(node2.getBottom(), node2.getBottom_right())){
+                        Blocker.BlockZone(4, node1.getTop_left(), node1.getTop(), node2.getBottom_right(), node2.getBottom());
+                        return true;
+                    }
                 }
             }
 
-            if (node1.getBottom().isLeftState() && node2.getTop().isRightState()){
-                if (checkCresentParallelogram(node1, node2) && checkCresentParallelogram(node1.getBottom_left(), node1.getBottom())){
-                    Blocker.BlockZone(4, node2.getTop(), node2.getTop_right(), node1.getBottom(), node1.getBottom_left());
-                    return true;
+            if (node1.getBottom() != null && node2.getBottom() != null) {
+                if (node1.getBottom().isLeftState() && node2.getTop().isRightState()){
+                    if (checkCresentParallelogram(node1, node2) && checkCresentParallelogram(node1.getBottom_left(), node1.getBottom())){
+                        Blocker.BlockZone(4, node2.getTop(), node2.getTop_right(), node1.getBottom(), node1.getBottom_left());
+                        return true;
+                    }
                 }
             }
-            if (node1.getBottom().isLeftState()){
+            if (node1.getBottom() != null && node1.getBottom().isLeftState()){
                 if (checkCresentParallelogram(node1.getBottom_left(), node1.getBottom())){
                     Blocker.BlockZone(2,node1, node2, node2.getBottom_left(), node1.getBottom_left());
                     return true;
                 }
             }
-            if (node2.getTop().isRightState()){
+            if (node2.getTop() != null && node2.getTop().isRightState()){
                 if (checkCresentParallelogram(node1.getBottom_left(), node1.getBottom())){
                     Blocker.BlockZone(2, node1, node2, node2.getTop_right(), node2.getTop());
                     return true;
                 }
             }
-            if (node1.getTop().isLeftState()){
+            if (node1.getTop() != null && node1.getTop().isLeftState()){
                 if (checkCresentParallelogram(node1, node2)){
                     Blocker.BlockZone(2, node1, node2, node1.getTop(), node1.getTop_left());
                     return true;
                 }
             }
-            if (node2.getBottom().isRightState()){
+            if (node2.getBottom() != null && node2.getBottom().isRightState()){
                 if (checkDecresentParallelogram(node2.getBottom(), node2.getBottom_right())){
                     Blocker.BlockZone(2, node1, node2, node2.getBottom_right(), node2.getBottom());
                     return true;
@@ -292,7 +302,7 @@ public class verticalChecker {
 
 
 
-            if (checkUp(node1, node2)) {
+            if (node1.getTop() != null && node2.getTop() != null && checkUp(node1, node2)) {
                 if (!node1.isLineTopRight() && !node2.isLineTopLeft()) {
                     if (checkUpRight(node1, node2)) {
                         Blocker.BlockUpDiagonals(node1, node2);
@@ -309,7 +319,7 @@ public class verticalChecker {
                     }
                 }
             }
-            if (checkDown(node1, node2)) {
+            if (node1.getBottom() != null && node2.getBottom() != null && checkDown(node1, node2)) {
                 if (!node1.isLineBottomRight() && !node2.isLineBottomLeft()) {
                     if (checkDownRight(node1, node2)) {
                         Blocker.blockDownRightDiagonals(node1, node2);
@@ -344,45 +354,45 @@ public class verticalChecker {
                 }
             }
 
-            if (node1.getTop().isRightState() && node2.getBottom().isLeftState()){
+            if (node1.getTop() != null && node2.getBottom() != null && node1.getTop().isRightState() && node2.getBottom().isLeftState()){
                 if (checkCresentParallelogram(node2, node1) && checkCresentParallelogram(node2.getBottom_left(), node2.getBottom())){
                     Blocker.BlockZone(4, node1.getBottom_left(), node2.getBottom_left(), node2.getTop_right(), node1.getTop_right());
                     return true;
                 }
             }
-             if (node1.getBottom().isRightState() && node2.getTop().isLeftState()){
+             if (node1.getBottom() != null && node2.getTop() != null && node1.getBottom().isRightState() && node2.getTop().isLeftState()){
                  if (checkDecresentParallelogram(node2, node1) && checkDecresentParallelogram(node1.getBottom(), node1.getBottom_right())){
                      Blocker.BlockZone(4, node2.getTop_left(), node1.getTop_left(), node1.getBottom_right(), node2.getBottom_right());
                      return true;
                  }
              }
-             if (node1.getTop().isRightState()){
+             if (node1.getTop() != null && node1.getTop().isRightState()){
                  if (checkCresentParallelogram(node2, node1)){
                      Blocker.BlockZone(2, node1, node2, node1.getTop(), node1.getTop_right());
                      return true;
                  }
              }
-             if (node2.getBottom().isLeftState()){
+             if (node2.getBottom() != null && node2.getBottom().isLeftState()){
                  if (checkCresentParallelogram(node2.getBottom_left(), node2.getBottom())){
                      Blocker.BlockZone(2, node2, node2.getBottom_left(), node2.getBottom(), node1);
                      return true;
                  }
              }
-             if (node1.getBottom().isRightState()){
+             if (node1.getBottom() != null && node1.getBottom().isRightState()){
                  if (checkDecresentParallelogram(node2, node1)){
                      Blocker.BlockZone(2, node1, node1.getBottom_right(), node1.getBottom(), node2);
                      return true;
                  }
              }
 
-             if (node2.getTop().isLeftState()){
+             if (node2.getTop() != null && node2.getTop().isLeftState()){
                  if (checkDecresentParallelogram(node1.getBottom(), node1.getBottom_right())){
                      Blocker.BlockZone(2, node2.getTop(), node2.getTop_left(), node2, node1);
                      return true;
                  }
              }
 
-            if (checkUp(node1, node2)) {
+            if (node1.getTop() != null && node2.getTop() != null && checkUp(node1, node2)) {
                 if (!node1.isLineTopLeft() && !node2.isLineTopRight()) {
                     if (checkUpLeft(node1, node2)) {
                         Blocker.blockUpLeftDiagonals(node2, node1);
@@ -401,7 +411,7 @@ public class verticalChecker {
                     }
                 }
             }
-            if (checkDown(node1, node2)) {
+            if (node1.getBottom() != null && node2.getBottom() != null && checkDown(node1, node2)) {
                 if (!node1.isLineBottomLeft() && !node2.isLineBottomRight()) {
                     if(checkDownLeft(node1, node2)){
                         Blocker.blockDownLeftDiagonals(node1, node2);
