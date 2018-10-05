@@ -1,7 +1,6 @@
 package scenes;
 
 import client.Cliente;
-import client.Commands;
 import drawings.Dots;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
@@ -22,13 +21,11 @@ public class sGameEnd extends sScene {
         MainInterface.setScene("fxml/menu.fxml");
         MainInterface.setResizable();
         close();
-        System.out.println(Servidor.State);
     }
 
     @FXML
     void pressed_next_game() throws IOException, InterruptedException {
         MainInterface.setScene("fxml/waiting.fxml");
-        Commands.send_command("start");
 
     }
     @FXML

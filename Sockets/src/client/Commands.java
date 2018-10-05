@@ -62,13 +62,12 @@ public class Commands {
             sGameEnd.p2Score = DotsInteraction.getP2Score();
             Board.getInstance().reset();
             sGameEnd.game_end();
+            Servidor.reset();
         }
         if(command.equals("F6")){
             sGameEnd.p1Score = DotsInteraction.getP1Score()+999;
             Board.getInstance().reset();
             sGameEnd.game_end();
-            Cliente.exit();
-            Servidor.exit();
             Board.getInstance().reset();
             DotsInteraction.reset_point();
         }

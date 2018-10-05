@@ -28,6 +28,7 @@ public class Servidor extends Thread{
     private static int counter = 0;
     private static Thread in;
     private static Thread out;
+    private static Servidor instance;
 
 
     /**
@@ -36,11 +37,12 @@ public class Servidor extends Thread{
      * @param game_settings host game settings
      */
     private Servidor(String game_settings) throws IOException {
+        instance = this;
         servidorO = new ServerSocket(portO);
         servidorI = new ServerSocket(portI);
         message = game_settings;
         saved_settings = game_settings;
-        setIpAdress();
+        setIpAddress();
 
         // Runs a thread to read
         in = new Thread(() -> {
@@ -116,7 +118,7 @@ public class Servidor extends Thread{
 
             last_ip = ip;
             count_down();
-            //System.out.println("Server send: " + message);
+            System.out.println("Server send: " + message);
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -135,7 +137,7 @@ public class Servidor extends Thread{
             message = entrada.readLine();
             cliente.close();
             counter = 0;
-            //System.out.println("Server receive: " + message);
+            System.out.println("Server receive: " + message);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -152,11 +154,22 @@ public class Servidor extends Thread{
     }
 
     public static void reset(){
+        if (servidorO == null){
+            return;
+        }
         message = saved_settings;
-        cola.delete_second();
+        reset_queue();
     }
 
-    private void setIpAdress() throws UnknownHostException {
+    private static void reset_queue(){
+        if (servidorO == null){
+            return;
+        }
+        cola = new Lista();
+        instance.setFirstClients();
+    }
+
+    private void setIpAddress() throws UnknownHostException {
          ipAddress = Inet4Address.getLocalHost().getHostAddress();
     }
 

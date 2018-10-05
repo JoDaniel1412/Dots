@@ -14,7 +14,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#pressed_return" text="Return Menu" />
-                  <Button mnemonicParsing="false" onAction="#pressed_next_game" text="Next Game" />
+                  <Button disable="true" mnemonicParsing="false" onAction="#pressed_next_game" text="Next Game" />
                </children>
             </HBox>
          </children>
