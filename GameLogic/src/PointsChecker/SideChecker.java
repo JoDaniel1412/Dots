@@ -15,7 +15,10 @@ public class SideChecker {
      * @return boolean value
      */
     private static boolean CheckRight(Node node1, Node node2) {
-        return node1.isRightState() && node2.isRightState();
+        if (node1.getRight() != null && node2.getRight() != null) {
+            return node1.isRightState() && node2.isRightState();
+        }
+        return false;
     }
 
     /**
@@ -25,7 +28,10 @@ public class SideChecker {
      * @return boolean
      */
     private static boolean CheckLeft(Node node1, Node node2) {
-        return node1.isLeftState() && node2.isLeftState();
+        if (node1.getLeft() != null && node2.getLeft() != null) {
+            return node1.isLeftState() && node2.isLeftState();
+        }
+        return false;
     }
 
     /**
@@ -260,40 +266,40 @@ public class SideChecker {
                     return true;
                 }
             }
-            if (node2.getLeft().isTopState() && node1.getRight().isBottomState()){  //Doble Paralelogramo decreciente
+            if (node2.getLeft() != null && node1.getRight() != null && node2.getLeft().isTopState() && node1.getRight().isBottomState()){  //Doble Paralelogramo decreciente
                 if (SideChecker.checkParallelDecrement(node2, node1) &&
                         SideChecker.checkParallelDecrement(node1.getRight(), node1.getRight().getBottom())){
                     Blocker.BlockZone(4, node2.getTop_left(), node1.getTop_left(), node1.getBottom_right(), node2.getBottom_right());
                     return true;
                 }
             }
-            if (node2.getLeft().isTopState()){
+            if (node2.getLeft() != null && node2.getLeft().isTopState()){
                 if (SideChecker.checkParallelDecrement(node2, node1)){   //Paralelogramo decreciente por izquierda
                     Blocker.BlockZone(2, node2, node2.getTop_left(), node1.getTop_left(), node1);
                     return true;
                 }
             }
-            if (node1.getRight().isBottomState()){
+            if (node1.getRight() != null && node1.getRight().isBottomState()){
                 if (SideChecker.checkParallelDecrement(node1.getRight(), node1.getRight().getBottom())) {     //Paralelogramo decreciente por derecha
                     Blocker.BlockZone(2, node1, node1.getBottom_right(), node2.getBottom_right(), node2);
                     return true;
                 }
             }
 
-            if (node1.getLeft().isBottomState() && node2.getRight().isTopState()) { //Doble paralelogramo por creciente
+            if (node1.getLeft() != null && node2.getRight() != null && node1.getLeft().isBottomState() && node2.getRight().isTopState()) { //Doble paralelogramo por creciente
                 if (checkParallelCrement(node2.getTop_right(), node2.getRight()) && checkParallelCrement(node2, node1)){
                     Blocker.BlockZone(4, node2.getTop_right(), node2.getRight(), node1.getBottom_left(), node1.getLeft());
                     return true;
                 }
             }
 
-            if (node1.getLeft().isBottomState()){   //Paralelogramo creciente por izquierda
+            if (node1.getLeft() != null && node1.getLeft().isBottomState()){   //Paralelogramo creciente por izquierda
                 if (checkParallelCrement(node2, node1)){
                     Blocker.BlockZone(2, node1, node2, node2.getBottom_left(), node1.getBottom_left());
                     return true;
                 }
             }
-            if (node2.getRight().isTopState()){ //Paralelogramo creciente por derecha
+            if (node2.getRight() != null && node2.getRight().isTopState()){ //Paralelogramo creciente por derecha
                 if (checkParallelCrement(node2.getTop_right(), node2.getRight())){
                     Blocker.BlockZone(2, node1, node2, node2.getTop_right(), node2.getRight());
                     return false;
@@ -375,38 +381,38 @@ public class SideChecker {
                 }
             }
 
-            if (node1.getLeft().isTopState() && node2.getRight().isBottomState()){ //Doble paralelogramo decreciente
+            if (node1.getLeft() != null && node2.getRight() != null && node1.getLeft().isTopState() && node2.getRight().isBottomState()){ //Doble paralelogramo decreciente
                 if (checkParallelDecrement(node1, node2) && checkParallelDecrement(node2.getRight(), node2.getBottom_right())){
                     Blocker.BlockZone(4, node1.getTop_left(), node2.getTop_left(), node2.getBottom_right(), node1.getBottom_right());
                     return true;
                 }
             }
 
-            if (node2.getLeft().isBottomState() && node1.getRight().isTopState()){ //Doble paralelogramo creciente
+            if (node2.getLeft() != null && node1.getRight() != null && node2.getLeft().isBottomState() && node1.getRight().isTopState()){ //Doble paralelogramo creciente
                 if (checkParallelCrement(node1, node2) && checkParallelCrement(node1.getTop_right(), node1.getRight())){
                     Blocker.BlockZone(4, node1.getTop_right(), node1.getRight(), node2.getBottom_left(), node2.getLeft());
                     return true;
                 }
             }
-            if (node1.getLeft().isTopState()){    //paralelogramo decreciente por izquierda
+            if (node1.getLeft() != null && node1.getLeft().isTopState()){    //paralelogramo decreciente por izquierda
                 if (checkParallelDecrement(node1, node2)){
                     Blocker.BlockZone(4, node1, node2, node1.getLeft(), node1.getTop_left());
                     return true;
                 }
             }
-            if (node2.getRight().isBottomState()){
+            if (node2.getRight() != null && node2.getRight().isBottomState()){
                 if (checkParallelDecrement(node2.getRight(), node2.getBottom_right())){ //paralelogramo decreciente por derecha
                     Blocker.BlockZone(4, node1, node2, node2.getBottom_right(), node2.getRight());
                     return true;
                 }
             }
-            if (node2.getLeft().isBottomState()){   //paralelogramo creciente por izquierda
+            if (node2.getLeft() != null && node2.getLeft().isBottomState()){   //paralelogramo creciente por izquierda
                 if (checkParallelCrement(node1, node2)){
                     Blocker.BlockZone(4, node1, node2.getLeft(), node2.getBottom_left(), node2);
                     return true;
                 }
             }
-            if (node1.getRight().isTopState()){
+            if (node1.getRight() != null && node1.getRight().isTopState()){
                 if (checkParallelCrement(node1.getTop_right(), node1.getRight())){
                     Blocker.BlockZone(4, node1, node1.getTop_right(), node1.getRight(), node2);
                     return true;
