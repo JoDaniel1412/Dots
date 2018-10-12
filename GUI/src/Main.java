@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import lists.Board;
 import scenes.MainInterface;
 import scenes.sScene;
+import sound.Sound;
 
 import java.io.IOException;
 
@@ -33,7 +34,7 @@ public class Main extends Application {
         mainInterface = new MainInterface(this);
         setScene();
         Board.init(7, 7);
-        //Sound.play("resources/sounds/chill_day.wav", 1);
+        Sound.play("resources/sounds/chill_day.wav", 1);
         window.show();
 
         // Event that closes the program
