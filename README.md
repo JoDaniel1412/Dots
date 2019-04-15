@@ -1,5 +1,5 @@
 # Dots
-A Java game
+A local multiplayer game based on the famous game of joining points.
 
 Main Menu                  |  Host Menu
 :-------------------------:|:-------------------------:
